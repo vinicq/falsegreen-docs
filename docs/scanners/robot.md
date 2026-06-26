@@ -1,5 +1,10 @@
 # robotframework-falsegreen (Robot Framework)
 
+[![CI](https://github.com/vinicq/robotframework-falsegreen/actions/workflows/ci.yml/badge.svg)](https://github.com/vinicq/robotframework-falsegreen/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/robotframework-falsegreen.svg)](https://pypi.org/project/robotframework-falsegreen/)
+[![Downloads](https://img.shields.io/pypi/dm/robotframework-falsegreen.svg)](https://pypistats.org/packages/robotframework-falsegreen)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/vinicq/robotframework-falsegreen/blob/main/LICENSE)
+
 The deterministic Robot Framework scanner. A static scan over the official parser
 (`robot.api.get_model`), no execution. It recognizes the verification vocabulary across the Robot
 library ecosystem, so a real check is not mistaken for "no oracle".

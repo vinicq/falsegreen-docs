@@ -1,5 +1,10 @@
 # falsegreen (Python)
 
+[![CI](https://github.com/vinicq/falsegreen/actions/workflows/ci.yml/badge.svg)](https://github.com/vinicq/falsegreen/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/falsegreen.svg)](https://pypi.org/project/falsegreen/)
+[![Downloads](https://img.shields.io/pypi/dm/falsegreen.svg)](https://pypistats.org/packages/falsegreen)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/vinicq/falsegreen/blob/main/LICENSE)
+
 The deterministic Python/pytest scanner. A zero-dependency AST pass that validates each test
 against the false-positive codes a parser can prove. HIGH findings block the commit, LOW ones
 warn, and a diagnostic/coupling group is opt-in.

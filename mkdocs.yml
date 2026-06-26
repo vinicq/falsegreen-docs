@@ -70,6 +70,22 @@ plugins:
         - locale: pt
           name: Português (Brasil)
           build: true
+          nav_translations:
+            Home: Início
+            Catalog: Catálogo
+            Overview: Visão geral
+            Concepts: Conceitos
+            Scanners: Scanners
+            Research: Pesquisa
+            Credits: Créditos
+            "Failure taxonomy (F1-F8)": "Taxonomia de falhas (F1-F8)"
+            "Judgments (J1-J6)": "Julgamentos (J1-J6)"
+            "The oracle hierarchy": "A hierarquia de oráculos"
+            "Test pyramid and levels": "Pirâmide de testes e níveis"
+            "Scope and honesty": "Escopo e honestidade"
+            "Coverage vs the literature": "Cobertura vs a literatura"
+            "Semantic (LLM)": "Semântico (LLM)"
+            "Gherkin & Tavern": "Gherkin e Tavern"
 
 nav:
   - Home: index.md
