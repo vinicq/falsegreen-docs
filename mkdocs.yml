@@ -1,0 +1,83 @@
+site_name: falsegreen
+site_description: Find tests that pass green without protecting anything. The catalog and guide for the falsegreen family of false-green test scanners.
+site_url: https://vinicq.github.io/falsegreen-docs/
+repo_url: https://github.com/vinicq/falsegreen-docs
+repo_name: vinicq/falsegreen-docs
+edit_uri: edit/main/docs/
+copyright: MIT licensed. The falsegreen family.
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Catalog:
+      - Overview: catalog/index.md
+      - Python: catalog/python.md
+      - JavaScript / TypeScript: catalog/javascript-typescript.md
+      - Robot Framework: catalog/robot.md
+      - Semantic (LLM): catalog/semantic.md
+      - Gherkin & Tavern: catalog/gherkin-tavern.md
+  - Concepts:
+      - Failure taxonomy (F1-F8): concepts/taxonomy.md
+      - Judgments (J1-J6): concepts/judgments.md
+      - The oracle hierarchy: concepts/oracle.md
+      - Test pyramid and levels: concepts/pyramid.md
+      - Scope and honesty: concepts/scope.md
+      - Coverage vs the literature: concepts/denominator.md
+  - Scanners:
+      - falsegreen (Python): scanners/python.md
+      - falsegreen-js (JS/TS): scanners/javascript.md
+      - robotframework-falsegreen: scanners/robot.md
+      - falsegreen-skill (LLM): scanners/skill.md
+  - Credits: credits.md
