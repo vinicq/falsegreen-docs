@@ -22,9 +22,39 @@ rffalsegreen --format json|sarif|junit  # output shape
 rffalsegreen --config-audit             # robot.toml / invocation for project-level checks
 ```
 
-## Scope
+## What it covers
 
-Static scan: it owns what the keyword structure proves. It does not run the suite, so runtime-only
-smells (Test Run War, cross-suite order dependence) are out of band, and the semantic slice lives
-in [falsegreen-skill](skill.md). Codes share an id with the siblings where the concept matches;
-`R*` codes are Robot-specific. See [scope and honesty](../concepts/scope.md).
+Full per-code detail in the [Robot catalog](../catalog/robot.md).
+
+| Group | Codes | Effect |
+|---|---|---|
+| **Shared with Python** (F1-F6) | `C2`, `C2b`, `C3`, `C5`, `C6`, `C7`, `C9`, `C16`, `C20`, `C21`, `C23`, `C32`, `C37`, `CC` | HIGH blocks, LOW warns |
+| **Robot-specific** | `R1` (Pass Execution), `R2` (hollow verifier), `R3` (test cases in .resource), `R4` (No Operation), `R5` (empty template), `R6` (Should Be True on a string), `R7` (hollow template keyword) | idem |
+| **Diagnostic** (F8) | `D2`, `M2` | opt-in |
+| **Project / CI** (`--config-audit`) | `PL9` (legacy `--skiponfailure`/noncritical via robot.toml/args) | reads config |
+
+The verification recognizer knows the `Should` convention plus library forms (SeleniumLibrary,
+Browser assertion engine, RequestsLibrary including `expected_status=<code>`, RESTinstance,
+DatabaseLibrary), so an API or UI assertion is not misread as no-oracle.
+
+## What it does not cover, and why
+
+### Out of scope (the wrong axis)
+Same boundary as the family. See [coverage vs the literature](../concepts/denominator.md).
+
+### Deliberately not implemented
+| What | Why not |
+|---|---|
+| **`Wait Until Keyword Succeeds`** as a flaky mask (catalog RF16) | legitimate retry around genuine E2E flakiness; high false positive |
+| **Cross-test shared state** (`Set Suite/Global Variable` read by a sibling) | needs whole-suite ordering analysis, not a per-file fact; the HowTo guide even sanctions some inter-test dependency. High false positive |
+| **`C31` - captured value never used** (`${x}= Get Text` never read) | a real recall gap, but the false-positive surface (value used only in `Log`, in an `Evaluate` string, or in teardown) needs careful bounding. Deferred to a second pass ([issue #34](https://github.com/vinicq/robotframework-falsegreen/issues/34)) |
+| **Dead user keyword** (catalog RF6) | needs a cross-file project pass; the scanner is single-file today |
+| **Pure hygiene** (bad naming, comment rate, long parameter lists) | Robocop owns the Robot style guide; the scanner does not duplicate it |
+
+### No clean Robot equivalent
+A few Python/JS sibling codes have no faithful Robot form and are intentionally skipped rather
+than forced. The catalog notes them explicitly.
+
+### Beyond the scanner
+Runtime smells (Test Run War, cross-suite order dependence) need the suite to run; the semantic
+slice is [falsegreen-skill](skill.md). See [scope and honesty](../concepts/scope.md).
