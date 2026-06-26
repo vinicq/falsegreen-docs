@@ -92,4 +92,5 @@ nav:
       - falsegreen-js (JS/TS): scanners/javascript.md
       - robotframework-falsegreen: scanners/robot.md
       - falsegreen-skill (LLM): scanners/skill.md
+  - Research: research.md
   - Credits: credits.md

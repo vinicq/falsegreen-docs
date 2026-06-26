@@ -12,8 +12,12 @@ scale, which is why the problem is worth a dedicated tool.
 This site is the shared reference for the whole family: every detection code, the exact signal
 each one keys on, and a BAD example next to the CLEAN look-alike so you can see the difference.
 
+It is also a research project. The taxonomy is defensible, the denominator is named, and the
+threats to validity are stated in the open. See the [research foundation](research.md).
+
 [Browse the catalog](catalog/index.md){ .md-button .md-button--primary }
 [How the codes are classified](concepts/taxonomy.md){ .md-button }
+[Research foundation](research.md){ .md-button }
 
 ## The family
 
