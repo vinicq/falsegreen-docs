@@ -42,3 +42,13 @@ positive here is expensive, so the bar is an explicit, independent source.
 This is the principle behind the whole family: the static scanners catch the structural
 inversions a parser can prove (`C14`, `C12`, `C11a`), and the [semantic pass](../scanners/skill.md)
 catches the ones that need reading the expected value against the spec.
+
+## The oracle problem
+
+Deciding the expected result is a named research problem - the *oracle problem* (Barr, Harman,
+McMinn, Shahbaz, Yoo, *The Oracle Problem in Software Testing: A Survey*, IEEE TSE 2015). When a
+full oracle is hard to build, the literature falls back on partial oracles: metamorphic relations,
+property-based checks, or a known-good reference. falsegreen takes the practical stance above - the
+expected value must be independent of the code - and routes the cases that need a real oracle to
+the [skill](../scanners/skill.md), never reporting a wrong-value finding without one. See
+[credits](../credits.md) for the references.
