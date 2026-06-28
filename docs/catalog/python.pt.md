@@ -70,6 +70,21 @@ porque é fácil confundir com um padrão de delegação.
         result = process(data)        # chama o SUT mas nenhum assert vem depois
     ```
 
+### C2c - bloco self.subTest vazio
+`J1` · BAIXO · F1
+
+Um bloco `with self.subTest(...):` do unittest que envolve trabalho mas não tem nenhuma asserção
+dentro - o análogo do teste vazio para subTest, já que cada sub-caso gerado roda e não verifica
+nada. Mais específico que a C2b, que ele substitui nessa forma. Um subTest que asserta, levanta
+exceção, ou delega para um helper `check_*`/`verify_*` não é sinalizado; o receptor tem que ser `self`/`cls`.
+
+=== "RUIM"
+    ```python
+    for i in cases:
+        with self.subTest(i=i):
+            do_thing(i)               # nenhuma asserção dentro do bloco
+    ```
+
 ### C3 - assert dentro de um try cujo except engole o erro
 `J1` · ALTO · F2
 
@@ -239,6 +254,23 @@ de ponto flutuante torna a igualdade exata pouco confiável.
 === "LIMPO"
     ```python
     assert compute() == pytest.approx(3.14159, rel=1e-6)
+    ```
+
+### C8b - igualdade aproximada sem tolerância explícita
+`J4` · BAIXO · F4
+
+`assertAlmostEqual`/`assertNotAlmostEqual` (padrão de 7 casas) ou `== pytest.approx(...)` (padrão
+1e-6 relativo) sem `places=`/`delta=`/`rel=`/`abs=`. A tolerância padrão pode aprovar um valor
+errado de verdade. Dimensionar a tolerância aos valores mantém quieto.
+
+=== "RUIM"
+    ```python
+    self.assertAlmostEqual(total(), 4.2)      # padrão de 7 casas
+    assert total() == pytest.approx(4.2)      # padrão 1e-6 rel
+    ```
+=== "LIMPO"
+    ```python
+    self.assertAlmostEqual(total(), 4.2, places=2)
     ```
 
 ### C9 - pytest.raises ampla demais
