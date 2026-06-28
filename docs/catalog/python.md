@@ -202,6 +202,13 @@ The test reads `mock.call_args.args[idx]` or `mock.call_args[0][idx]` where `idx
 (`.index()`, arithmetic, a variable) rather than a fixed literal. The position is fragile and
 may silently shift.
 
+### C6c - mock call_count truthiness as the oracle
+`J4` · LOW · F4
+
+`assert mock.call_count` (bare) passes on any count `>= 1`, so it checks only that the mock was
+called, not how many times. The receiver must be a known mock; an exact or lower-bounded count
+(`== N`, `>= 1`) is a real check. The always-true `mock.call_count >= 0` form is C44.
+
 ### C7 - self-comparison: both sides are identical
 `J2` · HIGH · F3
 
@@ -556,7 +563,8 @@ a legitimate guard.
 ### C44 - numeric tautology
 `J2` · HIGH · F3
 
-`len(x) >= 0`, `abs(x) >= 0`, `len(x) > -1`. The comparison is always true.
+`len(x) >= 0`, `abs(x) >= 0`, `len(x) > -1`, or a mock's `call_count >= 0` / `> -1`. The
+comparison is always true.
 
 ### C45 - empty parametrize
 `J1` · HIGH · F5
