@@ -70,6 +70,21 @@ because it is easy to mistake for a delegation pattern.
         result = process(data)        # calls SUT but no assert follows
     ```
 
+### C2c - empty self.subTest block
+`J1` · LOW · F1
+
+A unittest `with self.subTest(...):` block that wraps work but contains no assertion - the subTest
+analogue of an empty test, since each generated sub-case runs and verifies nothing. More specific
+than C2b, which it suppresses for this shape. A subTest that asserts, raises, or delegates to a
+`check_*`/`verify_*` helper is not flagged; the receiver must be `self`/`cls`.
+
+=== "BAD"
+    ```python
+    for i in cases:
+        with self.subTest(i=i):
+            do_thing(i)               # no assertion inside the block
+    ```
+
 ### C3 - assert inside a try whose except swallows the error
 `J1` · HIGH · F2
 
@@ -239,6 +254,23 @@ arithmetic makes exact equality unreliable.
 === "CLEAN"
     ```python
     assert compute() == pytest.approx(3.14159, rel=1e-6)
+    ```
+
+### C8b - approximate equality with no explicit tolerance
+`J4` · LOW · F4
+
+`assertAlmostEqual`/`assertNotAlmostEqual` (default 7 places) or `== pytest.approx(...)` (default
+1e-6 relative) with no `places=`/`delta=`/`rel=`/`abs=`. The default tolerance can pass a
+meaningfully wrong value. Sizing the tolerance to the values keeps it quiet.
+
+=== "BAD"
+    ```python
+    self.assertAlmostEqual(total(), 4.2)      # default 7 places
+    assert total() == pytest.approx(4.2)      # default 1e-6 rel
+    ```
+=== "CLEAN"
+    ```python
+    self.assertAlmostEqual(total(), 4.2, places=2)
     ```
 
 ### C9 - pytest.raises too broad
