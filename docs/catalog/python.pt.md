@@ -111,7 +111,9 @@ classes por inteiro, então nenhum dos seus testes roda.
 `J1` · ALTO · F2
 
 Um `assert` aparece depois de um `return`, `raise`, `break`, `continue` ou `pytest.fail()` no
-mesmo bloco. Código morto; nunca alcançado.
+mesmo bloco. Código morto; nunca alcançado. A detecção usa alcançabilidade estruturada intra-teste
+(no nível de bloco), então pega uma asserção depois de um return / raise / fail em qualquer bloco,
+não só no nível superior.
 
 === "RUIM"
     ```python
@@ -127,7 +129,9 @@ mesmo bloco. Código morto; nunca alcançado.
 `J1` · BAIXO · F2
 
 A função tem asserções, mas toda verificação está dentro de um ramo `if` sem um if/else
-exaustivo que garanta que ao menos uma rode. O teste pode passar sem verificar nada.
+exaustivo que garanta que ao menos uma rode. O teste pode passar sem verificar nada. O mesmo modelo
+de alcançabilidade estruturada (no nível de bloco) decide isso, então o C21 dispara só quando
+nenhuma asserção fica na espinha garantida do teste.
 
 ### C22 - teste async que nunca aguarda a unidade sob teste
 `J1` · OFF · F2
@@ -299,7 +303,10 @@ para sempre.
 
 `time.sleep(N)`, `datetime.now()` / `time.time()` sem `freezegun` / `time_machine`,
 `random.*` sem `random.seed()`, `torch.rand*` sem `torch.manual_seed()` ou
-`train_test_split` sem `random_state=`.
+`train_test_split` sem `random_state=`. Também sinaliza `uuid.uuid4()` / `uuid.uuid1()` /
+`uuid.getnode()` e `secrets.token_*` / `secrets.randbits` / `secrets.choice`, todos qualificados
+pelo módulo. Uma chamada `from uuid import uuid4` nua e o `uuid.uuid5()` determinístico não são
+sinalizados.
 
 === "RUIM"
     ```python
@@ -555,6 +562,25 @@ um guard legítimo.
 `J1` · ALTO · F5
 
 `@pytest.mark.parametrize("...", [])`. Zero casos são gerados, então o teste nunca roda.
+
+### C48 - dark patch: vira um flag de modo de teste e depois afirma
+`J1` · BAIXO · F2
+
+O teste força um toggle de modo de teste para o modo de teste (`os.environ["TESTING"] = "1"`,
+`settings.TESTING = True`, um `TESTING = True` declarado com `global`) e depois afirma, então
+exercita o ramo só-de-teste do produto (`if TESTING: ...`) em vez do comportamento real.
+
+!!! note "Sinal"
+    Um flag de modo de teste conhecido virado antes da asserção. Não dispara quando uma asserção
+    genuína já roda antes da virada, a menos que uma asserção pós-virada leia o próprio flag
+    alterado. Valores de config e feature flags de produto não são sinalizados.
+
+=== "RUIM"
+    ```python
+    def test_login():
+        os.environ["TESTING"] = "1"   # C48 - força o ramo só-de-teste
+        assert login(user, pwd) is True
+    ```
 
 ---
 

@@ -22,13 +22,14 @@ These mirror the [Python catalog](python.md) entries; the signal is the JavaScri
 | C7 | HIGH | self-compare (`expect(x).toBe(x)`) |
 | C8 | LOW | exact equality on a float |
 | C9 | LOW | `toThrow()` with no error type or message |
-| C16 | LOW | depends on `Date.now` / `Math.random` / a fixed timer |
+| C16 | LOW | depends on `Date.now` / `new Date()` / `Math.random` / `crypto.randomUUID`/`getRandomValues` / a fixed timer |
 | C18 | LOW | stringified equality (`String(x)` / `JSON.stringify` / template literal) |
-| C20 | HIGH | assertion in dead code after `return` / `throw` |
-| C21 | LOW | every assertion is conditional |
+| C20 | HIGH | dead assertion after `return` / `throw` / `process.exit` / an exhaustive `switch` (structured block-level reachability, cfg.ts) |
+| C21 | LOW | no assertion runs unconditionally; a dead assertion does not mask it (same cfg.ts reachability) |
 | C23 | LOW | reads a real file at a literal path / hard-coded URL |
 | C37 | LOW | duplicate `it.each` / `test.each` case |
 | C44 | HIGH | numeric tautology on a length (`expect(x.length).toBeGreaterThanOrEqual(0)`) |
+| C48 | LOW | dark patch: flips a test-mode flag (`process.env.NODE_ENV = "test"`, `process.env.TESTING = "1"`, `settings.TESTING = true`) then asserts (parity with Python `C48`) |
 | CC | LOW | commented-out assertion |
 
 ## JavaScript-specific codes

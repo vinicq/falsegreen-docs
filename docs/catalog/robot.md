@@ -42,7 +42,7 @@ nothing.
 | C5 | HIGH | always-true (`Should Be True    ${TRUE}`) |
 | C7 | HIGH | self-compare (`Should Be Equal    ${x}    ${x}`) |
 | C9 | LOW | catch-all expected error (`Run Keyword And Expect Error    *`) |
-| C16 | LOW | `Sleep` as synchronization instead of `Wait Until *` |
+| C16 | LOW | `Sleep` as synchronization instead of `Wait Until *`, `Get Current Date` (clock read), `Generate Random String` (randomness), or `Evaluate` with `datetime`/`random`/`uuid` |
 | C20 | HIGH | verification after a terminator (`[Return]`, `Return From Keyword`, `Fail`, `Pass Execution`) |
 | C21 | LOW | verification only inside `IF` / `Run Keyword If` that may not run |
 | C23 | LOW | hard-coded IP-address URL in test data |

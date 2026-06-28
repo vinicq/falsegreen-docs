@@ -111,7 +111,9 @@ classes entirely, so none of its tests run.
 `J1` · HIGH · F2
 
 An `assert` appears after a `return`, `raise`, `break`, `continue`, or `pytest.fail()` in the
-same block. Dead code; never reached.
+same block. Dead code; never reached. Detection uses structured intra-test (block-level)
+reachability, so it catches an assertion after a return / raise / fail in any block, not just at
+the top level.
 
 === "BAD"
     ```python
@@ -127,7 +129,9 @@ same block. Dead code; never reached.
 `J1` · LOW · F2
 
 The function has assertions, but every check is inside an `if` branch with no exhaustive
-if/else that guarantees at least one runs. The test can pass without checking anything.
+if/else that guarantees at least one runs. The test can pass without checking anything. The same
+structured (block-level) reachability model decides this, so C21 fires only when no assertion sits
+on the test's guaranteed spine.
 
 ### C22 - async test never awaits the unit under test
 `J1` · OFF · F2
@@ -299,7 +303,10 @@ forever.
 
 `time.sleep(N)`, `datetime.now()` / `time.time()` without `freezegun` / `time_machine`,
 `random.*` without `random.seed()`, `torch.rand*` without `torch.manual_seed()`, or
-`train_test_split` without `random_state=`.
+`train_test_split` without `random_state=`. Also flags `uuid.uuid4()` / `uuid.uuid1()` /
+`uuid.getnode()` and `secrets.token_*` / `secrets.randbits` / `secrets.choice`, all
+module-qualified. A bare `from uuid import uuid4` call and the deterministic `uuid.uuid5()` are
+not flagged.
 
 === "BAD"
     ```python
@@ -555,6 +562,25 @@ a legitimate guard.
 `J1` · HIGH · F5
 
 `@pytest.mark.parametrize("...", [])`. Zero cases are generated, so the test never runs.
+
+### C48 - dark patch: flips a test-mode flag then asserts
+`J1` · LOW · F2
+
+The test forces a test-mode toggle into test mode (`os.environ["TESTING"] = "1"`,
+`settings.TESTING = True`, a `global`-declared `TESTING = True`) and then asserts, so it exercises
+the product's test-only branch (`if TESTING: ...`) instead of real behaviour.
+
+!!! note "Signal"
+    A known test-mode flag flipped on before the assertion. Does not fire when a genuine assertion
+    already runs before the flip, unless a post-flip assertion reads the toggled flag itself.
+    Config values and product feature flags are not flagged.
+
+=== "BAD"
+    ```python
+    def test_login():
+        os.environ["TESTING"] = "1"   # C48 - forces the test-only branch
+        assert login(user, pwd) is True
+    ```
 
 ---
 
