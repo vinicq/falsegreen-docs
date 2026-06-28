@@ -67,8 +67,9 @@ codifiable corner.
 
 ### Needs runtime (not promised statically)
 `python -O` stripping `assert`, a collection error reported as "0 tests passed", a CI step that
-runs a subset and reports green (`PL1`/`PL4`/`PL6`). These only appear when the suite runs; they
-are documented, not claimed. The honest path is mutation testing (mutmut, cosmic-ray), which is
-out of band.
+runs a subset and reports green (`PL1`/`PL4`/`PL6`). `PL1` now has a config-discoverable slice:
+`--config-audit` flags `python -O`/`-OO` or `PYTHONOPTIMIZE=1` set in `tox.ini`/pytest `addopts`
+as a project-level warning. The rest only appear when the suite runs; they are documented, not
+claimed. The honest path is mutation testing (mutmut, cosmic-ray), which is out of band.
 
 See [scope and honesty](../concepts/scope.md) for the layer boundary.
