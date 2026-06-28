@@ -39,8 +39,9 @@ nada.
 | C2 | ALTO | caso de teste vazio (só settings, sem keywords de corpo) / user keyword vazia |
 | C2b | BAIXO | roda keywords mas nenhuma keyword de verificação |
 | C3 | ALTO | falha engolida: `Run Keyword And Ignore Error` / `Return Status` não afirmado, ou um `TRY/EXCEPT` que engole |
-| C5 | ALTO | sempre verdadeira (`Should Be True    ${TRUE}`) |
+| C5 | ALTO | sempre verdadeira (`Should Be True    ${TRUE}`, ou um `Set Variable If` constante-verdadeiro alimentando o lado esperado de `Should Be Equal`) |
 | C7 | ALTO | autocomparação (`Should Be Equal    ${x}    ${x}`) |
+| C44 | ALTO | asserção de biblioteca provavelmente verdadeira para qualquer valor (`Should Contain    ${x}    ${EMPTY}`, `Should Not Be Empty    ${TRUE}`, `Should Be Empty    ${EMPTY}`, uma tautologia de `Length Should Be`) |
 | C9 | BAIXO | erro esperado pega-tudo (`Run Keyword And Expect Error    *`) |
 | C16 | BAIXO | `Sleep` como sincronização em vez de `Wait Until *`, `Get Current Date` (leitura de relógio), `Generate Random String` (aleatoriedade), ou `Evaluate` com `datetime`/`random`/`uuid` |
 | C20 | ALTO | verificação depois de um terminador (`[Return]`, `Return From Keyword`, `Fail`, `Pass Execution`) |

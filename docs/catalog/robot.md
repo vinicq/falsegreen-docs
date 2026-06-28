@@ -39,8 +39,9 @@ nothing.
 | C2 | HIGH | empty test case (only settings, no body keywords) / empty user keyword |
 | C2b | LOW | runs keywords but no verification keyword |
 | C3 | HIGH | swallowed failure: `Run Keyword And Ignore Error` / `Return Status` not asserted, or a `TRY/EXCEPT` that swallows |
-| C5 | HIGH | always-true (`Should Be True    ${TRUE}`) |
+| C5 | HIGH | always-true (`Should Be True    ${TRUE}`, or a constant-true `Set Variable If` feeding the expected side of `Should Be Equal`) |
 | C7 | HIGH | self-compare (`Should Be Equal    ${x}    ${x}`) |
+| C44 | HIGH | library assertion provably true for any value (`Should Contain    ${x}    ${EMPTY}`, `Should Not Be Empty    ${TRUE}`, `Should Be Empty    ${EMPTY}`, a `Length Should Be` tautology) |
 | C9 | LOW | catch-all expected error (`Run Keyword And Expect Error    *`) |
 | C16 | LOW | `Sleep` as synchronization instead of `Wait Until *`, `Get Current Date` (clock read), `Generate Random String` (randomness), or `Evaluate` with `datetime`/`random`/`uuid` |
 | C20 | HIGH | verification after a terminator (`[Return]`, `Return From Keyword`, `Fail`, `Pass Execution`) |
