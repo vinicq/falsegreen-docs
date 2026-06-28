@@ -26,12 +26,12 @@ Quatro ferramentas, um catálogo. Os três scanners estáticos provam o que um p
 ver, cada um na sua linguagem. A skill é a passagem semântica que lê a intenção, e um superset
 das três.
 
-| Ferramenta | Linguagem | Técnica |
-|---|---|---|
-| [falsegreen](scanners/python.md) | Python / pytest | varredura de AST, zero dependências |
-| [falsegreen-js](scanners/javascript.md) | JavaScript / TypeScript | API do compilador TypeScript |
-| [robotframework-falsegreen](scanners/robot.md) | Robot Framework | modelo `robot.api` |
-| [falsegreen-skill](scanners/skill.md) | Python, TS, JS, Robot | passagem semântica via LLM (J1-J6) |
+| Ferramenta | Linguagem | Técnica | Instalação | Pacote |
+|---|---|---|---|---|
+| [falsegreen](scanners/python.md) | Python / pytest | varredura de AST, zero dependências | `pip install falsegreen` | [PyPI](https://pypi.org/project/falsegreen/) |
+| [falsegreen-js](scanners/javascript.md) | JavaScript / TypeScript | API do compilador TypeScript | `npm i -D falsegreen-js` · `npx falsegreen-js` | [npm](https://www.npmjs.com/package/falsegreen-js) |
+| [robotframework-falsegreen](scanners/robot.md) | Robot Framework | modelo `robot.api` | `pip install robotframework-falsegreen` | [PyPI](https://pypi.org/project/robotframework-falsegreen/) |
+| [falsegreen-skill](scanners/skill.md) | Python, TS, JS, Robot | passagem semântica via LLM (J1-J6) | `npx falsegreen-skill analyze <caminho>` | [npm](https://www.npmjs.com/package/falsegreen-skill) · [GitHub](https://github.com/vinicq/falsegreen-skill) |
 
 Os códigos compartilham um id quando o conceito coincide entre linguagens: `C5` é a asserção
 sempre verdadeira em Python, JavaScript e Robot por igual. Padrões específicos de cada
