@@ -202,6 +202,13 @@ O teste lê `mock.call_args.args[idx]` ou `mock.call_args[0][idx]` onde `idx` é
 (`.index()`, aritmética, uma variável) em vez de um literal fixo. A posição é frágil e
 pode mudar em silêncio.
 
+### C6c - usar a veracidade do call_count do mock como oráculo
+`J4` · BAIXO · F4
+
+`assert mock.call_count` (puro) passa para qualquer contagem `>= 1`, então só verifica que o mock
+foi chamado, não quantas vezes. O receptor tem que ser um mock conhecido; uma contagem exata ou com
+limite inferior (`== N`, `>= 1`) é uma verificação real. A forma sempre verdadeira `mock.call_count >= 0` é a C44.
+
 ### C7 - autocomparação: ambos os lados são idênticos
 `J2` · ALTO · F3
 
@@ -556,7 +563,8 @@ um guard legítimo.
 ### C44 - tautologia numérica
 `J2` · ALTO · F3
 
-`len(x) >= 0`, `abs(x) >= 0`, `len(x) > -1`. A comparação é sempre verdadeira.
+`len(x) >= 0`, `abs(x) >= 0`, `len(x) > -1`, ou o `call_count >= 0` / `> -1` de um mock. A
+comparação é sempre verdadeira.
 
 ### C45 - parametrize vazio
 `J1` · ALTO · F5
