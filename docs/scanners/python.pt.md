@@ -70,7 +70,9 @@ codificável.
 
 ### Precisa de runtime (não prometido estaticamente)
 `python -O` removendo `assert`, um erro de coleta reportado como "0 tests passed", um passo de CI
-que roda um subconjunto e reporta verde (`PL1`/`PL4`/`PL6`). Estes só aparecem quando a suíte
+que roda um subconjunto e reporta verde (`PL1`/`PL4`/`PL6`). O `PL1` agora tem uma fatia
+detectável por configuração: o `--config-audit` sinaliza `python -O`/`-OO` ou `PYTHONOPTIMIZE=1`
+em `tox.ini`/`addopts` do pytest como aviso de nível de projeto. O resto só aparece quando a suíte
 roda; são documentados, não reivindicados. O caminho honesto é teste de mutação (mutmut,
 cosmic-ray), que fica fora de banda.
 
