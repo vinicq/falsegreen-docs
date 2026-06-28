@@ -203,6 +203,23 @@ JS2.
 
 `it.each([])(...)`. Zero cases are generated, so the test never runs. Parallel of `C45`.
 
+### JS23 - expect.assertions(N) the body cannot satisfy
+`J1` · HIGH · F5
+
+`expect.assertions(N)` with a numeric `N` higher than the unconditional, reachable, non-nested
+`expect()` calls that can run. The guard the author wrote to defend against a silently-dropped
+async assertion is dead on arrival. Fires only on a provable literal-`N` shortfall: an `expect`
+in a loop, a branch, a `.then`/callback, or a called helper makes the count indeterminate and
+suppresses the finding. `expect.hasAssertions()` carries no count and is skipped.
+
+### JS24 - Cypress query with no assertion
+`J4` · LOW · F4
+
+A Cypress query chain (`cy.get`/`cy.find`/`cy.contains`) used as a statement with no terminating
+`.should`/`.and` and no `expect` inside a `.then` callback. The query produces a subject that is
+never asserted, the cy.* analogue of JS13. Action commands (`click`/`type`/`visit`/...) do work
+rather than query, so a chain ending in one stays clean, as does one ending in `.should`/`.and`.
+
 ## High-value traps with evidence
 
 The scanner also catches a set of idiom-specific false-greens documented in the JS/TS empirical

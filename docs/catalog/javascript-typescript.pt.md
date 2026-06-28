@@ -203,6 +203,24 @@ JS2.
 
 `it.each([])(...)`. Zero casos são gerados, então o teste nunca roda. Paralelo de `C45`.
 
+### JS23 - expect.assertions(N) que o corpo não consegue satisfazer
+`J1` · ALTO · F5
+
+`expect.assertions(N)` com um `N` numérico maior que as chamadas `expect()` incondicionais,
+alcançáveis e não-aninhadas que podem rodar. A garantia que o autor escreveu para se proteger de
+uma asserção async perdida em silêncio já nasce morta. Dispara só num déficit provável de `N`
+literal: um `expect` em loop, em ramo, num `.then`/callback, ou num helper torna a contagem
+indeterminada e suprime o achado. `expect.hasAssertions()` não tem contagem e é ignorado.
+
+### JS24 - query do Cypress sem asserção
+`J4` · BAIXO · F4
+
+Uma cadeia de query do Cypress (`cy.get`/`cy.find`/`cy.contains`) usada como statement sem
+`.should`/`.and` no fim e sem `expect` dentro de um callback `.then`. A query produz um subject que
+nunca é asserido, o análogo cy.* da JS13. Comandos de ação (`click`/`type`/`visit`/...) fazem
+trabalho em vez de consultar, então uma cadeia terminada num deles fica limpa, assim como uma
+terminada em `.should`/`.and`.
+
 ## Armadilhas de alto valor com evidência
 
 O scanner também pega um conjunto de false-greens específicos de idioma documentados nos estudos
