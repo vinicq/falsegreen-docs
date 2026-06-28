@@ -24,12 +24,12 @@ threats to validity are stated in the open. See the [research foundation](resear
 Four tools, one catalog. The three static scanners prove what a parser can see, each in its
 own language. The skill is the semantic pass that reads intent, and a superset of the three.
 
-| Tool | Language | Technique |
-|---|---|---|
-| [falsegreen](scanners/python.md) | Python / pytest | AST scan, zero dependencies |
-| [falsegreen-js](scanners/javascript.md) | JavaScript / TypeScript | TypeScript compiler API |
-| [robotframework-falsegreen](scanners/robot.md) | Robot Framework | `robot.api` model |
-| [falsegreen-skill](scanners/skill.md) | Python, TS, JS, Robot | semantic LLM pass (J1-J6) |
+| Tool | Language | Technique | Install | Package |
+|---|---|---|---|---|
+| [falsegreen](scanners/python.md) | Python / pytest | AST scan, zero dependencies | `pip install falsegreen` | [PyPI](https://pypi.org/project/falsegreen/) |
+| [falsegreen-js](scanners/javascript.md) | JavaScript / TypeScript | TypeScript compiler API | `npm i -D falsegreen-js` · `npx falsegreen-js` | [npm](https://www.npmjs.com/package/falsegreen-js) |
+| [robotframework-falsegreen](scanners/robot.md) | Robot Framework | `robot.api` model | `pip install robotframework-falsegreen` | [PyPI](https://pypi.org/project/robotframework-falsegreen/) |
+| [falsegreen-skill](scanners/skill.md) | Python, TS, JS, Robot | semantic LLM pass (J1-J6) | `npx falsegreen-skill analyze <path>` | [npm](https://www.npmjs.com/package/falsegreen-skill) · [GitHub](https://github.com/vinicq/falsegreen-skill) |
 
 Codes share an id where the concept matches across languages: `C5` is the always-true
 assertion in Python, JavaScript, and Robot alike. Language-specific patterns get their own
