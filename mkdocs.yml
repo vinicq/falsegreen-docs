@@ -84,6 +84,7 @@ plugins:
             "Test pyramid and levels": "Pirâmide de testes e níveis"
             "Scope and honesty": "Escopo e honestidade"
             "Coverage vs the literature": "Cobertura vs a literatura"
+            "Coverage by family": "Cobertura por família"
             "Semantic (LLM)": "Semântico (LLM)"
             "Gherkin & Tavern": "Gherkin e Tavern"
 
@@ -103,6 +104,7 @@ nav:
       - Test pyramid and levels: concepts/pyramid.md
       - Scope and honesty: concepts/scope.md
       - Coverage vs the literature: concepts/denominator.md
+      - Coverage by family: concepts/coverage.md
   - Scanners:
       - falsegreen (Python): scanners/python.md
       - falsegreen-js (JS/TS): scanners/javascript.md
