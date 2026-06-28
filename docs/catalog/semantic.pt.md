@@ -102,6 +102,9 @@ Padrões que nenhum AST ou linter vê. Cada um mapeia para um julgamento.
 | **S11** | J4 | asserção só-negativa em um filtro de segurança (`secret not in output`) sem positiva pareada |
 | **S12** | J3 | faz patch na lógica central em vez de uma borda externa (mais profundo que o caso 10) |
 | **S13** | J6 | passa só via estado compartilhado que um irmão configurou, entre arquivos que o AST não prova |
+| **S14** | J2 | saída de modelo gravada como oráculo: afirma == contra um resultado de LLM/modelo em snapshot, então verde quer dizer que o modelo ainda emite o que um dia emitiu, não que está correto |
+| **S15** | J6 | loop de retry/poll feito à mão mascarando flakiness: passa se qualquer tentativa der certo (só a forma engole-e-passa; um retry que relança ao esgotar é um settle sancionado, não sinalizado) |
+| **S16** | J4 | verificação de chamada como único oráculo: a única verificação é que um colaborador foi chamado (`assert_called_once`/`toHaveBeenCalled`), sem asserção sobre o valor de retorno ou estado da unidade |
 
 ## Parecidos: NÃO sinalizar
 

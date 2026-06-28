@@ -22,13 +22,14 @@ Estes espelham as entradas do [catálogo Python](python.md); o sinal é a forma 
 | C7 | ALTO | autocomparação (`expect(x).toBe(x)`) |
 | C8 | BAIXO | igualdade exata em um float |
 | C9 | BAIXO | `toThrow()` sem tipo de erro ou mensagem |
-| C16 | BAIXO | depende de `Date.now` / `Math.random` / um timer fixo |
+| C16 | BAIXO | depende de `Date.now` / `new Date()` / `Math.random` / `crypto.randomUUID`/`getRandomValues` / um timer fixo |
 | C18 | BAIXO | igualdade de string (`String(x)` / `JSON.stringify` / template literal) |
-| C20 | ALTO | asserção em código morto depois de `return` / `throw` |
-| C21 | BAIXO | toda asserção é condicional |
+| C20 | ALTO | asserção morta depois de `return` / `throw` / `process.exit` / um `switch` exaustivo (alcançabilidade estruturada no nível de bloco, cfg.ts) |
+| C21 | BAIXO | nenhuma asserção roda incondicionalmente; uma asserção morta não mascara isso (mesma alcançabilidade do cfg.ts) |
 | C23 | BAIXO | lê um arquivo real em um caminho literal / URL fixa no código |
 | C37 | BAIXO | caso duplicado de `it.each` / `test.each` |
 | C44 | ALTO | tautologia numérica sobre um comprimento (`expect(x.length).toBeGreaterThanOrEqual(0)`) |
+| C48 | BAIXO | dark patch: vira um flag de modo de teste (`process.env.NODE_ENV = "test"`, `process.env.TESTING = "1"`, `settings.TESTING = true`) e depois afirma (paridade com o `C48` do Python) |
 | CC | BAIXO | asserção comentada |
 
 ## Códigos específicos de JavaScript

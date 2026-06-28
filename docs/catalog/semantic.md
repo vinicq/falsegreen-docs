@@ -102,6 +102,9 @@ Patterns no AST or linter sees. Each maps to a judgment.
 | **S11** | J4 | negative-only assertion on a security filter (`secret not in output`) with no paired positive |
 | **S12** | J3 | patches core logic instead of an external edge (deeper than case 10) |
 | **S13** | J6 | passes only via shared state a sibling set up, across files the AST cannot prove |
+| **S14** | J2 | recorded model output as the oracle: asserts == against a snapshotted LLM/model result, so green means the model still emits what it once emitted, not that it is correct |
+| **S15** | J6 | hand-rolled retry/poll loop masking flakiness: passes if any attempt succeeds (only the swallow-and-pass form; a retry that re-raises on exhaustion is a sanctioned settle, not flagged) |
+| **S16** | J4 | call-verification as the sole oracle: the only check is that a collaborator was called (`assert_called_once`/`toHaveBeenCalled`), with no assertion on the unit's return value or state |
 
 ## Look-alikes: do NOT flag
 
