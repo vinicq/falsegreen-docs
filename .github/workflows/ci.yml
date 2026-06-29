@@ -1,0 +1,31 @@
+name: ci
+
+# PR-blocking docs gate (#1): a broken internal link, a missing nav page, or an
+# untranslated-page drift should fail the PR, not ship silently on deploy. The
+# deploy-docs workflow already builds --strict on push to main; this runs the same
+# strict build plus an offline link check on every pull request and push.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-linkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - run: pip install -r requirements.txt
+      - name: Strict build (fails on broken refs, missing nav, bad config)
+        run: mkdocs build --strict
+      - name: Link check (offline - internal links and anchors in the built site)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: "--offline --no-progress 'site/**/*.html'"
+          fail: true
