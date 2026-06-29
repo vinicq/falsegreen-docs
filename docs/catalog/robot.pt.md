@@ -347,7 +347,7 @@ teardown às vezes é uma asserção de limpeza deliberada.
 Um `skip-on-failure` / `noncritical` na config de execução transforma um teste que falha num pass
 não fatal. Legado (removido no Robot Framework 4+), ainda visto em suítes antigas.
 
-## Códigos de diagnóstico (opcionais, OFF por padrão)
+## Códigos de diagnóstico (opcionais, OFF por padrão) { #diagnostics }
 
 Família F8: higiene, não false-green. O Robocop também cobre estes.
 

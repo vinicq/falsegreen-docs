@@ -856,7 +856,7 @@ reported test count is incomplete. Drop them so the full suite runs.
 
 ---
 
-## Diagnostic codes (opt-in, OFF by default)
+## Diagnostic codes (opt-in, OFF by default) { #diagnostics }
 
 Family F8: not false-green (the test still protects), shown only on a diagnostic pass. Dedicated
 linters (ruff) also cover these.

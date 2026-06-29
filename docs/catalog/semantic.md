@@ -83,7 +83,7 @@ run alone.
 The test asserts a value that contradicts the spec, freezing a bug as correct. **Requires an
 independent oracle cited before reporting.**
 
-## The S-series (AI-only)
+## The S-series (AI-only) { #s-series }
 
 Patterns no AST or linter sees. Each maps to a judgment.
 

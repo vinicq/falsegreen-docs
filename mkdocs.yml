@@ -82,6 +82,8 @@ plugins:
             "Judgments (J1-J6)": "Julgamentos (J1-J6)"
             "The oracle hierarchy": "A hierarquia de oráculos"
             "Test pyramid and levels": "Pirâmide de testes e níveis"
+            "Patterns by language and test level": "Padrões por linguagem e nível de teste"
+            "What we do not flag": "O que não sinalizamos"
             "Scope and honesty": "Escopo e honestidade"
             "Coverage vs the literature": "Cobertura vs a literatura"
             "Coverage by family": "Cobertura por família"
@@ -102,6 +104,8 @@ nav:
       - Judgments (J1-J6): concepts/judgments.md
       - The oracle hierarchy: concepts/oracle.md
       - Test pyramid and levels: concepts/pyramid.md
+      - Patterns by language and test level: concepts/by-test-level.md
+      - What we do not flag: concepts/what-we-do-not-flag.md
       - Scope and honesty: concepts/scope.md
       - Coverage vs the literature: concepts/denominator.md
       - Coverage by family: concepts/coverage.md

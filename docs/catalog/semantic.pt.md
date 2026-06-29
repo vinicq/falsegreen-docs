@@ -83,7 +83,7 @@ rodado sozinho.
 O teste afirma um valor que contradiz a spec, congelando um bug como correto. **Exige um
 oráculo independente citado antes de reportar.**
 
-## A série S (só IA)
+## A série S (só IA) { #s-series }
 
 Padrões que nenhum AST ou linter vê. Cada um mapeia para um julgamento.
 
