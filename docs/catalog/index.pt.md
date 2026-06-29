@@ -1,7 +1,10 @@
 # Visão geral do catálogo
 
-Todo código de detecção da família, num só lugar. Cada entrada diz o que detecta, o sinal exato
-que dispara a regra e um exemplo RUIM ao lado do parecido LIMPO, para deixar a fronteira visível.
+Todo código de detecção da família, num só lugar. Cada página de linguagem abre com uma tabela
+de índice compacta (código, confiança, julgamento, resumo) que leva direto à entrada daquele
+código abaixo. As entradas correm um código de cada vez, agrupadas por família, cada uma dizendo
+o sinal exato que dispara a regra com um exemplo RUIM ao lado do parecido LIMPO, para deixar a
+fronteira visível.
 
 Use a caixa de busca (canto superior direito) para pular para qualquer código por id (`C5`, `JS21`, `R2`) ou por palavra-chave
 (`mock`, `skip`, `always-true`). Todo código tem sua própria âncora, então relatórios e ferramentas podem apontar direto
@@ -9,16 +12,23 @@ para ele.
 
 ## As páginas
 
-- [Python](python.md) - os códigos estruturais `C*` e o grupo de diagnóstico, como implementados pelo
-  scanner [falsegreen](../scanners/python.md).
-- [JavaScript / TypeScript](javascript-typescript.md) - os códigos compartilhados `C*` mais os `JS*`
-  específicos do ecossistema, de [falsegreen-js](../scanners/javascript.md).
-- [Robot Framework](robot.md) - os códigos compartilhados `C*` mais os `R*`, de
-  [robotframework-falsegreen](../scanners/robot.md).
-- [Semântico (LLM)](semantic.md) - os casos 10-18 e a série `S*` que só a
+- [Python](python.md) - os códigos estruturais `C*`, a camada de auditoria de config `PL*` e o
+  grupo de diagnóstico, como implementados pelo scanner [falsegreen](../scanners/python.md).
+- [JavaScript / TypeScript](javascript-typescript.md) - os códigos compartilhados `C*`, os `JS*`
+  específicos do ecossistema, a camada `PL*` e o grupo de diagnóstico, de
+  [falsegreen-js](../scanners/javascript.md).
+- [Robot Framework](robot.md) - os códigos compartilhados `C*`, os `R*`, a camada `PL*` e o grupo
+  de diagnóstico, de [robotframework-falsegreen](../scanners/robot.md).
+- [Semântico (LLM)](semantic.md) - os casos canônicos mais a série `S1-S21` que só a
   [skill](../scanners/skill.md) consegue pegar.
 - [Gherkin e Tavern](gherkin-tavern.md) - a passagem semântica, baseada em texto, sobre arquivos `.feature` e
   `*.tavern.yaml`.
+
+Três agrupamentos se repetem nas páginas estruturais: os códigos por arquivo (as séries `C*`,
+`JS*`, `R*`), a **camada de projeto** (`PL*`), emitida pela passagem de auditoria de config quando
+a suíte fica verde por configuração do runner e não por um smell dentro de algum arquivo, e o
+**grupo de diagnóstico** (`D*`, `M2`), opcional e OFF por padrão, que sinaliza higiene que não é
+false-green.
 
 ## Como um código é compartilhado entre linguagens
 

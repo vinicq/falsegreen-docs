@@ -105,6 +105,9 @@ Patterns no AST or linter sees. Each maps to a judgment.
 | **S14** | J2 | recorded model output as the oracle: asserts == against a snapshotted LLM/model result, so green means the model still emits what it once emitted, not that it is correct |
 | **S15** | J6 | hand-rolled retry/poll loop masking flakiness: passes if any attempt succeeds (only the swallow-and-pass form; a retry that re-raises on exhaustion is a sanctioned settle, not flagged) |
 | **S16** | J4 | call-verification as the sole oracle: the only check is that a collaborator was called (`assert_called_once`/`toHaveBeenCalled`), with no assertion on the unit's return value or state |
+| **S17** | J4 | exception-path oracle blindness: a broad `pytest.raises(Exception)` / `toThrow()` claims the SUT's documented raise, but goes green when the error comes from a typo in arrange and the SUT line never runs (HIGH) |
+| **S18** | J3 | contract-impossible stub value: an edge collaborator is stubbed to return a value its real contract can never emit, so the green proves a branch unreachable in production while the real defect is untouched (LOW) |
+| **S21** | J2 | self-judging LLM/agent assertion: the oracle is a live model call (`judge_llm`, an embedding-similarity threshold, an agent grading its own transcript), circular and sharing the generator's blind spots (LOW) |
 
 ## Look-alikes: do NOT flag
 
@@ -114,3 +117,7 @@ Patterns no AST or linter sees. Each maps to a judgment.
 - A sanitizer test that already pairs the negative check with a positive one (not S11).
 - A mock on a genuine external edge: DB, network, clock (not S12).
 - A test whose shared state is reset by an autouse / `beforeEach` teardown (not S13).
+- A `pytest.raises(SpecificError, match=...)` bound to the SUT line (not S17).
+- A stub fed a value the collaborator's contract can actually return (not S18).
+- A deterministic rubric, a structural validator, or a frozen human-labeled judge set instead of a
+  live model verdict (not S21).
