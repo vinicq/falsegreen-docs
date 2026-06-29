@@ -105,6 +105,9 @@ Padrões que nenhum AST ou linter vê. Cada um mapeia para um julgamento.
 | **S14** | J2 | saída de modelo gravada como oráculo: afirma == contra um resultado de LLM/modelo em snapshot, então verde quer dizer que o modelo ainda emite o que um dia emitiu, não que está correto |
 | **S15** | J6 | loop de retry/poll feito à mão mascarando flakiness: passa se qualquer tentativa der certo (só a forma engole-e-passa; um retry que relança ao esgotar é um settle sancionado, não sinalizado) |
 | **S16** | J4 | verificação de chamada como único oráculo: a única verificação é que um colaborador foi chamado (`assert_called_once`/`toHaveBeenCalled`), sem asserção sobre o valor de retorno ou estado da unidade |
+| **S17** | J4 | cegueira de oráculo no caminho de exceção: um `pytest.raises(Exception)` / `toThrow()` amplo reivindica o raise documentado do SUT, mas fica verde quando o erro vem de um typo no arrange e a linha do SUT nunca roda (ALTO) |
+| **S18** | J3 | valor de stub impossível pelo contrato: um colaborador de borda é stubado para retornar um valor que seu contrato real nunca emite, então o verde prova um ramo inalcançável em produção enquanto o defeito real fica intocado (BAIXO) |
+| **S21** | J2 | asserção LLM/agente que se autojulga: o oráculo é uma chamada de modelo ao vivo (`judge_llm`, um limiar de similaridade de embedding, um agente avaliando o próprio transcript), circular e compartilhando os pontos cegos do gerador (BAIXO) |
 
 ## Parecidos: NÃO sinalizar
 
@@ -114,3 +117,7 @@ Padrões que nenhum AST ou linter vê. Cada um mapeia para um julgamento.
 - Um teste de sanitizador que já pareia a verificação negativa com uma positiva (não S11).
 - Um mock em uma borda externa genuína: DB, rede, relógio (não S12).
 - Um teste cujo estado compartilhado é reiniciado por um teardown autouse / `beforeEach` (não S13).
+- Um `pytest.raises(SpecificError, match=...)` ligado à linha do SUT (não S17).
+- Um stub alimentado com um valor que o contrato do colaborador pode de fato retornar (não S18).
+- Uma rubrica determinística, um validador estrutural, ou um conjunto de juízes rotulado por humanos
+  e congelado em vez de um veredito de modelo ao vivo (não S21).

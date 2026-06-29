@@ -1,7 +1,9 @@
 # Catalog overview
 
-Every detection code in the family, in one place. Each entry names what it detects, the exact
-signal it keys on, and a BAD example next to the CLEAN look-alike, so the boundary is visible.
+Every detection code in the family, in one place. Each language page opens with a compact index
+table (code, confidence, judgment, one-liner) that links straight to that code's entry below.
+The entries run one code at a time, grouped by family, each naming the exact signal it keys on
+with a BAD example next to the CLEAN look-alike, so the boundary is visible.
 
 Use the search box (top right) to jump to any code by id (`C5`, `JS21`, `R2`) or by keyword
 (`mock`, `skip`, `always-true`). Every code has its own anchor, so reports and tools can deep
@@ -9,16 +11,22 @@ link straight to it.
 
 ## The pages
 
-- [Python](python.md) - the `C*` structural codes and the diagnostic group, as implemented by
-  the [falsegreen](../scanners/python.md) scanner.
-- [JavaScript / TypeScript](javascript-typescript.md) - the shared `C*` codes plus the `JS*`
-  ecosystem-specific ones, from [falsegreen-js](../scanners/javascript.md).
-- [Robot Framework](robot.md) - the shared `C*` codes plus the `R*` ones, from
-  [robotframework-falsegreen](../scanners/robot.md).
-- [Semantic (LLM)](semantic.md) - cases 10-18 and the `S*` series that only the
+- [Python](python.md) - the `C*` structural codes, the `PL*` config-audit layer, and the
+  diagnostic group, as implemented by the [falsegreen](../scanners/python.md) scanner.
+- [JavaScript / TypeScript](javascript-typescript.md) - the shared `C*` codes, the `JS*`
+  ecosystem-specific ones, the `PL*` config-audit layer, and the diagnostic group, from
+  [falsegreen-js](../scanners/javascript.md).
+- [Robot Framework](robot.md) - the shared `C*` codes, the `R*` ones, the `PL*` layer, and the
+  diagnostic group, from [robotframework-falsegreen](../scanners/robot.md).
+- [Semantic (LLM)](semantic.md) - the canonical cases plus the `S1-S21` series that only the
   [skill](../scanners/skill.md) can catch.
 - [Gherkin and Tavern](gherkin-tavern.md) - the semantic, text-based pass over `.feature` and
   `*.tavern.yaml` files.
+
+Three groupings recur across the structural pages: the per-file codes (the `C*`, `JS*`, `R*`
+series), the **project layer** (`PL*`), emitted by the config-audit pass when the suite goes
+green by runner configuration rather than a smell in any one file, and the **diagnostic group**
+(`D*`, `M2`), opt-in and OFF by default, which flags hygiene that is not false-green.
 
 ## How a code is shared across languages
 
