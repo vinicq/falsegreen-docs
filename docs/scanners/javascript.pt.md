@@ -33,6 +33,49 @@ grupos de risco fechados, e o registro de oráculos (sync-fail / promise / runne
 value-only) é versionado, de modo que a detecção de assíncrono é baseada em princípios em vez de
 casada por string.
 
+## First finding
+
+Salve um teste cuja asserção nunca roda:
+
+```ts
+// demo.test.ts
+import { add } from "./add";
+
+it("adds", () => {
+  expect(add(2, 2));   // sem matcher - isso não asserta nada
+});
+```
+
+Rode o scanner sobre ele:
+
+```bash
+npx falsegreen-js demo.test.ts
+```
+
+Ele reporta:
+
+```
+demo.test.ts:5  [JS2] expect() with no matcher - the assertion never runs
+    level: unit   fix: add a matcher, e.g. .toBe(4)
+
+Summary: 1 high, 0 low.
+```
+
+## Reading a finding
+
+Cada linha carrega os mesmos campos:
+
+- `demo.test.ts:5` - o arquivo e a linha que disparou o achado.
+- `[JS2]` - o código do catálogo. `JS2` é o `expect()` sem matcher. Cada código
+  está explicado no [catálogo JS/TS](../catalog/javascript-typescript.md).
+- `level: unit` - em qual nível da [pirâmide de testes](../concepts/pyramid.md) o
+  arquivo está, lido a partir dos imports do arquivo.
+- `fix:` - uma dica de uma linha. Aqui: adicione um matcher para a asserção
+  realmente rodar.
+
+`--format json|sarif|junit` dá um relatório legível por máquina; o SARIF sobe
+para o GitHub code scanning e os achados aparecem direto no pull request.
+
 ## What it covers
 
 Detalhe completo por código no [catálogo JS/TS](../catalog/javascript-typescript.md).

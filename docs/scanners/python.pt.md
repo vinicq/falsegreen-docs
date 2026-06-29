@@ -32,6 +32,46 @@ Achados ALTO encerram com código diferente de zero, então a ferramenta entra e
 sem ajuste. O relatório numera cada achado com seu código, julgamento, nível da pirâmide,
 localização, evidência e uma dica de correção.
 
+## First finding
+
+Salve um teste que sempre passa:
+
+```python
+# test_demo.py
+def test_demo():
+    assert True
+```
+
+Rode o scanner sobre ele:
+
+```bash
+falsegreen test_demo.py
+```
+
+Ele reporta:
+
+```
+test_demo.py:3  [C5] always-true check (assert True / tuple / or True)
+    level: unit   fix: assert the real behaviour, not a constant or tautology
+
+Summary: 1 high, 0 low.
+```
+
+## Reading a finding
+
+Cada linha carrega os mesmos campos:
+
+- `test_demo.py:3` - o arquivo e a linha que disparou o achado.
+- `[C5]` - o código do catálogo. `C5` é a checagem sempre-verdadeira. Cada código
+  está explicado no [catálogo Python](../catalog/python.md).
+- `level: unit` - em qual nível da [pirâmide de testes](../concepts/pyramid.md) o
+  arquivo está; isso muda o que conta como checagem de verdade.
+- `fix:` - uma dica de uma linha. Aqui: asserte o comportamento real, não uma
+  constante.
+
+Códigos de saída integram em CI: `0` limpo, `10` só baixa confiança, `20` ao
+menos um achado de alta confiança. Bloqueie o build no `20`.
+
 ## What it covers
 
 O scanner mais completo da família: é a referência que os outros espelham. O detalhe completo por

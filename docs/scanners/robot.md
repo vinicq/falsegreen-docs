@@ -27,6 +27,44 @@ rffalsegreen --format json|sarif|junit  # output shape
 rffalsegreen --config-audit             # robot.toml / invocation for project-level checks
 ```
 
+## First finding
+
+Save a suite whose only step is a no-op:
+
+```robotframework
+*** Test Cases ***
+Login Works
+    No Operation
+```
+
+Run the scanner over it:
+
+```bash
+rffalsegreen demo.robot
+```
+
+It reports:
+
+```
+demo.robot:3  [R4] No Operation as the only step - the test verifies nothing
+    level: e2e   fix: call a real verification keyword (Should Be Equal, status check)
+
+Summary: 1 high, 0 low.
+```
+
+## Reading a finding
+
+Each line carries the same fields:
+
+- `demo.robot:3` - the file and the line that triggered it.
+- `[R4]` - the catalog code. `R4` is a `No Operation`-only test. Every code is
+  explained in the [Robot catalog](../catalog/robot.md).
+- `level: e2e` - which level of the [test pyramid](../concepts/pyramid.md) the
+  suite sits at, read from the imported library in `*** Settings ***`.
+- `fix:` - a one-line hint. Here: call a real verification keyword.
+
+`--format json|sarif|junit` gives a machine-readable report for CI.
+
 ## What it covers
 
 Full per-code detail in the [Robot catalog](../catalog/robot.md).
