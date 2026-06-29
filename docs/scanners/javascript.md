@@ -32,6 +32,48 @@ The JSON report carries `riskGroup` and `oracleRegistryVersion`: codes are class
 risk groups, and the oracle registry (sync-fail / promise / runner-registered / value-only) is
 versioned so async detection is principled rather than string-matched.
 
+## First finding
+
+Save a test whose assertion never runs:
+
+```ts
+// demo.test.ts
+import { add } from "./add";
+
+it("adds", () => {
+  expect(add(2, 2));   // no matcher - this asserts nothing
+});
+```
+
+Run the scanner over it:
+
+```bash
+npx falsegreen-js demo.test.ts
+```
+
+It reports:
+
+```
+demo.test.ts:5  [JS2] expect() with no matcher - the assertion never runs
+    level: unit   fix: add a matcher, e.g. .toBe(4)
+
+Summary: 1 high, 0 low.
+```
+
+## Reading a finding
+
+Each line carries the same fields:
+
+- `demo.test.ts:5` - the file and the line that triggered it.
+- `[JS2]` - the catalog code. `JS2` is `expect()` with no matcher. Every code is
+  explained in the [JS/TS catalog](../catalog/javascript-typescript.md).
+- `level: unit` - which level of the [test pyramid](../concepts/pyramid.md) the
+  file sits at, read from the file's imports.
+- `fix:` - a one-line hint. Here: add a matcher so the assertion actually runs.
+
+`--format json|sarif|junit` gives a machine-readable report; SARIF uploads to
+GitHub code scanning so findings show inline on the pull request.
+
 ## What it covers
 
 Full per-code detail in the [JS/TS catalog](../catalog/javascript-typescript.md).

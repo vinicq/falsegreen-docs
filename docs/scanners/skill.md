@@ -26,11 +26,61 @@ exercised, is the assertion sufficient, is it free of coupling to internals, doe
 isolation. A false positive is worse than a miss, so a wrong-value finding is not reported without
 citing an oracle.
 
-## Install
+## Install and first run
+
+The skill runs on several hosts (Claude Code, Codex, Gemini, Cursor) and as a
+standalone npm CLI. The CLI needs only Node 18+ and an API key for the provider
+you choose:
 
 ```bash
-npm install -g falsegreen-skill
+export ANTHROPIC_API_KEY=sk-ant-...
+npx falsegreen-skill analyze tests/test_demo.py
 ```
+
+`--provider openai` or `--provider gemini` switches the model; `--json` and
+`--fail-on-high` wire it into CI. Per-host setup (the Claude Code plugin, the
+Codex and Gemini extensions, the Cursor rule) is in the
+[skill README](https://github.com/vinicq/falsegreen-skill#installation).
+
+## First finding
+
+Given a test that asserts the mock back to itself:
+
+```python
+# tests/test_tax.py
+def test_calculate_tax(mock_calc):
+    mock_calc.return_value = 0.15
+    result = calculate_tax(100, mock_calc)
+    assert result == mock_calc.return_value
+```
+
+`npx falsegreen-skill analyze tests/test_tax.py` reports:
+
+```
+CASE 11 (J2) - HIGH - Python - unit - behavior
+
+Test: test_calculate_tax (line 2-5)
+Finding: The assertion checks mock_calc.return_value - the same value the mock
+was configured to return. It passes for any result, including a wrong one.
+Evidence:
+  mock_calc.return_value = 0.15
+  assert result == mock_calc.return_value
+Fix hint: Assert against an independently computed value, e.g. assert result == 15.0.
+```
+
+## Reading a finding
+
+Each finding names five things:
+
+- `CASE 11` - the [semantic code](../catalog/semantic.md). The skill also emits
+  the structural `C*`, `JS*`, and `R*` codes the scanners use.
+- `(J2)` - the failed [judgment](../concepts/judgments.md): the expected value is
+  not from an independent [oracle](../concepts/oracle.md).
+- `HIGH` - confidence. HIGH means no plausible legitimate reading; LOW warns.
+- `Python - unit - behavior` - language, [pyramid level](../concepts/pyramid.md),
+  and test intent.
+- `Finding` / `Evidence` / `Fix hint` - what is wrong, the lines that prove it,
+  and how to repair it.
 
 ## What it covers
 

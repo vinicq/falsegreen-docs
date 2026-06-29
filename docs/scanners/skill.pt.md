@@ -27,11 +27,61 @@ asserção é suficiente, está livre de acoplamento com internos, passa em isol
 positivo é pior que um escape, então um achado de valor-errado não é reportado sem citar um
 oráculo.
 
-## Install
+## Install and first run
+
+A skill roda em vários hosts (Claude Code, Codex, Gemini, Cursor) e como CLI npm
+avulsa. A CLI precisa só de Node 18+ e de uma API key do provedor que você
+escolher:
 
 ```bash
-npm install -g falsegreen-skill
+export ANTHROPIC_API_KEY=sk-ant-...
+npx falsegreen-skill analyze tests/test_demo.py
 ```
+
+`--provider openai` ou `--provider gemini` troca o modelo; `--json` e
+`--fail-on-high` integram em CI. A configuração por host (o plugin do Claude
+Code, as extensões de Codex e Gemini, a regra do Cursor) está no
+[README da skill](https://github.com/vinicq/falsegreen-skill#installation).
+
+## First finding
+
+Dado um teste que asserta o mock de volta para ele mesmo:
+
+```python
+# tests/test_tax.py
+def test_calculate_tax(mock_calc):
+    mock_calc.return_value = 0.15
+    result = calculate_tax(100, mock_calc)
+    assert result == mock_calc.return_value
+```
+
+`npx falsegreen-skill analyze tests/test_tax.py` reporta:
+
+```
+CASE 11 (J2) - HIGH - Python - unit - behavior
+
+Test: test_calculate_tax (line 2-5)
+Finding: The assertion checks mock_calc.return_value - the same value the mock
+was configured to return. It passes for any result, including a wrong one.
+Evidence:
+  mock_calc.return_value = 0.15
+  assert result == mock_calc.return_value
+Fix hint: Assert against an independently computed value, e.g. assert result == 15.0.
+```
+
+## Reading a finding
+
+Cada achado nomeia cinco coisas:
+
+- `CASE 11` - o [código semântico](../catalog/semantic.md). A skill também emite
+  os códigos estruturais `C*`, `JS*` e `R*` dos scanners.
+- `(J2)` - o [julgamento](../concepts/judgments.md) que falhou: o valor esperado
+  não veio de um [oráculo](../concepts/oracle.md) independente.
+- `HIGH` - confiança. HIGH é quando não há leitura legítima plausível; LOW avisa.
+- `Python - unit - behavior` - linguagem, [nível na pirâmide](../concepts/pyramid.md)
+  e intenção do teste.
+- `Finding` / `Evidence` / `Fix hint` - o que está errado, as linhas que provam, e
+  como corrigir.
 
 ## What it covers
 

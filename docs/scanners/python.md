@@ -31,6 +31,45 @@ falsegreen --config-audit       # read pytest/coverage config for project-level 
 HIGH findings exit non-zero, so the tool drops into CI and pre-commit unchanged. The report
 numbers each finding with its code, judgment, pyramid level, location, evidence, and a fix hint.
 
+## First finding
+
+Save a test that always passes:
+
+```python
+# test_demo.py
+def test_demo():
+    assert True
+```
+
+Run the scanner over it:
+
+```bash
+falsegreen test_demo.py
+```
+
+It reports:
+
+```
+test_demo.py:3  [C5] always-true check (assert True / tuple / or True)
+    level: unit   fix: assert the real behaviour, not a constant or tautology
+
+Summary: 1 high, 0 low.
+```
+
+## Reading a finding
+
+Each line carries the same fields:
+
+- `test_demo.py:3` - the file and the line that triggered it.
+- `[C5]` - the catalog code. `C5` is the always-true check. Every code is
+  explained in the [Python catalog](../catalog/python.md).
+- `level: unit` - which level of the [test pyramid](../concepts/pyramid.md) the
+  file sits at; it changes what counts as a real check.
+- `fix:` - a one-line hint. Here: assert the real behaviour, not a constant.
+
+Exit codes wire it into CI: `0` clean, `10` low-confidence only, `20` at least
+one high-confidence finding. Block the build on `20`.
+
 ## What it covers
 
 The most complete scanner of the family - it is the reference the others mirror. The full
