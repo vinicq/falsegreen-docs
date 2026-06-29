@@ -103,6 +103,219 @@ the scanners catch plus what only a reader of intent can:
 - **AI-fix gate (F7)** - propose a strengthened test and validate it with a bidirectional
   mutation gate (pass on clean code, fail on the reintroduced bug).
 
+## Complete usage and configuration { #complete-usage-and-configuration }
+
+The first-run above is the five-minute path. This section is the full reference: the CLI
+(`analyze` and the `fix` mutation-gate mode), provider configuration for every supported
+backend, and the per-host enable steps. It mirrors what the [project README](https://github.com/vinicq/falsegreen-skill),
+[docs/cli.md](https://github.com/vinicq/falsegreen-skill/blob/master/docs/cli.md), and
+[providers.md](https://github.com/vinicq/falsegreen-skill/blob/master/providers.md) document.
+
+### The CLI { #the-cli }
+
+Node 18 or newer, zero dependencies. Install or run on demand:
+
+```bash
+npm install -g falsegreen-skill
+npx falsegreen-skill analyze tests/test_payment.py
+```
+
+Two commands:
+
+```text
+falsegreen-skill analyze <file...> [options]
+falsegreen-skill fix <test-file> --case <code> --line <n> [options]
+```
+
+The CLI sends each file to an LLM provider with the J1-J6 protocol as the system prompt and
+prints the findings report. It identifies the language from the file extension, so Python,
+TypeScript, and JavaScript work the same way with no extra flag.
+
+#### `analyze` flags { #analyze-flags }
+
+```bash
+npx falsegreen-skill analyze tests/test_orders.py                 # single file
+npx falsegreen-skill analyze tests/test_orders.py tests/test_pay.py  # multiple (separate calls)
+npx falsegreen-skill analyze tests/ --json --fail-on-high          # CI gate: exits 2 on a HIGH finding
+npx falsegreen-skill analyze tests/ --model claude-opus-4-8        # deeper model for case 18
+npx falsegreen-skill analyze tests/ --temperature 0.0              # more deterministic (default 0.2)
+```
+
+| Flag | Description | Default |
+|---|---|---|
+| `--provider <name>` | `anthropic`, `openai`, `gemini`, or `openai-compatible` | `anthropic` |
+| `--model <model>` | Model override. Required for `openai-compatible` | per provider (below) |
+| `--base-url <url>` | API base URL. Required for `openai-compatible` | none |
+| `--json` | Validate and output JSON conforming to `schema/report.json` | off |
+| `--conventions <file>` | Conventions YAML/text block injected per SKILL.md Step 0 | none |
+| `--temperature <n>` | Sampling temperature 0.0-1.0. Skipped for OpenAI o-series (o3, o4-mini) | `0.2` |
+| `--max-tokens <n>` | Max output tokens per request | `4096` |
+| `--fail-on-high` | Exit 2 when any HIGH finding is present. Requires `--json` | off |
+
+With `--json`, each model response is validated against the canonical schema and emitted as one
+aggregate report. If your project uses custom assertion helpers or intentional patterns that look
+like smells, declare them in a conventions file and pass `--conventions`; the block is injected
+before the file content, per Step 0 of the protocol, so the model reads it before judging.
+
+#### `fix` mode (mutation gate) { #fix-mode }
+
+`analyze` finds a false-green; `fix` proposes a stronger test and proves it before you trust it.
+It is opt-in, Python/pytest only, and propose-only: it prints a test-file patch but never applies
+it and never edits production code.
+
+```bash
+# propose a patch for a C2b finding and run the gate against the real SUT
+npx falsegreen-skill fix tests/test_discount.py --case C2b --line 14 --sut src/discount.py
+
+# parse + preserve only, no mutation gate (no runnable SUT, or a quick pass)
+npx falsegreen-skill fix tests/test_discount.py --case C5 --line 9 --cheap
+
+# machine-readable gate verdict (schema/fix-validation.json)
+npx falsegreen-skill fix tests/test_discount.py --case C20 --line 22 --sut src/discount.py --json
+```
+
+| Flag | Description |
+|---|---|
+| `--case <code>` | Catalog code of the finding to fix (`C2b`, `C20`, `C21`, `C5`, `C7`) |
+| `--line <n>` | Line of the finding in the test file (1-indexed) |
+| `--sut <file>` | Production file the test protects. Required for a validated fix; without it the gate degrades to propose-only |
+| `--sut-line <n>` | Line in the SUT to mutate (the behavioural line the finding names). Defaults to `--line` |
+| `--cheap` | Validation tier: parse + preserve only, no mutation gate. Default tier is strong (parse + preserve + mutation) |
+
+The gate runs three checks on a clean replica: the patch parses, it passes `pytest` against the
+real code, and it **fails** on a line-scoped mutation of the SUT. A patch is accepted only when it
+both passes on correct code and goes red on the mutant, which is what proves the new assertion
+catches a bug instead of being a fresh tautology. Without `--sut` it degrades to propose-only and
+says the fix is unvalidated. The honest limit: the gate proves the fix catches the targeted mutant,
+not every possible bug.
+
+#### Exit codes { #cli-exit-codes }
+
+| Code | Meaning |
+|---|---|
+| `0` | Analysis completed (findings may still exist; `analyze` is an analysis tool, not a gate) |
+| `1` | Error: missing file, missing API key, bad flag, invalid JSON, schema mismatch, non-2xx API response |
+| `2` | `--fail-on-high` was set and the JSON report contains at least one HIGH finding |
+
+### Provider configuration { #provider-configuration }
+
+The skill is not tied to Claude. The protocol is provider-agnostic; pick a backend with
+`--provider` and set the matching API key in the environment.
+
+| Variable | Used by |
+|---|---|
+| `ANTHROPIC_API_KEY` | `--provider anthropic` |
+| `OPENAI_API_KEY` | `--provider openai` (and fallback for `openai-compatible`) |
+| `GEMINI_API_KEY` | `--provider gemini` |
+| `FALSEGREEN_API_KEY` | `--provider openai-compatible` (takes precedence over `OPENAI_API_KEY`) |
+
+Default models: `anthropic` uses `claude-sonnet-4-6`, `openai` uses `gpt-4o`, `gemini` uses
+`gemini-2.5-pro`. For deep case 18 analysis, pass `--model claude-opus-4-8` (Anthropic) or
+`--model o3` (OpenAI); when using `o3`, `--temperature` is ignored automatically.
+
+```bash
+# Anthropic (default)
+export ANTHROPIC_API_KEY=sk-ant-...
+falsegreen-skill analyze tests/test_payment.py
+
+# OpenAI
+export OPENAI_API_KEY=sk-...
+falsegreen-skill analyze tests/test_payment.py --provider openai
+
+# Google Gemini
+export GEMINI_API_KEY=...
+falsegreen-skill analyze tests/test_payment.py --provider gemini
+```
+
+#### openai-compatible (base-url) { #openai-compatible }
+
+Any OpenAI-compatible endpoint works through `--provider openai-compatible` with an explicit
+`--base-url` and `--model`. Set `FALSEGREEN_API_KEY` to that provider's key.
+
+```bash
+# Groq (fast LLaMA)
+export FALSEGREEN_API_KEY=gsk_...
+falsegreen-skill analyze tests/test_payment.py \
+  --provider openai-compatible \
+  --base-url https://api.groq.com/openai/v1 \
+  --model llama-3.3-70b-versatile
+
+# Ollama (local)
+export FALSEGREEN_API_KEY=ollama
+falsegreen-skill analyze tests/test_payment.py \
+  --provider openai-compatible \
+  --base-url http://localhost:11434/v1 \
+  --model qwen2.5-coder:32b
+```
+
+Reasoning models on openai-compatible hosts use the same shape, just a stronger model id:
+
+```bash
+# Nvidia NIM (DeepSeek R1 reasoning)
+export FALSEGREEN_API_KEY=nvapi-...
+falsegreen-skill analyze tests/test_orders.py \
+  --provider openai-compatible \
+  --base-url https://integrate.api.nvidia.com/v1 \
+  --model deepseek-ai/deepseek-r1
+
+# Fireworks (DeepSeek R1 reasoning)
+export FALSEGREEN_API_KEY=fw_...
+falsegreen-skill analyze tests/test_orders.py \
+  --provider openai-compatible \
+  --base-url https://api.fireworks.ai/inference/v1 \
+  --model accounts/fireworks/models/deepseek-r1
+
+# Groq (DeepSeek R1 distill, reasoning)
+export FALSEGREEN_API_KEY=gsk_...
+falsegreen-skill analyze tests/test_orders.py \
+  --provider openai-compatible \
+  --base-url https://api.groq.com/openai/v1 \
+  --model deepseek-r1-distill-llama-70b
+```
+
+For the hardest [case 18](../catalog/semantic.md) findings (expected value contradicts the spec),
+the maintained pattern is a two-pass finder/refuter call with a reasoning model, documented in the
+project's `providers.md`.
+
+### Per-host enable { #per-host-enable }
+
+The same protocol is packaged for each host. Pick the path that matches your editor or agent.
+
+**Claude Code (primary path).** Add the marketplace and install the plugin:
+
+```text
+/plugin marketplace add vinicq/falsegreen-skill
+/plugin install falsegreen-skill@falsegreen
+```
+
+Then invoke `/falsegreen-skill:falsegreen-llm`, or attach a test file and ask for false-positive
+analysis, the skill triggers on intent. For Python it applies the full pattern catalog directly;
+optionally run the static [Python scanner](python.md) first and hand its output to the skill as
+the structural pass.
+
+**OpenAI Codex CLI.** Two paths: the plugin marketplace
+(`codex plugin marketplace add vinicq/falsegreen-skill`), or clone the repo, where the root
+`AGENTS.md` loads automatically when Codex starts a session inside the clone.
+
+**Gemini CLI.** Install the extension:
+
+```bash
+gemini extensions install https://github.com/vinicq/falsegreen-skill
+```
+
+The manifest loads `GEMINI.md` as persistent context, so every session carries the J1-J6 protocol;
+ask in natural language. A workspace skill at `.gemini/skills/falsegreen-skill/SKILL.md` is the
+alternative when you want Gemini's skill discovery rather than extension-wide context.
+
+**Cursor.** Copy the rule template into `.cursor/rules/falsegreen-skill.mdc` (full template in the
+project's `contexts/cursor.md`). Cursor loads it on a matching test file; ask Cursor to analyze the
+file and the J1-J6 protocol runs.
+
+**Plain LLM / API.** Use the SDK snippets in the project's
+[providers.md](https://github.com/vinicq/falsegreen-skill/blob/master/providers.md): the system
+prompt is `SKILL.md`, the user message is the test file, and structured JSON output follows
+`schema/report.json`. The same base-url pattern as the CLI covers any OpenAI-compatible backend.
+
 ## What it does not cover, and why
 
 ### The runtime half of F7
