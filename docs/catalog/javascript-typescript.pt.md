@@ -21,7 +21,9 @@ Estes espelham as entradas do [catálogo Python](python.md); o sinal é a forma 
 | C6 | BAIXO | verificação fraca (`toBeTruthy`/`toBeDefined`, `.length > 0`) |
 | C7 | ALTO | autocomparação (`expect(x).toBe(x)`) |
 | C8 | BAIXO | igualdade exata em um float |
+| C8b | BAIXO | `toBeCloseTo` sem argumento de precisão — a tolerância padrão de 2 dígitos pode ser frouxa demais |
 | C9 | BAIXO | `toThrow()` sem tipo de erro ou mensagem |
+| C11a | BAIXO | literal autoconfirmante — o valor esperado é ligado da mesma chamada sob teste (`const e = foo(); expect(foo()).toBe(e)`) |
 | C16 | BAIXO | depende de `Date.now` / `new Date()` / `Math.random` / `crypto.randomUUID`/`getRandomValues` / um timer fixo |
 | C18 | BAIXO | igualdade de string (`String(x)` / `JSON.stringify` / template literal) |
 | C20 | ALTO | asserção morta depois de `return` / `throw` / `process.exit` / um `switch` exaustivo (alcançabilidade estruturada no nível de bloco, cfg.ts) |
@@ -220,6 +222,88 @@ Uma cadeia de query do Cypress (`cy.get`/`cy.find`/`cy.contains`) usada como sta
 nunca é asserido, o análogo cy.* da JS13. Comandos de ação (`click`/`type`/`visit`/...) fazem
 trabalho em vez de consultar, então uma cadeia terminada num deles fica limpa, assim como uma
 terminada em `.should`/`.and`.
+
+### JS25 - a única asserção fica dentro de um callback de iterador de array
+`J1` · ALTO · F2
+
+A única `expect` fica dentro de um callback de `forEach` / `map` / `filter` / `some` / `every` /
+`flatMap`. Numa coleção vazia o callback nunca roda, então o teste passa sem ter afirmado nada.
+Afirme o comprimento antes, ou tire ao menos uma verificação para fora do iterador.
+
+=== "RUIM"
+    ```javascript
+    it('all valid', () => {
+      rows.forEach(r => expect(r.valid).toBe(true));   // JS25 - nada roda se rows for []
+    });
+    ```
+=== "LIMPO"
+    ```javascript
+    it('all valid', () => {
+      expect(rows.length).toBeGreaterThan(0);
+      rows.forEach(r => expect(r.valid).toBe(true));
+    });
+    ```
+
+### JS26 - fake timers instalados mas nunca avançados
+`J1` · BAIXO · F2
+
+`jest.useFakeTimers()` / `vi.useFakeTimers()` (ou fake timers do `sinon`) é configurado, mas o
+relógio nunca é avançado (`runAllTimers`, `advanceTimersByTime`, `tick`). O callback agendado nunca
+dispara, então a asserção lê estado não-modificado e passa pelo motivo errado.
+
+### JS27 - toHaveBeenCalled* é o único oráculo sobre um dublê criado localmente
+`J3` · BAIXO · F4
+
+A única asserção é `toHaveBeenCalled` / `toHaveBeenCalledWith` / `toHaveBeenCalledTimes` sobre um
+mock criado no teste (`jest.fn()` / `vi.fn()`). Ela verifica a fiação do próprio teste, que o
+dublê foi chamado, não que a unidade produziu o resultado certo.
+
+### JS29 - cadeia resolves / rejects como instrução solta
+`J1` · BAIXO · F2
+
+`expect(p).resolves.toBe(...)` / `.rejects...` escrito como uma instrução que não é nem `await`ada
+nem `return`ada. O matcher devolve uma promise; o teste termina verde antes de ela resolver, então
+uma rejeição posterior se perde.
+
+=== "RUIM"
+    ```javascript
+    it('resolves', () => {
+      expect(load()).resolves.toBe(42);    // JS29 - não aguardado nem retornado
+    });
+    ```
+=== "LIMPO"
+    ```javascript
+    it('resolves', async () => {
+      await expect(load()).resolves.toBe(42);
+    });
+    ```
+
+### JS30 - asserção literal contra literal
+`J2` · ALTO · F3
+
+Ambos os operandos são fixos em tempo de parse: `expect(2).toBe(3)`, chai `expect(1).to.equal(1)`.
+A asserção não toca a unidade sob teste, então é sempre-verdadeira ou sempre-falsa por construção,
+nunca uma verificação do comportamento real.
+
+### JS31 - try/catch engole um possível throw sem asserção sobre a exceção
+`J1` · BAIXO · F2
+
+Um `try` chama a unidade e o `catch` não relança nem afirma nada sobre o erro. Uma unidade que
+para de lançar ainda passa verde. Irmã da JS11, onde o que é engolido é um `expect`; aqui não há
+asserção nenhuma no caminho capturado.
+
+=== "RUIM"
+    ```javascript
+    it('throws on bad input', () => {
+      try { parse('bad'); } catch (e) { /* JS31 - engolido, nada afirmado */ }
+    });
+    ```
+=== "LIMPO"
+    ```javascript
+    it('throws on bad input', () => {
+      expect(() => parse('bad')).toThrow(SyntaxError);
+    });
+    ```
 
 ## Armadilhas de alto valor com evidência
 

@@ -303,6 +303,20 @@ confirms Python's attribute assignment works, not the production code.
         assert product.price == 100   # C11a - just confirms assignment
     ```
 
+### C52 - membership self-confirmation
+`J2` · LOW · F3
+
+`assert x in {x}` (or `x in [x]`, `x in (x,)`): the collection is built from the subject under
+test, so membership holds by construction. A membership variant of C7. Checking against a
+collection assembled independently of the subject is a real check.
+
+=== "BAD"
+    ```python
+    def test_tag():
+        tag = get_tag()
+        assert tag in {tag}          # C52 - true by construction
+    ```
+
 ### C13 - mock assertion misspelled or not called
 `J4` · HIGH · F2
 
@@ -400,6 +414,13 @@ never runs, so the test may be checking a different line than intended.
         sut.process(data)     # C19 - intended target
     ```
 
+### C49 - pytest.warns / assertWarns wraps more than one call
+`J1` · LOW · F4
+
+A `with pytest.warns(W):` / `assertWarns` / `deprecated_call()` block holds more than one
+statement. An unrelated earlier line may emit the warning while the target never does, so the
+test passes without exercising the warning under test. The warns sibling of C19.
+
 ### C28 - pytest.raises binding variable never read
 `J4` · LOW · F4
 
@@ -418,11 +439,31 @@ checked but not its message or attributes.
     assert "must be positive" in str(exc.value)
     ```
 
+### C51 - empty-bodied pytest.raises / warns context
+`J1` · HIGH · F1
+
+`with pytest.raises(E):` (or `pytest.warns`) whose body is empty (`pass`, `...`, a comment).
+No call is made inside the block, so the call that should raise never runs and the context
+manager has nothing to catch. Always green.
+
+=== "BAD"
+    ```python
+    with pytest.raises(ValueError):
+        pass                          # C51 - nothing called, nothing raised
+    ```
+
 ### C29 - os.environ modified directly in a test
 `J6` · LOW · F6
 
 `os.environ["KEY"] = value`, `os.environ.update(...)`, or `os.putenv(...)` in a test body. The
 change persists across tests in the same process. Use `monkeypatch.setenv()`.
+
+### C55 - comparison between two mock-rooted values
+`J3` · LOW · F4
+
+`assert m.foo == m.bar` where both operands derive from the same test double (a `Mock`,
+`MagicMock`, or a `patch`-injected object). Each side is the test's own configured value, so
+the comparison checks the doubles against each other, not the SUT.
 
 ---
 
@@ -509,6 +550,26 @@ capture ran but nothing was checked.
         run()
         out, _ = capsys.readouterr()
         assert out == "hello\n"
+    ```
+
+### C50 - caplog / assertLogs output captured but never asserted
+`J4` · LOW · F1
+
+`caplog` is read (`caplog.records`, `caplog.text`) or `self.assertLogs(...)` is entered, but the
+captured output is never asserted: no comparison on the records, messages, or levels. The capture
+ran and had no effect on pass/fail. The logging sibling of C31.
+
+=== "BAD"
+    ```python
+    def test_logs(caplog):
+        run()
+        caplog.records               # C50 - captured but never asserted
+    ```
+=== "CLEAN"
+    ```python
+    def test_logs(caplog):
+        run()
+        assert "started" in caplog.text
     ```
 
 ### C32 - @pytest.mark.skip without reason

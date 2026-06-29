@@ -21,7 +21,9 @@ These mirror the [Python catalog](python.md) entries; the signal is the JavaScri
 | C6 | LOW | weak check (`toBeTruthy`/`toBeDefined`, `.length > 0`) |
 | C7 | HIGH | self-compare (`expect(x).toBe(x)`) |
 | C8 | LOW | exact equality on a float |
+| C8b | LOW | `toBeCloseTo` with no precision argument — the default 2-digit tolerance may be too loose |
 | C9 | LOW | `toThrow()` with no error type or message |
+| C11a | LOW | self-confirming literal — the expected value is bound from the same call under test (`const e = foo(); expect(foo()).toBe(e)`) |
 | C16 | LOW | depends on `Date.now` / `new Date()` / `Math.random` / `crypto.randomUUID`/`getRandomValues` / a fixed timer |
 | C18 | LOW | stringified equality (`String(x)` / `JSON.stringify` / template literal) |
 | C20 | HIGH | dead assertion after `return` / `throw` / `process.exit` / an exhaustive `switch` (structured block-level reachability, cfg.ts) |
@@ -219,6 +221,88 @@ A Cypress query chain (`cy.get`/`cy.find`/`cy.contains`) used as a statement wit
 `.should`/`.and` and no `expect` inside a `.then` callback. The query produces a subject that is
 never asserted, the cy.* analogue of JS13. Action commands (`click`/`type`/`visit`/...) do work
 rather than query, so a chain ending in one stays clean, as does one ending in `.should`/`.and`.
+
+### JS25 - the only assertion is inside an array-iterator callback
+`J1` · HIGH · F2
+
+The sole `expect` sits inside a `forEach` / `map` / `filter` / `some` / `every` / `flatMap`
+callback. On an empty collection the callback never runs, so the test passes having asserted
+nothing. Assert the length first, or pull at least one check outside the iterator.
+
+=== "BAD"
+    ```javascript
+    it('all valid', () => {
+      rows.forEach(r => expect(r.valid).toBe(true));   // JS25 - nothing runs if rows is []
+    });
+    ```
+=== "CLEAN"
+    ```javascript
+    it('all valid', () => {
+      expect(rows.length).toBeGreaterThan(0);
+      rows.forEach(r => expect(r.valid).toBe(true));
+    });
+    ```
+
+### JS26 - fake timers installed but never advanced
+`J1` · LOW · F2
+
+`jest.useFakeTimers()` / `vi.useFakeTimers()` (or `sinon` fake timers) is set up, but the clock is
+never advanced (`runAllTimers`, `advanceTimersByTime`, `tick`). The scheduled callback never fires,
+so the assertion reads un-mutated state and passes for the wrong reason.
+
+### JS27 - toHaveBeenCalled* is the sole oracle on a locally-created double
+`J3` · LOW · F4
+
+The only assertion is `toHaveBeenCalled` / `toHaveBeenCalledWith` / `toHaveBeenCalledTimes` on a
+mock created in the test (`jest.fn()` / `vi.fn()`). It verifies the test's own wiring, that the
+double was invoked, not that the unit produced the right result.
+
+### JS29 - resolves / rejects chain is a bare statement
+`J1` · LOW · F2
+
+`expect(p).resolves.toBe(...)` / `.rejects...` written as a statement that is neither `await`ed
+nor `return`ed. The matcher returns a promise; the test finishes green before it settles, so a
+later rejection is lost.
+
+=== "BAD"
+    ```javascript
+    it('resolves', () => {
+      expect(load()).resolves.toBe(42);    // JS29 - not awaited or returned
+    });
+    ```
+=== "CLEAN"
+    ```javascript
+    it('resolves', async () => {
+      await expect(load()).resolves.toBe(42);
+    });
+    ```
+
+### JS30 - literal-vs-literal assertion
+`J2` · HIGH · F3
+
+Both operands are fixed at parse time: `expect(2).toBe(3)`, chai `expect(1).to.equal(1)`. The
+assertion does not touch the unit under test, so it is either always-true or always-false by
+construction, never a check on real behaviour.
+
+### JS31 - try/catch swallows a possible throw with no assertion on the exception
+`J1` · LOW · F2
+
+A `try` calls the unit and the `catch` neither re-throws nor asserts anything on the error. A unit
+that stops throwing still passes green. Sibling of JS11, where the swallowed thing is an `expect`;
+here there is no assertion at all on the caught path.
+
+=== "BAD"
+    ```javascript
+    it('throws on bad input', () => {
+      try { parse('bad'); } catch (e) { /* JS31 - swallowed, nothing asserted */ }
+    });
+    ```
+=== "CLEAN"
+    ```javascript
+    it('throws on bad input', () => {
+      expect(() => parse('bad')).toThrow(SyntaxError);
+    });
+    ```
 
 ## High-value traps with evidence
 

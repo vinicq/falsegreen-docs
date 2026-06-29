@@ -303,6 +303,20 @@ confirma que a atribuição de atributo do Python funciona, não o código de pr
         assert product.price == 100   # C11a - só confirma a atribuição
     ```
 
+### C52 - autoconfirmação de pertinência
+`J2` · BAIXO · F3
+
+`assert x in {x}` (ou `x in [x]`, `x in (x,)`): a coleção é construída a partir do próprio
+sujeito sob teste, então a pertinência vale por construção. Uma variante de pertinência da C7.
+Verificar contra uma coleção montada de forma independente do sujeito é uma verificação real.
+
+=== "RUIM"
+    ```python
+    def test_tag():
+        tag = get_tag()
+        assert tag in {tag}          # C52 - verdadeira por construcao
+    ```
+
 ### C13 - asserção de mock escrita errado ou não chamada
 `J4` · ALTO · F2
 
@@ -400,6 +414,13 @@ nunca roda, então o teste pode estar verificando uma linha diferente da pretend
         sut.process(data)     # C19 - alvo pretendido
     ```
 
+### C49 - pytest.warns / assertWarns envolve mais de uma chamada
+`J1` · BAIXO · F4
+
+Um bloco `with pytest.warns(W):` / `assertWarns` / `deprecated_call()` contém mais de uma
+instrução. Uma linha anterior não relacionada pode emitir o warning enquanto o alvo nunca emite,
+então o teste passa sem exercitar o warning sob teste. A irmã de warns da C19.
+
 ### C28 - variável de ligação do pytest.raises nunca lida
 `J4` · BAIXO · F4
 
@@ -418,11 +439,31 @@ verificado mas não sua mensagem ou atributos.
     assert "must be positive" in str(exc.value)
     ```
 
+### C51 - contexto pytest.raises / warns de corpo vazio
+`J1` · ALTO · F1
+
+`with pytest.raises(E):` (ou `pytest.warns`) cujo corpo é vazio (`pass`, `...`, um comentário).
+Nenhuma chamada é feita dentro do bloco, então a chamada que deveria lançar nunca roda e o
+gerenciador de contexto não tem nada a capturar. Sempre verde.
+
+=== "RUIM"
+    ```python
+    with pytest.raises(ValueError):
+        pass                          # C51 - nada chamado, nada lançado
+    ```
+
 ### C29 - os.environ modificado diretamente em um teste
 `J6` · BAIXO · F6
 
 `os.environ["KEY"] = value`, `os.environ.update(...)` ou `os.putenv(...)` no corpo de um teste. A
 mudança persiste entre testes no mesmo processo. Use `monkeypatch.setenv()`.
+
+### C55 - comparação entre dois valores enraizados em mock
+`J3` · BAIXO · F4
+
+`assert m.foo == m.bar` onde ambos os operandos derivam do mesmo dublê de teste (um `Mock`,
+`MagicMock` ou um objeto injetado por `patch`). Cada lado é o próprio valor configurado pelo
+teste, então a comparação verifica os dublês entre si, não o SUT.
 
 ---
 
@@ -509,6 +550,26 @@ captura rodou mas nada foi verificado.
         run()
         out, _ = capsys.readouterr()
         assert out == "hello\n"
+    ```
+
+### C50 - saída de caplog / assertLogs capturada mas nunca afirmada
+`J4` · BAIXO · F1
+
+`caplog` é lido (`caplog.records`, `caplog.text`) ou `self.assertLogs(...)` é aberto, mas a saída
+capturada nunca é afirmada: nenhuma comparação sobre os registros, mensagens ou níveis. A captura
+rodou e não teve efeito no pass/fail. A irmã de logging da C31.
+
+=== "RUIM"
+    ```python
+    def test_logs(caplog):
+        run()
+        caplog.records               # C50 - capturado mas nunca afirmado
+    ```
+=== "LIMPO"
+    ```python
+    def test_logs(caplog):
+        run()
+        assert "started" in caplog.text
     ```
 
 ### C32 - @pytest.mark.skip sem reason

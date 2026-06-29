@@ -41,11 +41,11 @@ diagnostic group, off by default.
 
 | Family | Failure mode | Codes the ecosystem ships | Layer |
 |---|---|---|---|
-| **F1** | Checks nothing (no oracle) | `C2`, `C2b`, `C2c`, `C27`, `JS2`, `JS6`, `R-empty`, semantic cases 10/11 | static + skill |
-| **F2** | The check exists but never runs | `C1`, `C3`, `C19`, `C20`, `C21`, `C22`, `C43`, `CC`, `JS7`, `JS9`, `JS11` | static |
-| **F3** | The check is trivial (always passes) | `C5`, `C6`, `C6c`, `C7`, `C8`, `C8b`, `C11a`, `C18`, `C34`, `C42`, `C44`, `JS15`, `JS21` | static |
-| **F4** | Checks the wrong thing | semantic case 18, parts of `C6` / `C33` / the snapshot codes | static (partial) + skill |
-| **F5** | Drops out of the count (skip / not collected) | `C4`, `C4b`, `C25`, `C32`, `C38`, `C45`, `JS1`, `JS4`, `JS22`; project layer: `PL1`-`PL8` | static + project layer |
+| **F1** | Checks nothing (no oracle) | `C2`, `C2b`, `C2c`, `C27`, `C39`, `C50`, `C51`, `JS2`, `JS6`, `JS13`, `R2`, `R4`, `R7`, semantic cases 10/11 | static + skill |
+| **F2** | The check exists but never runs | `C1`, `C3`, `C20`, `C21`, `C22`, `C43`, `CC`, `JS5`, `JS7`, `JS9`, `JS11`, `JS25`, `JS26`, `JS29`, `JS31`, `R8`, `R8b` | static |
+| **F3** | The check is trivial (always passes) | `C5`, `C6`, `C6c`, `C7`, `C8`, `C8b`, `C11a`, `C18`, `C34`, `C42`, `C44`, `C52`, `JS15`, `JS21`, `JS30`, `R1`, `R6` | static |
+| **F4** | Checks the wrong thing | `C9`, `C9b`, `C19`, `C28`, `C49`, `C55`, `JS8`, `JS24`, `JS27`; semantic case 18, parts of `C6` / `C33` / the snapshot codes | static (partial) + skill |
+| **F5** | Drops out of the count (skip / not collected) | `C4`, `C4b`, `C25`, `C32`, `C38`, `C45`, `JS1`, `JS4`, `JS22`, `JS23`, `R3`, `R5`; project layer: `PL1`, `PL2`, `PL7`, `PL8`, `PL9`, `PL10` | static + project layer |
 | **F6** | Passes or fails by luck (non-determinism) | `C16`, `C23`, `C24`, `C29`, `C35` (static proxies) | static (proxy) + runtime |
 | **F7** | Circular or semantic oracle | semantic cases 10, 11, 12, 15; `C14` (the codable corner) | skill + mutation testing |
 | **F8** | Hygiene / readability (not false-green) | `D1`, `D3`, `D4`, `D5`, `D6`, `D7`, `D8`, `M2` (opt-in diagnostics) | diagnostic / linter |
@@ -64,7 +64,7 @@ that names its primary mechanism.
   metric). The contradicts-the-spec core is semantic and lives in the skill (case 18); it is not a
   static count.
 - **F5** has two slices: the per-file slice (a test not collected, a non-strict xfail) counted in
-  the scanner codes, and the project slice (`PL1`-`PL8`, read by `--config-audit`) counted
+  the scanner codes, and the project slice (`PL1`, `PL2`, `PL7`, `PL8`, `PL9`, `PL10`, read by `--config-audit`) counted
   separately. The runtime slice (a collection error reported as "0 tests") is documented, not a
   code.
 - **F6** is counted only as static proxies (`C16` for uncontrolled time/randomness, `C23` for a

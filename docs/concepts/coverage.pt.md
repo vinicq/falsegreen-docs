@@ -41,11 +41,11 @@ diagnóstico, desligado por padrão.
 
 | Família | Modo de falha | Códigos que o ecossistema entrega | Camada |
 |---|---|---|---|
-| **F1** | Não checa nada (sem oráculo) | `C2`, `C2b`, `C2c`, `C27`, `JS2`, `JS6`, `R-empty`, casos semânticos 10/11 | estático + skill |
-| **F2** | A checagem existe mas nunca roda | `C1`, `C3`, `C19`, `C20`, `C21`, `C22`, `C43`, `CC`, `JS7`, `JS9`, `JS11` | estático |
-| **F3** | A checagem é trivial (sempre passa) | `C5`, `C6`, `C6c`, `C7`, `C8`, `C8b`, `C11a`, `C18`, `C34`, `C42`, `C44`, `JS15`, `JS21` | estático |
-| **F4** | Checa a coisa errada | caso semântico 18, partes de `C6` / `C33` / os códigos de snapshot | estático (parcial) + skill |
-| **F5** | Sai da contagem (skip / não coletado) | `C4`, `C4b`, `C25`, `C32`, `C38`, `C45`, `JS1`, `JS4`, `JS22`; camada de projeto: `PL1`-`PL8` | estático + camada de projeto |
+| **F1** | Não checa nada (sem oráculo) | `C2`, `C2b`, `C2c`, `C27`, `C39`, `C50`, `C51`, `JS2`, `JS6`, `JS13`, `R2`, `R4`, `R7`, casos semânticos 10/11 | estático + skill |
+| **F2** | A checagem existe mas nunca roda | `C1`, `C3`, `C20`, `C21`, `C22`, `C43`, `CC`, `JS5`, `JS7`, `JS9`, `JS11`, `JS25`, `JS26`, `JS29`, `JS31`, `R8`, `R8b` | estático |
+| **F3** | A checagem é trivial (sempre passa) | `C5`, `C6`, `C6c`, `C7`, `C8`, `C8b`, `C11a`, `C18`, `C34`, `C42`, `C44`, `C52`, `JS15`, `JS21`, `JS30`, `R1`, `R6` | estático |
+| **F4** | Checa a coisa errada | `C9`, `C9b`, `C19`, `C28`, `C49`, `C55`, `JS8`, `JS24`, `JS27`; caso semântico 18, partes de `C6` / `C33` / os códigos de snapshot | estático (parcial) + skill |
+| **F5** | Sai da contagem (skip / não coletado) | `C4`, `C4b`, `C25`, `C32`, `C38`, `C45`, `JS1`, `JS4`, `JS22`, `JS23`, `R3`, `R5`; camada de projeto: `PL1`, `PL2`, `PL7`, `PL8`, `PL9`, `PL10` | estático + camada de projeto |
 | **F6** | Passa ou falha por sorte (não-determinismo) | `C16`, `C23`, `C24`, `C29`, `C35` (proxies estáticos) | estático (proxy) + runtime |
 | **F7** | Oráculo circular ou semântico | casos semânticos 10, 11, 12, 15; `C14` (o canto codificável) | skill + mutation testing |
 | **F8** | Higiene / legibilidade (não é false-green) | `D1`, `D3`, `D4`, `D5`, `D6`, `D7`, `D8`, `M2` (diagnósticos opcionais) | diagnóstico / linter |
@@ -64,7 +64,7 @@ listado sob a família que nomeia seu mecanismo principal.
   métrica descartada). O núcleo "contradiz a spec" é semântico e vive na skill (caso 18); não é uma
   contagem estática.
 - **F5** tem duas fatias: a fatia por arquivo (um teste não coletado, um xfail não-strict) contada
-  nos códigos dos scanners, e a fatia de projeto (`PL1`-`PL8`, lida pelo `--config-audit`) contada à
+  nos códigos dos scanners, e a fatia de projeto (`PL1`, `PL2`, `PL7`, `PL8`, `PL9`, `PL10`, lida pelo `--config-audit`) contada à
   parte. A fatia de runtime (um erro de coleta reportado como "0 testes") é documentada, não um
   código.
 - **F6** é contado só como proxies estáticos (`C16` para tempo/aleatoriedade descontrolados, `C23`

@@ -46,6 +46,34 @@ assertion never executes or never fails.
 - Fowler, M.; Beck, K. *Refactoring: Improving the Design of Existing Code.* 2nd ed., 2019. The
   vocabulary of smells and behavior-preserving refactoring.
 
+## Detection tools (the landscape)
+
+How the field detects test smells, for context. Most of these target the maintainability axis;
+the ones that touch the false-green slice (Conditional Test Logic, Empty/Default Test, Exception
+Handling) are noted.
+
+- van Deursen, A.; Moonen, L.; van den Bergh, A.; Kok, G. *Refactoring Test Code.* CWI Report
+  SEN-R0119, 2001 (also XP 2001). The origin catalog of 11 test smells.
+- Reichhart, S.; Girba, T.; Ducasse, S. *Rule-based Assessment of Test Quality (TestLint).* Journal
+  of Object Technology 6(9), 2007. Early static+dynamic rules, including unexecuted/skipped test
+  code - the rotten-green mechanism before it was named.
+- Peruma, A. et al. *tsDetect: An Open Source Test Smells Detection Tool.* ESEC/FSE 2020. DOI
+  [10.1145/3368089.3417921](https://doi.org/10.1145/3368089.3417921). AST patterns, ~19 smells
+  including Conditional Test Logic, Empty Test, Exception Handling.
+- Virginio, T. et al. *On the test smells detection: an empirical study on the JNose Test accuracy.*
+  JSERD 9:8, 2021. DOI [10.5753/jserd.2021.1893](https://doi.org/10.5753/jserd.2021.1893).
+- Wang, T. et al. *PyNose: A Test Smell Detector for Python.* ASE 2021. DOI
+  [10.1109/ASE51524.2021.9678615](https://doi.org/10.1109/ASE51524.2021.9678615).
+- Lambiase, S. et al. *Just-In-Time Test Smell Detection and Refactoring: The DARTS Project.* ICPC
+  2020. DOI [10.1145/3387904.3389296](https://doi.org/10.1145/3387904.3389296).
+- de Paula, E. A.; Bonifacio, R. *TestAXE: Automatically Refactoring Test Smells Using JUnit 5
+  Features.* SBES 2023. Implements JUnit 5 refactorings including Conditional Test Logic.
+- Pontillo, V. et al. *Machine Learning-Based Test Smell Detection.* arXiv:2208.07574, 2022
+  (EmSE 2024). Argues heuristic detectors are threshold-fragile.
+
+The same-id convention across the falsegreen scanners (C5 is the always-true assertion in every
+language) is the family's own answer to this fragmentation.
+
 ## LLM-based detection
 
 - Peixoto, M. et al. *On the Effectiveness of LLMs for Manual Test Verifications.*

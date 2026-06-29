@@ -43,6 +43,8 @@ nada.
 | C7 | ALTO | autocomparação (`Should Be Equal    ${x}    ${x}`) |
 | C44 | ALTO | asserção de biblioteca provavelmente verdadeira para qualquer valor (`Should Contain    ${x}    ${EMPTY}`, `Should Not Be Empty    ${TRUE}`, `Should Be Empty    ${EMPTY}`, uma tautologia de `Length Should Be`) |
 | C9 | BAIXO | erro esperado pega-tudo (`Run Keyword And Expect Error    *`) |
+| C9b | BAIXO | um método HTTP da RequestsLibrary com `expected_status=any` / `anything` — a requisição aceita todo status, então o oráculo fica desativado e um 500 nunca falha |
+| C11a | ALTO | literal autoconfirmante: uma cópia do real no corpo alimenta o lado esperado (`${y}=    Set Variable    ${x}`, depois `Should Be Equal    ${x}    ${y}`) |
 | C16 | BAIXO | `Sleep` como sincronização em vez de `Wait Until *`, `Get Current Date` (leitura de relógio), `Generate Random String` (aleatoriedade), ou `Evaluate` com `datetime`/`random`/`uuid` |
 | C20 | ALTO | verificação depois de um terminador (`[Return]`, `Return From Keyword`, `Fail`, `Pass Execution`) |
 | C21 | BAIXO | verificação só dentro de `IF` / `Run Keyword If` que pode não rodar |
@@ -144,6 +146,34 @@ scanner não consegue ver).
         Click    submit
         Page Should Contain    Welcome
     ```
+
+### R8 - a única verificação vive no [Setup]
+`J1` · ALTO · F2
+
+Um teste cuja única keyword de verificação fica no `[Setup]` (ou num `Test Setup` de suíte). O
+setup roda antes de o corpo agir, então verifica pré-condições, não o resultado: o corpo pode
+quebrar e a suíte fica verde. Mova a asserção para o corpo.
+
+=== "RUIM"
+    ```robotframework
+    Order Is Shipped
+        [Setup]    Should Be Equal    ${status}    pending
+        Ship Order                      # corpo age, nunca verificado
+    ```
+=== "LIMPO"
+    ```robotframework
+    Order Is Shipped
+        Ship Order
+        Should Be Equal    ${order.status}    shipped
+    ```
+
+### R8b - a única verificação vive no [Teardown]
+`J1` · BAIXO · F2
+
+A única keyword de verificação fica no `[Teardown]` (ou `Test Teardown`). O teardown roda mesmo
+quando o corpo falha e reporta num eixo separado (pode trocar o motivo de um teste que falhou),
+então não verifica o resultado do corpo. Confiança menor que a R8 porque uma verificação de
+teardown às vezes é uma asserção de limpeza deliberada.
 
 ## Códigos de diagnóstico (opcionais, OFF por padrão)
 
