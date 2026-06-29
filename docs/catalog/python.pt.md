@@ -856,7 +856,7 @@ contagem de testes reportada fica incompleta. Remova-os para a suíte inteira ro
 
 ---
 
-## Códigos de diagnóstico (opcionais, OFF por padrão)
+## Códigos de diagnóstico (opcionais, OFF por padrão) { #diagnostics }
 
 Família F8: não é false-green (o teste ainda protege), mostrado só numa passagem de diagnóstico. Linters
 dedicados (ruff) também cobrem estes.

@@ -486,7 +486,7 @@ still passes. Add a coverage threshold.
 `passWithNoTests` lets an empty or fully-filtered suite report green, so a misconfigured glob or a
 deleted file goes unnoticed.
 
-## Diagnostic codes (opt-in, OFF by default)
+## Diagnostic codes (opt-in, OFF by default) { #diagnostics }
 
 Family F8: not false-green (the test still protects), shown only on a diagnostic pass.
 

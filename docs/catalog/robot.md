@@ -347,7 +347,7 @@ deliberate cleanup assertion.
 A `skip-on-failure` / `noncritical` setting in the run config turns a failing test into a non-fatal
 pass. Legacy (removed in Robot Framework 4+), still seen in older suites.
 
-## Diagnostic codes (opt-in, OFF by default)
+## Diagnostic codes (opt-in, OFF by default) { #diagnostics }
 
 Family F8: hygiene, not false-green. Robocop also covers these.
 
