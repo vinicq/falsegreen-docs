@@ -72,6 +72,187 @@ Cada linha carrega os mesmos campos:
 Códigos de saída integram em CI: `0` limpo, `10` só baixa confiança, `20` ao
 menos um achado de alta confiança. Bloqueie o build no `20`.
 
+## Complete usage and configuration { #complete-usage-and-configuration }
+
+O guia inicial acima é o caminho de cinco minutos. Esta seção é a referência completa: cada
+canal de instalação, cada formato de saída, cada chave de configuração, o contrato de código de
+saída e a integração com CI. Espelha o que o [README do projeto](https://github.com/vinicq/falsegreen)
+documenta.
+
+### Install channels { #install-channels }
+
+Python 3.8 ou mais novo, sem dependências de runtime de terceiros.
+
+```bash
+pip install falsegreen          # instalação no projeto ou virtualenv
+uvx falsegreen tests/           # roda uma vez sem instalar (uv)
+pipx run falsegreen tests/      # roda uma vez sem instalar (pipx)
+```
+
+`python -m falsegreen ...` é equivalente ao comando `falsegreen` quando o ponto de entrada não
+está no `PATH`.
+
+### Invocation { #invocation }
+
+```bash
+falsegreen                        # escaneia o diretório atual
+falsegreen tests/                 # escaneia uma pasta ou um arquivo
+falsegreen --staged               # só os arquivos de teste no stage do git (pre-commit)
+falsegreen --summary              # uma linha "N escaneados, M sinalizados" no stderr
+```
+
+O scanner lê apenas os arquivos de teste, nunca os importa nem os executa, então um teste
+quebrado ou hostil não roda através dele. Cada achado carrega seu [nível na pirâmide](../concepts/pyramid.md)
+(unit / integration / e2e, lido dos imports do arquivo) e uma dica de correção de uma linha; o
+resumo em texto separa os achados por nível e lista as correções mais comuns.
+
+### Output formats { #output-formats }
+
+`--format text|json|sarif|junit` seleciona o formato do relatório (padrão `text`). `--json`
+continua como alias de `--format json`.
+
+```bash
+falsegreen tests/ --json                  # JSON legível por máquina
+falsegreen tests/ --format sarif          # SARIF 2.1.0
+falsegreen tests/ --format junit          # JUnit XML
+falsegreen tests/ --output report.sarif   # grava em arquivo
+falsegreen tests/ --output .falsegreen/   # grava report.<ext> num diretório
+```
+
+- **`json`** carrega o envelope completo: tool, version, judgments e a lista de achados.
+- **`sarif`** emite SARIF 2.1.0, mapeando ALTO para `error` e BAIXO para `warning`, para o GitHub
+  code scanning e anotações inline no pull request.
+- **`junit`** emite JUnit XML, onde achados ALTO viram `<failure>` para que um reporter de CI os
+  mostre como suíte falhando.
+
+`--output` aceita arquivo ou diretório: um caminho sem extensão ou com barra final (`.falsegreen/`)
+recebe `report.<ext>` no formato escolhido. Relatórios são artefatos de execução, então mantenha o
+diretório de saída no gitignore.
+
+### Configuration { #configuration }
+
+**Desabilitar códigos (CLI).** `--disable C6,C2b` desliga códigos específicos numa execução.
+
+**Supressão inline.** Um comentário na linha do achado silencia um achado justificado sem
+desligar o código na suíte inteira:
+
+```python
+assert user.id == user.id  # falsegreen: ignore[C7]   silencia só o C7 nesta linha
+assert x                   # falsegreen: ignore        silencia todos os códigos nesta linha
+```
+
+Só o token exato `falsegreen:` suprime; um `# ignore` puro não.
+
+**Arquivo de config do projeto.** `[tool.falsegreen]` no `pyproject.toml`, ou um `.falsegreen.toml`
+plano na raiz do repo (`.falsegreen.toml` vence se ambos existirem). Aponte para um arquivo
+específico com `--config PATH`.
+
+```toml
+[tool.falsegreen]
+disable = ["C13b"]            # desliga estes códigos em todo lugar
+exclude = ["tests/legacy/*"]  # ignora arquivos que casam com estes globs
+long_test_threshold = 30      # limite de linhas para M2 (padrão: 50)
+inline_setup_threshold = 3    # limite de statements para D5 (padrão: 5)
+
+[tool.falsegreen.severity]
+C8 = "high"    # promove: agora bloqueia o commit (exit 20)
+C6 = "off"     # equivale a adicionar C6 ao disable
+C22 = "low"    # habilita a checagem async-never-awaits
+D1 = "info"    # habilita Assertion Roulette (diagnóstico, nunca bloqueia)
+M2 = "info"    # habilita Long Test Method (diagnóstico)
+```
+
+Valores de `severity`: `high`, `low`, `info` ou `off`. Achados `info` aparecem nas seções
+DIAGNOSTIC / COUPLING e não afetam o código de saída, o grupo opcional F8. As chaves
+`long_test_threshold` e `inline_setup_threshold` ficam direto sob `[tool.falsegreen]`, não dentro
+de `[severity]`. Precedência, da maior para a menor: `--disable` na CLI, inline
+`# falsegreen: ignore`, o arquivo de config, o padrão embutido.
+
+**Auditoria de config.** `--config-audit` é um modo separado. Em vez de escanear arquivos de
+teste, lê a config de pytest e coverage do projeto (`pyproject.toml`, `pytest.ini`, `tox.ini`,
+`setup.cfg`) e reporta as formas de nível de projeto pelas quais uma suíte fica verde por
+configuração:
+
+- `PL1` - `python -O` / `PYTHONOPTIMIZE` remove todo `assert` em runtime.
+- `PL2` - `filterwarnings` não promove warnings a erros.
+- `PL7` - sem trava de coverage (`--cov-fail-under` ausente).
+- `PL8` - `addopts` interrompe a execução cedo com `-x` / `--maxfail`, mascarando a contagem.
+
+**Baseline (adotar num repo legado).** Registre os achados que você já tem e falhe só nos novos:
+
+```bash
+falsegreen --write-baseline tests/   # grava .falsegreen-baseline.json, exit 0
+falsegreen --baseline tests/         # suprime os achados registrados, falha nos novos
+```
+
+Um achado é fingerprintado por caminho relativo, código, detalhe e a linha-fonte normalizada
+(não o número da linha), então adicionar código antes não redispara um achado já no baseline.
+Comite `.falsegreen-baseline.json` e a catraca só aperta.
+
+### Exit codes { #exit-codes }
+
+| Código | Significado |
+|---|---|
+| `0` | limpo, nenhum achado que afete o gate |
+| `10` | só achados de baixa confiança |
+| `20` | ao menos um achado de alta confiança |
+
+Bloqueie o build no `20`. O hook de pre-commit respeita o mesmo contrato.
+
+### CI integration { #ci-integration }
+
+**GitHub Actions.** Um job que falha no exit `20`:
+
+```yaml
+name: falsegreen
+on: [push, pull_request]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.x" }
+      - run: pip install falsegreen
+      - run: falsegreen tests/   # exit 20 falha o job
+```
+
+**Upload de SARIF para o GitHub code scanning.** Emita SARIF e passe para a action do CodeQL para
+que os achados apareçam inline no pull request:
+
+```yaml
+      - run: falsegreen tests/ --format sarif --output falsegreen.sarif
+        continue-on-error: true
+      - uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: falsegreen.sarif
+```
+
+**Hook de pre-commit.** Adicione ao `.pre-commit-config.yaml`:
+
+```yaml
+  - repo: https://github.com/vinicq/falsegreen
+    rev: v0.6.0
+    hooks:
+      - id: falsegreen
+```
+
+Depois `pre-commit install`. A entrada do hook é `falsegreen --staged` com `pass_filenames: false`,
+então ele lê sozinho os arquivos de teste em stage; não adicione argumentos de arquivo nem
+reative `pass_filenames`, ou alguns arquivos escaneiam duas vezes. Fixe uma tag (nunca um branch)
+para que execuções locais e CI usem o mesmo scanner; `pre-commit autoupdate` reescreve o `rev`.
+Pule uma vez com `git commit --no-verify`, ou defina `FALSEGREEN_BLOCK=0` para o hook só avisar.
+Para rodar no push em vez do commit, defina `stages: [pre-push]` sob o hook. Um git hook cru, sem
+o framework:
+
+```bash
+python -m falsegreen.hook_install --repo .      # instala
+python -m falsegreen.hook_install --uninstall   # remove
+```
+
+Para os casos semânticos que um parser não alcança, combine o scanner com a passagem LLM
+[falsegreen-skill](skill.md).
+
 ## What it covers
 
 O scanner mais completo da família: é a referência que os outros espelham. O detalhe completo por

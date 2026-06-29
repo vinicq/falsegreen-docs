@@ -66,6 +66,158 @@ Cada linha carrega os mesmos campos:
 
 `--format json|sarif|junit` dá um relatório legível por máquina para CI.
 
+## Complete usage and configuration { #complete-usage-and-configuration }
+
+O guia inicial acima é o caminho de cinco minutos. Esta seção é a referência completa: cada
+canal de instalação, cada formato de saída, cada chave de configuração, o contrato de código de
+saída e a integração com CI. Espelha o que o [README do projeto](https://github.com/vinicq/robotframework-falsegreen)
+documenta.
+
+### Install channels { #install-channels }
+
+```bash
+pip install robotframework-falsegreen   # comando da CLI: rffalsegreen
+```
+
+O scanner faz uma passagem estática sobre o parser oficial do Robot (`robot.api.get_model`); nunca
+executa uma suíte, e se restringe a arquivos `.robot` / `.resource`.
+
+### Invocation { #invocation }
+
+```bash
+rffalsegreen                  # escaneia o cwd
+rffalsegreen tests/           # escaneia um caminho
+rffalsegreen --disable C16    # desliga códigos específicos
+```
+
+Cada achado é reportado com seu [nível na pirâmide](../concepts/pyramid.md) (unit / integration /
+e2e, lido das bibliotecas importadas pela suíte) e uma dica de correção de uma linha; o resumo em
+texto separa os achados por nível e lista as correções mais comuns.
+
+### Output formats { #output-formats }
+
+`--format text|json|sarif|junit` seleciona o formato do relatório (padrão `text`). `--json`
+continua como alias de `--format json`.
+
+```bash
+rffalsegreen --format json            # JSON legível por máquina
+rffalsegreen --format sarif           # SARIF 2.1.0
+rffalsegreen --format junit           # JUnit XML
+rffalsegreen --output report.sarif    # grava em arquivo
+rffalsegreen --output .falsegreen/    # grava report.<ext> num diretório
+```
+
+- **`sarif`** emite SARIF 2.1.0 (nome da ferramenta `robotframework-falsegreen`): ALTO mapeia para
+  `error`, BAIXO para `warning`, desligado/info para `note`, e cada resultado é marcado com sua
+  família de julgamento e nível da pirâmide para que o GitHub code scanning agrupe e filtre os
+  achados.
+- **`junit`** emite JUnit XML: um testcase por achado, ALTO vira `<failure>`, o resto vira
+  `<skipped>`.
+
+`--json` mantém seu envelope (`tool` / `version` / `judgments` / `findings`). `--output` aceita
+arquivo ou diretório; um caminho sem extensão ou com barra final recebe `report.<ext>` (para JUnit,
+`report.xml`). Mantenha o diretório de saída no gitignore.
+
+O reconhecedor de verificação conhece a convenção `Should` mais as formas de biblioteca
+(SeleniumLibrary, o motor de asserção do Browser, RequestsLibrary incluindo
+`expected_status=<code>`, RESTinstance, DatabaseLibrary), então uma asserção de API ou UI não é
+lida como sem-oráculo.
+
+### Configuration { #configuration }
+
+**Desabilitar códigos (CLI).** `--disable C16` desliga códigos específicos numa execução.
+
+**Supressão inline.** Um comentário na linha do achado silencia um achado justificado sem desligar
+o código na suíte inteira. O token e a sintaxe de colchetes casam com falsegreen (Python) e
+falsegreen-js:
+
+```robotframework
+*** Test Cases ***
+Polls A Real Service
+    Sleep    1s    # falsegreen: ignore[C16]      # silencia só o C16 nesta linha
+    Should Be Equal    ${result}    ${expected}
+```
+
+`# falsegreen: ignore` (sem colchetes) silencia todos os códigos na linha; `ignore[C16,C20]`
+silencia só os códigos listados. Só o token exato `falsegreen:` suprime; um `# ignore` puro não.
+
+**Grupo de diagnóstico (desligado por padrão).** Os códigos de manutenibilidade (`D2`, `M2`) não
+são false-green, então são opcionais; ligue-os por código via `severity` na config.
+
+**Auditoria de config.** `--config-audit` é um modo separado. Em vez de escanear suítes, lê a
+config de execução do Robot (`robot.toml`, `pyproject.toml` `[tool.robot]` e arquivos de argumento
+`*.args` encontrados recursivamente, pulando diretórios ignorados como `results/` / `output/`) e
+reporta `PL9`: uma opção `--skiponfailure` / `--noncritical` que transforma um teste falho num
+passe não-fatal (legado, removido no RF 4+). O scan por arquivo não vê a config de execução.
+
+**Baseline (adotar numa suíte que já tem achados).** Registre um baseline e depois falhe só nos
+achados novos:
+
+```bash
+rffalsegreen --write-baseline    # registra os achados atuais em .falsegreen-baseline.json
+rffalsegreen --baseline          # escaneia, suprimindo tudo que está no baseline
+```
+
+Ambas as flags aceitam um caminho opcional (padrão `.falsegreen-baseline.json`). O baseline
+fingerprinta um achado por conteúdo (sha1 de caminho relativo, código, nome do teste/keyword,
+detalhe, sem número de linha), então sobrevive a edições que deslocam um teste no arquivo. Comite o
+baseline para que o CI veja o mesmo conjunto.
+
+### Exit codes { #exit-codes }
+
+| Código | Significado |
+|---|---|
+| `0` | limpo, nenhum achado que afete o gate |
+| `10` | só achados de baixa confiança |
+| `20` | ao menos um achado de alta confiança |
+
+Ligue o exit `20` ao CI para bloquear o merge.
+
+### CI integration { #ci-integration }
+
+**GitHub Actions.** Um job que falha no exit `20`:
+
+```yaml
+name: robotframework-falsegreen
+on: [push, pull_request]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.x" }
+      - run: pip install robotframework-falsegreen
+      - run: rffalsegreen tests/   # exit 20 falha o job
+```
+
+**Upload de SARIF para o GitHub code scanning.** Emita SARIF e passe para a action do CodeQL para
+que os achados apareçam inline no pull request:
+
+```yaml
+      - run: rffalsegreen tests/ --format sarif --output falsegreen.sarif
+        continue-on-error: true
+      - uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: falsegreen.sarif
+```
+
+**Hook de pre-commit.** Adicione ao `.pre-commit-config.yaml`:
+
+```yaml
+  - repo: https://github.com/vinicq/robotframework-falsegreen
+    rev: v0.3.0
+    hooks:
+      - id: rffalsegreen
+```
+
+O hook se restringe a arquivos `.robot` / `.resource` e passa os caminhos em stage ao scanner,
+então nunca reescaneia `results/` / `output/`. Ele respeita os códigos de saída, então um achado
+ALTO falha o commit. Rode sob demanda contra os arquivos em stage com `pre-commit run rffalsegreen`.
+
+O Robot não tem um teste de mutação padrão, então a camada de runtime (um teste verde falha quando
+o código está errado?) é revisão manual; os casos de intenção são a [falsegreen-skill](skill.md).
+
 ## What it covers
 
 Detalhe completo por código no [catálogo Robot](../catalog/robot.md).
