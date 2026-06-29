@@ -26,10 +26,10 @@ distintos, não por linhas de scanner, evita contagem dupla.
 | [falsegreen](https://github.com/vinicq/falsegreen) | Python / pytest | [catálogo no README](https://github.com/vinicq/falsegreen#what-it-detects) · [`scanner.py`](https://github.com/vinicq/falsegreen/blob/main/src/falsegreen/scanner.py) |
 | [falsegreen-js](https://github.com/vinicq/falsegreen-js) | JS / TS | [catálogo no README](https://github.com/vinicq/falsegreen-js#readme) |
 | [robotframework-falsegreen](https://github.com/vinicq/robotframework-falsegreen) | Robot Framework | [catálogo no README](https://github.com/vinicq/robotframework-falsegreen#readme) |
-| [falsegreen-skill](https://github.com/vinicq/falsegreen-skill) | semântico (LLM) | [`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/main/reference.md) (o superset) |
+| [falsegreen-skill](https://github.com/vinicq/falsegreen-skill) | semântico (LLM) | [`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/master/reference.md) (o superset) |
 
 A skill é o superset: todo código estrutural que os três scanners estáticos emitem aparece no seu
-[`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/main/reference.md), mais os códigos
+[`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/master/reference.md), mais os códigos
 só-semânticos (casos 10, 11, 12, 15, 18) que nenhum parser alcança.
 
 ## Códigos por família
@@ -51,7 +51,7 @@ diagnóstico, desligado por padrão.
 | **F8** | Higiene / legibilidade (não é false-green) | `D1`, `D3`, `D4`, `D5`, `D6`, `D7`, `D8`, `M2` (diagnósticos opcionais) | diagnóstico / linter |
 
 A lista exata e atual de códigos por scanner vive no catálogo do README de cada repositório e no
-[`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/main/reference.md) da skill. Esta
+[`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/master/reference.md) da skill. Esta
 tabela agrupa esses códigos publicados por modo de falha; ela não inventa novos. Onde um código
 mapeia para mais de uma família (um código pode ser ao mesmo tempo "nunca roda" e "fraco"), ele é
 listado sob a família que nomeia seu mecanismo principal.

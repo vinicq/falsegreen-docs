@@ -26,10 +26,10 @@ by distinct ids, not by per-scanner rows, avoids double counting.
 | [falsegreen](https://github.com/vinicq/falsegreen) | Python / pytest | [README catalog](https://github.com/vinicq/falsegreen#what-it-detects) · [`scanner.py`](https://github.com/vinicq/falsegreen/blob/main/src/falsegreen/scanner.py) |
 | [falsegreen-js](https://github.com/vinicq/falsegreen-js) | JS / TS | [README catalog](https://github.com/vinicq/falsegreen-js#readme) |
 | [robotframework-falsegreen](https://github.com/vinicq/robotframework-falsegreen) | Robot Framework | [README catalog](https://github.com/vinicq/robotframework-falsegreen#readme) |
-| [falsegreen-skill](https://github.com/vinicq/falsegreen-skill) | semantic (LLM) | [`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/main/reference.md) (the superset) |
+| [falsegreen-skill](https://github.com/vinicq/falsegreen-skill) | semantic (LLM) | [`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/master/reference.md) (the superset) |
 
 The skill is the superset: every structural code the three static scanners emit appears in its
-[`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/main/reference.md), plus the
+[`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/master/reference.md), plus the
 semantic-only codes (cases 10, 11, 12, 15, 18) that no parser can reach.
 
 ## Codes per family
@@ -51,7 +51,7 @@ diagnostic group, off by default.
 | **F8** | Hygiene / readability (not false-green) | `D1`, `D3`, `D4`, `D5`, `D6`, `D7`, `D8`, `M2` (opt-in diagnostics) | diagnostic / linter |
 
 The exact, current code list per scanner lives in each repository's README catalog and in the
-skill's [`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/main/reference.md). This
+skill's [`reference.md`](https://github.com/vinicq/falsegreen-skill/blob/master/reference.md). This
 table groups those published codes by failure mode; it does not invent new ones. Where a code maps
 to more than one family (a code can be both "never runs" and "weak"), it is listed under the family
 that names its primary mechanism.
