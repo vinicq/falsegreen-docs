@@ -43,6 +43,8 @@ nothing.
 | C7 | HIGH | self-compare (`Should Be Equal    ${x}    ${x}`) |
 | C44 | HIGH | library assertion provably true for any value (`Should Contain    ${x}    ${EMPTY}`, `Should Not Be Empty    ${TRUE}`, `Should Be Empty    ${EMPTY}`, a `Length Should Be` tautology) |
 | C9 | LOW | catch-all expected error (`Run Keyword And Expect Error    *`) |
+| C9b | LOW | a RequestsLibrary HTTP method with `expected_status=any` / `anything` — the request accepts every status, so the oracle is disabled and a 500 never fails |
+| C11a | HIGH | self-confirming literal: an in-body copy of the actual feeds the expected side (`${y}=    Set Variable    ${x}`, then `Should Be Equal    ${x}    ${y}`) |
 | C16 | LOW | `Sleep` as synchronization instead of `Wait Until *`, `Get Current Date` (clock read), `Generate Random String` (randomness), or `Evaluate` with `datetime`/`random`/`uuid` |
 | C20 | HIGH | verification after a terminator (`[Return]`, `Return From Keyword`, `Fail`, `Pass Execution`) |
 | C21 | LOW | verification only inside `IF` / `Run Keyword If` that may not run |
@@ -144,6 +146,34 @@ scanner cannot see).
         Click    submit
         Page Should Contain    Welcome
     ```
+
+### R8 - the only verification lives in [Setup]
+`J1` · HIGH · F2
+
+A test whose sole verification keyword sits in `[Setup]` (or a suite-level `Test Setup`). Setup
+runs before the body acts, so it checks preconditions, not the result: the body can break and the
+suite stays green. Move the assertion into the body.
+
+=== "BAD"
+    ```robotframework
+    Order Is Shipped
+        [Setup]    Should Be Equal    ${status}    pending
+        Ship Order                      # body acts, never verified
+    ```
+=== "CLEAN"
+    ```robotframework
+    Order Is Shipped
+        Ship Order
+        Should Be Equal    ${order.status}    shipped
+    ```
+
+### R8b - the only verification lives in [Teardown]
+`J1` · LOW · F2
+
+The sole verification keyword sits in `[Teardown]` (or `Test Teardown`). Teardown runs even when
+the body fails and reports on a separate axis (it can flip a failed test's reason), so it does not
+verify the body's result. Lower confidence than R8 because a teardown check is sometimes a
+deliberate cleanup assertion.
 
 ## Diagnostic codes (opt-in, OFF by default)
 
