@@ -1,9 +1,13 @@
 name: ci
 
 # PR-blocking docs gate (#1): a broken internal link, a missing nav page, or an
-# untranslated-page drift should fail the PR, not ship silently on deploy. The
-# deploy-docs workflow already builds --strict on push to main; this runs the same
-# strict build plus an offline link check on every pull request and push.
+# untranslated-page drift should fail the PR, not ship silently on deploy.
+#   1. `mkdocs build --strict` fails on a broken internal reference, a missing nav
+#      page, or a bad config (the same build deploy-docs runs, now on every PR).
+#   2. An offline lychee link check over the built site catches broken local links
+#      and anchors. The site is a GitHub Pages project site, so links are root-
+#      relative to the `/falsegreen-docs/` base path; the site is staged under that
+#      path and lychee is given an absolute --root-dir so those links resolve.
 
 on:
   pull_request:
@@ -22,10 +26,12 @@ jobs:
         with:
           python-version: "3.x"
       - run: pip install -r requirements.txt
-      - name: Strict build (fails on broken refs, missing nav, bad config)
+      - name: Strict build
         run: mkdocs build --strict
-      - name: Link check (offline - internal links and anchors in the built site)
-        uses: lycheeverse/lychee-action@v2
-        with:
-          args: "--offline --no-progress 'site/**/*.html'"
-          fail: true
+      - name: Offline link check (base-path aware)
+        run: |
+          mkdir -p _linkcheck/falsegreen-docs
+          cp -r site/* _linkcheck/falsegreen-docs/
+          curl -sSL -o lychee.tar.gz https://github.com/lycheeverse/lychee/releases/latest/download/lychee-x86_64-unknown-linux-gnu.tar.gz
+          tar xzf lychee.tar.gz
+          ./lychee --offline --no-progress --root-dir "$PWD/_linkcheck" "_linkcheck/falsegreen-docs/**/*.html"
