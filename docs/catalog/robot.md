@@ -40,8 +40,8 @@ Every emitted code has its own entry below. The index links straight to each one
 | [R7](#r7) | LOW | J1 | hollow template keyword (every generated case has no oracle) |
 | [R8](#r8) | HIGH | J1 | the only verification lives in `[Setup]` |
 | [R8b](#r8b) | LOW | J1 | the only verification lives in `[Teardown]` |
-| [D2](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | control flow at the test level |
-| [M2](#diagnostic-codes-opt-in-off-by-default) | OFF | J5 | over-long test |
+| [D2](#diagnostics) | OFF | J4 | control flow at the test level |
+| [M2](#diagnostics) | OFF | J5 | over-long test |
 | [PL9](#pl9) | LOW | J1 | skip-on-failure / noncritical turns a fail into a pass |
 
 A code keeps its id across languages where the smell is the same; the signal below is the Robot

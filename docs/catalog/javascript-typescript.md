@@ -57,13 +57,13 @@ Every emitted code has its own entry below. The index links straight to each one
 | [JS29](#js29) | LOW | J6 | `resolves`/`rejects` chain is a bare statement |
 | [JS30](#js30) | HIGH | J2 | literal-vs-literal assertion |
 | [JS31](#js31) | LOW | J1 | try/catch swallows a SUT throw, no assertion on the error |
-| [D1](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | assertion roulette |
-| [D3](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | duplicate assert |
-| [D4](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | untitled `it.each` cases |
-| [D6](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | `console.*` in a test body |
-| [D7](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | anonymous test |
-| [D8](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | magic number in an assertion |
-| [M2](#diagnostic-codes-opt-in-off-by-default) | OFF | J5 | over-long test body |
+| [D1](#diagnostics) | OFF | J4 | assertion roulette |
+| [D3](#diagnostics) | OFF | J4 | duplicate assert |
+| [D4](#diagnostics) | OFF | J4 | untitled `it.each` cases |
+| [D6](#diagnostics) | OFF | J4 | `console.*` in a test body |
+| [D7](#diagnostics) | OFF | J4 | anonymous test |
+| [D8](#diagnostics) | OFF | J4 | magic number in an assertion |
+| [M2](#diagnostics) | OFF | J5 | over-long test body |
 | [PL7](#pl7) | LOW | J5 | no coverage gate |
 | [PL8](#pl8) | LOW | J5 | `bail` stops the run early |
 | [PL10](#pl10) | LOW | J1 | `passWithNoTests` lets an empty suite pass |

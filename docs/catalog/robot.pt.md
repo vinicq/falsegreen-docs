@@ -40,8 +40,8 @@ Cada código emitido tem sua própria entrada abaixo. O índice leva direto a ca
 | [R7](#r7) | BAIXO | J1 | keyword de template oca (todo caso gerado fica sem oráculo) |
 | [R8](#r8) | ALTO | J1 | a única verificação vive no `[Setup]` |
 | [R8b](#r8b) | BAIXO | J1 | a única verificação vive no `[Teardown]` |
-| [D2](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | controle de fluxo no nível do teste |
-| [M2](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J5 | teste longo demais |
+| [D2](#diagnostics) | OFF | J4 | controle de fluxo no nível do teste |
+| [M2](#diagnostics) | OFF | J5 | teste longo demais |
 | [PL9](#pl9) | BAIXO | J1 | skip-on-failure / noncritical vira uma falha em pass |
 
 Um código mantém seu id entre linguagens onde o smell é o mesmo; o sinal abaixo é a forma Robot.
