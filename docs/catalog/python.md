@@ -71,12 +71,12 @@ one.
 | [C57](#c57) | LOW | J3 | compares against an unconfigured Mock attribute |
 | [C59](#c59) | HIGH | J1 | bare top-level comparison statement (loose-statement sibling of C39) |
 | [CC](#cc) | LOW | J1 | commented-out assert |
-| [D1](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | assertion roulette |
-| [D3](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | duplicate assert |
-| [D4](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | unnamed `parametrize` |
-| [D5](#diagnostic-codes-opt-in-off-by-default) | OFF | J5 | excessive inline setup |
-| [D6](#diagnostic-codes-opt-in-off-by-default) | OFF | J4 | debug `print()` in the body |
-| [M2](#diagnostic-codes-opt-in-off-by-default) | OFF | J5 | over-long test method |
+| [D1](#diagnostics) | OFF | J4 | assertion roulette |
+| [D3](#diagnostics) | OFF | J4 | duplicate assert |
+| [D4](#diagnostics) | OFF | J4 | unnamed `parametrize` |
+| [D5](#diagnostics) | OFF | J5 | excessive inline setup |
+| [D6](#diagnostics) | OFF | J4 | debug `print()` in the body |
+| [M2](#diagnostics) | OFF | J5 | over-long test method |
 | [PL1](#pl1) | LOW | J1 | `-O`/`PYTHONOPTIMIZE` strips every assert |
 | [PL2](#pl2) | LOW | J1 | `filterwarnings` does not promote warnings to errors |
 | [PL7](#pl7) | LOW | J5 | no coverage gate |

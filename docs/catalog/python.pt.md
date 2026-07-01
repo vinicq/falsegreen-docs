@@ -71,12 +71,12 @@ cada uma.
 | [C57](#c57) | BAIXO | J3 | compara contra um atributo de Mock não configurado |
 | [C59](#c59) | ALTO | J1 | comparação solta no nível do teste (irmã loose-statement do C39) |
 | [CC](#cc) | BAIXO | J1 | assert comentado |
-| [D1](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | roleta de asserções |
-| [D3](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | assert duplicado |
-| [D4](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | `parametrize` sem nomes |
-| [D5](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J5 | setup inline excessivo |
-| [D6](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | `print()` de debug no corpo |
-| [M2](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J5 | método de teste longo |
+| [D1](#diagnostics) | OFF | J4 | roleta de asserções |
+| [D3](#diagnostics) | OFF | J4 | assert duplicado |
+| [D4](#diagnostics) | OFF | J4 | `parametrize` sem nomes |
+| [D5](#diagnostics) | OFF | J5 | setup inline excessivo |
+| [D6](#diagnostics) | OFF | J4 | `print()` de debug no corpo |
+| [M2](#diagnostics) | OFF | J5 | método de teste longo |
 | [PL1](#pl1) | BAIXO | J1 | `-O`/`PYTHONOPTIMIZE` remove todo assert |
 | [PL2](#pl2) | BAIXO | J1 | `filterwarnings` não promove avisos a erro |
 | [PL7](#pl7) | BAIXO | J5 | sem gate de cobertura |

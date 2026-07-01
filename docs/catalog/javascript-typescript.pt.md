@@ -57,13 +57,13 @@ Cada código emitido tem sua própria entrada abaixo. O índice leva direto a ca
 | [JS29](#js29) | BAIXO | J6 | cadeia `resolves`/`rejects` é uma instrução solta |
 | [JS30](#js30) | ALTO | J2 | asserção literal contra literal |
 | [JS31](#js31) | BAIXO | J1 | try/catch engole um throw do SUT, sem asserção no erro |
-| [D1](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | roleta de asserções |
-| [D3](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | assert duplicado |
-| [D4](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | casos de `it.each` sem título |
-| [D6](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | `console.*` no corpo do teste |
-| [D7](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | teste anônimo |
-| [D8](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J4 | número mágico em uma asserção |
-| [M2](#codigos-de-diagnostico-opcionais-off-por-padrao) | OFF | J5 | corpo de teste longo demais |
+| [D1](#diagnostics) | OFF | J4 | roleta de asserções |
+| [D3](#diagnostics) | OFF | J4 | assert duplicado |
+| [D4](#diagnostics) | OFF | J4 | casos de `it.each` sem título |
+| [D6](#diagnostics) | OFF | J4 | `console.*` no corpo do teste |
+| [D7](#diagnostics) | OFF | J4 | teste anônimo |
+| [D8](#diagnostics) | OFF | J4 | número mágico em uma asserção |
+| [M2](#diagnostics) | OFF | J5 | corpo de teste longo demais |
 | [PL7](#pl7) | BAIXO | J5 | sem gate de cobertura |
 | [PL8](#pl8) | BAIXO | J5 | `bail` interrompe a execução cedo |
 | [PL10](#pl10) | BAIXO | J1 | `passWithNoTests` deixa uma suíte vazia passar |
