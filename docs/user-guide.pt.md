@@ -26,8 +26,32 @@ contra um mutante antes de aceitar. Nada sai da ferramenta sem revisão.
 
 ## Antes de começar
 
-Você precisa do Node 18 ou mais novo e de uma API key de um provedor. A CLI vem com zero
-dependências npm, então não há nada para buildar.
+Há dois jeitos de rodar o falsegreen, e qual encaixa depende de como você já trabalha.
+
+### A) Dentro do seu agente, no seu login (sem API key)
+
+Se você já usa Claude Code, Codex CLI, Gemini CLI ou Cursor, muitas vezes num plano Pro/Plus/
+Advanced, instale o falsegreen ali e ele roda no próprio modelo do host, usando a sua sessão logada.
+Sem API key, nada para exportar, sem custo por token além do seu plano atual. É o que a maioria das
+pessoas nessas ferramentas quer.
+
+Habilite uma vez, por host:
+
+- **Claude Code:** `/plugin marketplace add vinicq/falsegreen-skill` e depois
+  `/plugin install falsegreen-skill@falsegreen`
+- **Codex CLI:** `codex plugin marketplace add vinicq/falsegreen-skill` (ou clone o repo: o
+  `AGENTS.md` da raiz carrega sozinho)
+- **Gemini CLI:** `gemini extensions install https://github.com/vinicq/falsegreen-skill`
+- **Cursor:** copie `contexts/cursor.md` para `.cursor/rules/falsegreen-skill.mdc`
+
+Depois anexe um teste e peça a análise, ou peça para ele escrever um teste para a sua feature. Os
+mesmos fluxos analyze / generate / fix deste guia funcionam; você conversa com o seu agente em vez
+de rodar um comando.
+
+### B) CLI avulsa, com a sua própria API key (paga por token)
+
+Para CI, scripts, ou quando você não está dentro de um host. Precisa do Node 18 ou mais novo e de
+uma API key de um provedor. A CLI vem com zero dependências npm, então não há nada para buildar.
 
 ```bash
 # roda uma vez sem instalar
@@ -45,10 +69,11 @@ export ANTHROPIC_API_KEY=sk-ant-...
 ```
 
 Qualquer host compatível com OpenAI também funciona (Groq, OpenRouter, Ollama e outros). Veja
-[escolhendo um provedor](#escolhendo-um-provedor) abaixo. Um detalhe que pega muita gente: o prompt
-do protocolo tem cerca de 33k tokens, então um provedor cujo tier gratuito limita tokens por minuto
-vai rejeitar a requisição. Se você levar um HTTP 413 ou 429, é por isso. Rode o Ollama local ou use
-um host com tier maior.
+[escolhendo um provedor](#escolhendo-um-provedor) abaixo: aquela seção é sobre o caminho B. Um
+detalhe que pega muita gente: o prompt do protocolo tem cerca de 33k tokens, então um provedor cujo
+tier gratuito limita tokens por minuto vai rejeitar a requisição. Se você levar um HTTP 413 ou 429,
+é por isso. Rode o Ollama local ou use um host com tier maior. O caminho A usa o modelo em que o seu
+agente já está logado, então as chaves de provedor abaixo não valem para ele.
 
 ## Modo A: revisar um teste que você já tem
 
@@ -247,6 +272,9 @@ O limite honesto: o portão prova que o patch pega aquele mutante, não todo bug
 um piso, não uma garantia. JS/TS/Robot e os casos semânticos profundos (10/11/12/18) são v2.
 
 ## Escolhendo um provedor
+
+Esta seção é sobre o caminho B, a CLI avulsa. O caminho A usa o modelo em que o seu agente está
+logado, então nenhuma dessas chaves vale ali.
 
 Os três provedores embutidos leem cada um a própria chave e não precisam de `--base-url`; trocar de
 provedor é uma flag:
