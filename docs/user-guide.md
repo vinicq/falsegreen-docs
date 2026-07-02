@@ -1,0 +1,291 @@
+# User guide
+
+This guide walks through the three things the `falsegreen-skill` CLI does, in the order most
+people meet them: review a test you already have, write a new test that will not lie to you, and
+repair a weak one. Each section is a runnable walkthrough, not a feature list. Copy the commands,
+change the paths, and you are working.
+
+If you only remember one thing: a test is false-green when it stays green while the code it guards
+is broken. Everything here is about catching that, or avoiding it in the first place.
+
+## The three modes at a glance
+
+One binary, three verbs. `analyze` judges a test, `generate` writes one, `fix` repairs one. They
+share the same J1-J6 [protocol](concepts/judgments.md), so a test `generate` writes is a test
+`analyze` would pass, and a patch `fix` proposes is a test that has to survive review before you
+trust it.
+
+| Verb | You start with | It does | Exit contract |
+|---|---|---|---|
+| `analyze` | a test file | finds false-green smells and reports them | 0 clean, 2 on a HIGH finding (with `--fail-on-high`) |
+| `generate` | a spec with an oracle, no test yet | writes a test, then self-checks it | 0 PASSED, 1 FAILED, 3 UNVERIFIED |
+| `fix` | a weak test `analyze` flagged | proposes a stronger test and proves it with a mutation gate | 0 accept, 1 reject/unvalidated |
+
+`generate` runs `analyze` on its own output before handing it back, and `fix` proves its patch
+against a mutant before accepting it. Nothing leaves the tool unreviewed.
+
+## Before you start
+
+You need Node 18 or newer and an API key for one provider. The CLI ships with zero npm
+dependencies, so there is nothing to build.
+
+```bash
+# run it once without installing
+npx falsegreen-skill --help
+
+# or install it globally
+npm install -g falsegreen-skill
+```
+
+Pick a provider and export its key. Anthropic is the default, so the shortest path is one
+variable:
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+Any OpenAI-compatible host works too (Groq, OpenRouter, Ollama, and others). See
+[choosing a provider](#choosing-a-provider) below. One caveat that trips people up: the protocol
+prompt is about 33k tokens, so a provider whose free tier caps tokens per minute will reject the
+request. If you hit an HTTP 413 or 429, that is why. Run Ollama locally or use a host with a
+larger tier.
+
+## Mode A: review a test you already have
+
+This is the one you reach for first. You have a test suite, it is green, and you want to know
+which of those green checks would survive the code going wrong.
+
+### Step 1 - point it at a test file
+
+```bash
+falsegreen-skill analyze tests/test_payment.py
+```
+
+The CLI reads the file, sends it with the protocol, and prints a report: each finding carries a
+catalog code (like C5 or C20), the judgment it failed (J1-J6), a confidence level, and a one-line
+fix hint. Clean tests get no finding.
+
+### Step 2 - read the confidence, not just the count
+
+HIGH means the reviewer is confident the test is false-green. LOW means it looks suspicious but
+could be intentional. Start with the HIGH findings; they are the ones that will bite you.
+
+### Step 3 - wire it into CI
+
+For a pipeline, ask for JSON and let the exit code do the gating:
+
+```bash
+falsegreen-skill analyze tests/test_payment.py tests/test_orders.py \
+  --json --fail-on-high > report.json
+```
+
+Exit code 2 means at least one HIGH finding. Exit 1 means the model returned something that did
+not match the schema. Exit 0 means you are clear. In short: a test file goes in, the protocol
+runs, and a HIGH finding turns CI red so you fix the test and re-run; no HIGH finding keeps it
+green.
+
+## Mode B: write a test that cannot lie
+
+Ask any model to "write a test for this function" and it reads what the code returns today and
+asserts that. The test passes, and it will keep passing even after a bug changes what the code
+should return. That is a characterization test: green by construction, useless as a guard.
+
+Mode B refuses to do that. It takes the expected value from an oracle you supply, not from the
+code, and then it reviews its own output before handing it back.
+
+### Step 1 - write the spec, oracle included
+
+The spec is a small YAML (or JSON) file. Here is the shipped example:
+
+```yaml
+level: unit
+unit: apply_discount(price, rate)
+scenario: a 15% discount on 200 returns 170
+arrange:
+  - price = 200
+  - rate = 0.15
+act: result = apply_discount(200, 0.15)
+oracle:
+  source: spec
+  expected: "170 (200 minus 15% = 200 - 30)"
+doubles: []
+```
+
+The `oracle` block is the whole point. `expected: 170` comes from the spec ("15% off 200"), not
+from running `apply_discount` and copying the answer. Leave the oracle out and the command stops
+before it calls the model, because a test with no independent oracle is exactly the false-green it
+exists to prevent.
+
+### Step 2 - render it into a language
+
+```bash
+falsegreen-skill generate examples/authoring/apply-discount.spec.yaml --lang python
+```
+
+You get a real Python test with the expected value traced back to the spec. Want the same
+behavior in TypeScript? Same spec, different flag:
+
+```bash
+falsegreen-skill generate examples/authoring/apply-discount.spec.yaml --lang typescript
+```
+
+`--lang` takes `python`, `typescript`, `javascript`, `tsx`, `jsx`, or `robot`. `tsx` and `jsx`
+cover the React side of the JS/TS family (the same shared catalog `falsegreen-js` applies over
+`.js`/`.ts`/`.tsx`/`.jsx`). When you omit `--lang`, it defaults to the spec's first `languages`
+entry, else `python`. One language per run: the spec is the single source, so re-running keeps the
+stacks equivalent instead of drifting apart.
+
+### Step 3 - read the self-check line
+
+After writing the test, the CLI runs Mode A on it. Three outcomes:
+
+- **PASSED (exit 0)** - the generated test tripped no HIGH false-green finding. Use it.
+- **FAILED (exit 1)** - the test still looks false-green; the CLI already revised once and it did
+  not clear. Usually the spec's oracle is too weak. Tighten it and re-run. This exit also covers a
+  bad spec or API error caught by the offline guard.
+- **UNVERIFIED (exit 3)** - the model could not produce a valid review report (common on small
+  models). The test is still printed to stdout, but it is not accepted, so a pipeline never treats
+  an unchecked test as clean. Try a stronger model for the self-check.
+
+The flow, in prose: the offline guard checks the oracle is present (no oracle, it refuses with
+exit 1); the test renders to `--lang`; the self-check runs Mode A; a HIGH finding triggers one
+bounded revision and a re-check; if it clears, PASSED, otherwise FAILED. Gate CI on the exit code,
+or on `self_check_passed` in `--json` output.
+
+The honest limit: the self-check is a same-model static review, not an execution. It proves the
+test is not obviously false-green. It does not run the test, confirm it compiles or imports, or
+verify the oracle value. If you tell the spec that 15% off 200 is 150, you get a confident,
+well-formed, wrong test. The oracle is yours to get right.
+
+### Author tests for the feature you're building
+
+The `apply_discount` walkthrough is just the shape. The same flow works for whatever you are
+actually building: a TypeScript service, a React component, an API endpoint. You describe the unit
+and, crucially, the oracle (the expected result and where it comes from), and the skill writes the
+test. There are two paths.
+
+**In an editor host (Claude Code, Cursor, Gemini).** Ask in natural language. No spec file:
+
+> write a unit test for `applyPromo(cart, code)` in TypeScript; a valid code takes 10% off the
+> subtotal, per the pricing spec
+
+The host elicits the level and oracle if you left them out, renders the test, and runs the same
+self-check. If you never name where the expected value comes from, it asks, because a test with no
+independent oracle is the false-green it refuses to write.
+
+**On the CLI.** Put the same answers in a spec and pick the stack. A realistic feature spec:
+
+```yaml
+level: unit
+unit: applyPromo(cart, code)
+scenario: SAVE10 takes 10% off a 200 subtotal, per the pricing spec
+languages: [TypeScript]
+arrange:
+  - cart = { subtotal: 200 }
+  - code = "SAVE10"
+act: result = applyPromo(cart, "SAVE10")
+oracle:
+  source: spec
+  expected: "180 (200 minus 10% = 200 - 20), from the pricing spec"
+doubles: []
+```
+
+```bash
+falsegreen-skill generate promo.spec.yaml --lang typescript
+```
+
+You get a real TypeScript test whose expected `180` traces back to the pricing spec, not to what
+`applyPromo` happens to return today.
+
+The React side of the family works the same way. A component spec renders through Testing Library:
+
+```bash
+falsegreen-skill generate profile-card.spec.yaml --lang tsx
+```
+
+The rendered test imports its framework explicitly and asserts against the visible state
+(`screen.getByRole(...)`), not the render call's return value, and it clears the self-check like
+any other. `--lang jsx` does the same for plain-JS React.
+
+That last point is the rule for anything above a pure function: the oracle for a component or an
+end-to-end test is the visible state a user would see, not the internal output of the render. It is
+the [pyramid](concepts/pyramid.md) again - the higher the level, the more the oracle is "what the
+user observes."
+
+## Mode C: repair a weak test and prove the repair
+
+`analyze` found a false-green. `fix` proposes a stronger version and then proves it before you
+trust it. It is opt-in, Python and pytest only for now, and it never touches your production code
+or applies the patch itself.
+
+### Step 1 - name the finding and the code it protects
+
+```bash
+falsegreen-skill fix tests/test_discount.py --case C2b --line 14 \
+  --sut src/discount.py --sut-line 12
+```
+
+`--case` and `--line` come straight from the `analyze` report. `--sut` is the production file the
+test is supposed to guard, and `--sut-line` is the behavior line the finding is about (it defaults
+to `--line`). The V1 fixable set is `C2b`, `C20`, `C21`, `C5`, and `C7`.
+
+### Step 2 - trust the gate, not the model
+
+The CLI builds a clean copy of your code and runs three checks on the proposed patch: it parses,
+it passes pytest against the real code, and it fails when a single operator on the SUT line is
+flipped. A patch is accepted only when it passes on correct code and goes red on the mutant. That
+last check is what separates a real assertion from a fresh tautology.
+
+Without `--sut` (or with `--cheap`) the gate cannot mutate anything, so it degrades to
+propose-only and says the patch is unvalidated. Exit code is 0 on accept, 1 on reject or
+unvalidated, so CI can branch on it.
+
+The honest limit: the gate proves the patch catches that one mutant, not every bug that could ever
+exist. It is a floor, not a guarantee. JS/TS/Robot and the deep semantic cases (10/11/12/18) are
+v2.
+
+## Choosing a provider
+
+Anthropic is the default. `--provider openai` and `--provider gemini` switch backends; set the
+matching key (`OPENAI_API_KEY`, `GEMINI_API_KEY`). Any other OpenAI-compatible host works through
+`--provider openai-compatible`: point `--base-url` at the `/v1` root and pass the model id.
+
+```bash
+export FALSEGREEN_API_KEY=sk-or-...
+falsegreen-skill analyze tests/test_payment.py \
+  --provider openai-compatible \
+  --base-url https://openrouter.ai/api/v1 \
+  --model meta-llama/llama-3.3-70b-instruct --max-tokens 8192
+```
+
+The full provider table (base URLs, example models, and which free tiers fit the 33k prompt) lives
+in [the skill page](scanners/skill.md#openai-compatible) and, in more depth, in the project's
+[cli.md](https://github.com/vinicq/falsegreen-skill/blob/master/docs/cli.md). A rough guide:
+
+| Want | Use |
+|---|---|
+| Simplest setup, best depth | `anthropic` (default), `--model claude-opus-4-8` for the hardest case 18 |
+| No key, no cost | Ollama locally (`--base-url http://localhost:11434/v1`), any key placeholder |
+| A hosted OpenAI-compatible tier | OpenRouter or NVIDIA NIM fit the 33k prompt on most models |
+| Run without your own key at all | install the skill as an editor plugin and let the host model do the work |
+
+`generate` and the `--json` self-check need a model that both fits the ~33k-token prompt and can
+emit the JSON report. A tiny local model often lands in UNVERIFIED for that reason.
+
+## When something goes wrong
+
+| Symptom | Cause | What to do |
+|---|---|---|
+| HTTP 413 or 429 right away | The 33k prompt exceeds the provider's free per-minute token cap | Use a larger tier, a big-context model, or Ollama locally |
+| `generate` says UNVERIFIED | The model could not emit a valid review report | Use a stronger model for the self-check |
+| JSON output "could not parse" | A reasoning model spent its budget on thinking and got cut off | Raise `--max-tokens` to 8192 or higher |
+| `generate` refuses before any call | The spec has no `oracle.expected`, or `--lang` is unknown | Add the oracle block, or fix the language flag |
+| `fix` says "unvalidated" | You did not pass `--sut` / `--sut-line` | Pass both so the mutation gate can run |
+
+## Where to go next
+
+- [falsegreen-skill (LLM)](scanners/skill.md) - the CLI reference on this site: every flag, the
+  full provider table, and per-host enable steps
+- [Judgments (J1-J6)](concepts/judgments.md) - the protocol every mode shares
+- [The oracle hierarchy](concepts/oracle.md) - why the expected value cannot come from the code
+- [Semantic catalog](catalog/semantic.md) - the codes the skill reports

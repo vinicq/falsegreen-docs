@@ -76,6 +76,7 @@ plugins:
           build: true
           nav_translations:
             Home: Início
+            User Guide: Guia do usuário
             Catalog: Catálogo
             Overview: Visão geral
             Concepts: Conceitos
@@ -96,6 +97,7 @@ plugins:
 
 nav:
   - Home: index.md
+  - User Guide: user-guide.md
   - Catalog:
       - Overview: catalog/index.md
       - Python: catalog/python.md

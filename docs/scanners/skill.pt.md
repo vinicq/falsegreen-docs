@@ -100,13 +100,14 @@ os scanners pegam mais o que só um leitor de intenção consegue:
 
 - **Detect** - lê uma suíte e reporta achados (J1-J6, nível, evidência, dica de correção).
 - **Author** - gera testes que não são false-green por construção, uma spec por nível da pirâmide.
+  Agora também na CLI, via `generate`, não só no host.
 - **AI-fix gate (F7)** - propõe um teste reforçado e o valida com um portão de mutação
   bidirecional (passa em código limpo, falha com o bug reintroduzido).
 
 ## Complete usage and configuration { #complete-usage-and-configuration }
 
 A primeira execução acima é o caminho de cinco minutos. Esta seção é a referência completa: a CLI
-(`analyze` e o modo de portão de mutação `fix`), a configuração de provedor para cada backend
+(`analyze`, `generate` e o modo de portão de mutação `fix`), a configuração de provedor para cada backend
 suportado e os passos de habilitação por host. Espelha o que o [README do projeto](https://github.com/vinicq/falsegreen-skill),
 o [docs/cli.md](https://github.com/vinicq/falsegreen-skill/blob/master/docs/cli.md) e o
 [providers.md](https://github.com/vinicq/falsegreen-skill/blob/master/providers.md) documentam.
@@ -120,10 +121,11 @@ npm install -g falsegreen-skill
 npx falsegreen-skill analyze tests/test_payment.py
 ```
 
-Dois comandos:
+Três comandos:
 
 ```text
 falsegreen-skill analyze <file...> [options]
+falsegreen-skill generate <spec-file> [--lang <language>] [options]
 falsegreen-skill fix <test-file> --case <code> --line <n> [options]
 ```
 
@@ -187,6 +189,48 @@ código real, e **falha** numa mutação de linha do SUT. Um patch só é aceito
 correto e fica vermelho no mutante, o que prova que a nova asserção pega um bug em vez de ser uma
 nova tautologia. Sem `--sut` ele cai para só-propor e diz que o fix não foi validado. O limite
 honesto: o portão prova que o fix pega o mutante alvo, não todo bug possível.
+
+#### `generate` mode (autoverificação) { #generate-mode }
+
+`generate` é o Modo B: renderiza uma spec de teste independente de linguagem num teste real e então
+roda o Modo A sobre o resultado, para que uma forma false-green não passe pela autoverificação sem
+ser detectada. A autoria agora tem superfície na CLI, não só no host.
+
+```text
+falsegreen-skill generate <spec-file> [--lang <language>] [options]
+```
+
+| Flag | Descrição | Padrão |
+|---|---|---|
+| `--lang <language>` | `python`, `typescript`, `javascript`, `tsx`, `jsx` ou `robot`. `tsx`/`jsx` cobrem o lado React da família JS/TS (mesmo catálogo compartilhado que o `falsegreen-js` aplica sobre `.js`/`.ts`/`.tsx`/`.jsx`). Uma linguagem por execução: a spec é a fonte única, rode de novo para renderizar outra stack | primeiro item de `languages` da spec, senão `python` |
+
+```bash
+# renderiza a spec de exemplo num teste Python e faz a autoverificação
+npx falsegreen-skill generate examples/authoring/apply-discount.spec.yaml --lang python
+
+# mesma spec, TypeScript
+npx falsegreen-skill generate examples/authoring/apply-discount.spec.yaml --lang typescript
+
+# legível por máquina: { language, test, self_check, self_check_passed, self_check_error }
+npx falsegreen-skill generate my-spec.yaml --lang python --json
+```
+
+Um guard de oráculo offline roda antes de qualquer chamada de API: `generate` recusa, com exit 1,
+quando a spec não carrega a chave `oracle:` / `expected:` (também quando a linguagem é desconhecida
+ou o arquivo não existe). Um teste escrito a partir da saída atual do código só congela o bug (um
+teste de caracterização). O guard ancora nas chaves, então a menção num comentário não passa mais; o
+*valor* do oráculo continua sendo sua responsabilidade.
+
+Depois de gerar, a CLI roda o Modo A sobre o teste e o exit code falha fechado:
+
+| Exit | Estado | Significado |
+|---|---|---|
+| `0` | PASSED | a autoverificação rodou, sem false-green ALTO |
+| `1` | FAILED | um false-green sobrevivente foi confirmado (também: spec ruim / erro de API pelo guard offline) |
+| `3` | UNVERIFIED | a autoverificação não pôde rodar; o teste é impresso no stdout mas **não** é aceito |
+
+O limite honesto: a autoverificação é uma revisão estática do mesmo modelo, não uma execução. Ela não
+roda o teste, não confirma que ele compila ou importa, nem verifica o valor do oráculo.
 
 #### Exit codes { #cli-exit-codes }
 
