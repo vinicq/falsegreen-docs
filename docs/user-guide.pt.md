@@ -248,10 +248,26 @@ um piso, não uma garantia. JS/TS/Robot e os casos semânticos profundos (10/11/
 
 ## Escolhendo um provedor
 
-O Anthropic é o padrão. `--provider openai` e `--provider gemini` trocam o backend; defina a chave
-correspondente (`OPENAI_API_KEY`, `GEMINI_API_KEY`). Qualquer outro host compatível com OpenAI
-funciona via `--provider openai-compatible`: aponte `--base-url` para a raiz `/v1` e passe o id do
-modelo.
+Os três provedores embutidos leem cada um a própria chave e não precisam de `--base-url`; trocar de
+provedor é uma flag:
+
+```bash
+# Claude (Anthropic) - o provedor padrão, nada extra a passar
+export ANTHROPIC_API_KEY=sk-ant-...
+falsegreen-skill analyze tests/test_payment.py
+falsegreen-skill generate promo.spec.yaml --lang typescript
+
+# Codex (OpenAI) - modelos GPT / série o
+export OPENAI_API_KEY=sk-...
+falsegreen-skill analyze tests/test_payment.py --provider openai --model gpt-5
+
+# Gemini (Google)
+export GEMINI_API_KEY=...
+falsegreen-skill analyze tests/test_payment.py --provider gemini
+```
+
+Qualquer outro host compatível com OpenAI funciona via `--provider openai-compatible`: aponte
+`--base-url` para a raiz `/v1` e passe o id do modelo.
 
 ```bash
 export FALSEGREEN_API_KEY=sk-or-...

@@ -246,9 +246,26 @@ v2.
 
 ## Choosing a provider
 
-Anthropic is the default. `--provider openai` and `--provider gemini` switch backends; set the
-matching key (`OPENAI_API_KEY`, `GEMINI_API_KEY`). Any other OpenAI-compatible host works through
-`--provider openai-compatible`: point `--base-url` at the `/v1` root and pass the model id.
+The three built-in providers each read their own key and need no `--base-url`; switching provider is
+one flag:
+
+```bash
+# Claude (Anthropic) - the default provider, nothing extra to pass
+export ANTHROPIC_API_KEY=sk-ant-...
+falsegreen-skill analyze tests/test_payment.py
+falsegreen-skill generate promo.spec.yaml --lang typescript
+
+# Codex (OpenAI) - GPT / o-series models
+export OPENAI_API_KEY=sk-...
+falsegreen-skill analyze tests/test_payment.py --provider openai --model gpt-5
+
+# Gemini (Google)
+export GEMINI_API_KEY=...
+falsegreen-skill analyze tests/test_payment.py --provider gemini
+```
+
+Any other OpenAI-compatible host works through `--provider openai-compatible`: point `--base-url` at
+the `/v1` root and pass the model id.
 
 ```bash
 export FALSEGREEN_API_KEY=sk-or-...
