@@ -99,14 +99,14 @@ the scanners catch plus what only a reader of intent can:
 
 - **Detect** - read a suite and report findings (J1-J6, level, evidence, fix hint).
 - **Author** - generate tests that are not false-green by construction, one spec per pyramid
-  level.
+  level. Now on the CLI too, via `generate`, not only host-side.
 - **AI-fix gate (F7)** - propose a strengthened test and validate it with a bidirectional
   mutation gate (pass on clean code, fail on the reintroduced bug).
 
 ## Complete usage and configuration { #complete-usage-and-configuration }
 
 The first-run above is the five-minute path. This section is the full reference: the CLI
-(`analyze` and the `fix` mutation-gate mode), provider configuration for every supported
+(`analyze`, `generate`, and the `fix` mutation-gate mode), provider configuration for every supported
 backend, and the per-host enable steps. It mirrors what the [project README](https://github.com/vinicq/falsegreen-skill),
 [docs/cli.md](https://github.com/vinicq/falsegreen-skill/blob/master/docs/cli.md), and
 [providers.md](https://github.com/vinicq/falsegreen-skill/blob/master/providers.md) document.
@@ -120,10 +120,11 @@ npm install -g falsegreen-skill
 npx falsegreen-skill analyze tests/test_payment.py
 ```
 
-Two commands:
+Three commands:
 
 ```text
 falsegreen-skill analyze <file...> [options]
+falsegreen-skill generate <spec-file> [--lang <language>] [options]
 falsegreen-skill fix <test-file> --case <code> --line <n> [options]
 ```
 
@@ -188,6 +189,48 @@ both passes on correct code and goes red on the mutant, which is what proves the
 catches a bug instead of being a fresh tautology. Without `--sut` it degrades to propose-only and
 says the fix is unvalidated. The honest limit: the gate proves the fix catches the targeted mutant,
 not every possible bug.
+
+#### `generate` mode (self-check) { #generate-mode }
+
+`generate` is Mode B: it renders a language-neutral test spec into a real test, then runs Mode A on
+the result so a false-green shape cannot pass the self-check undetected. Authoring now has a CLI
+surface, not only the host-side skill.
+
+```text
+falsegreen-skill generate <spec-file> [--lang <language>] [options]
+```
+
+| Flag | Description | Default |
+|---|---|---|
+| `--lang <language>` | `python`, `typescript`, `javascript`, `tsx`, `jsx`, or `robot`. `tsx`/`jsx` cover the React side of the JS/TS family (same shared catalog `falsegreen-js` applies over `.js`/`.ts`/`.tsx`/`.jsx`). One language per run - the spec is the single source, re-run to render another stack | spec's first `languages` entry, else `python` |
+
+```bash
+# render the example spec to a Python test and self-check it
+npx falsegreen-skill generate examples/authoring/apply-discount.spec.yaml --lang python
+
+# same spec, TypeScript
+npx falsegreen-skill generate examples/authoring/apply-discount.spec.yaml --lang typescript
+
+# machine-readable: { language, test, self_check, self_check_passed, self_check_error }
+npx falsegreen-skill generate my-spec.yaml --lang python --json
+```
+
+An offline oracle guard runs before any API call: `generate` refuses, exit 1, when the spec carries
+no `oracle:` / `expected:` key (also when the language is unknown or the file is missing). A test
+written from the code's current output only freezes the bug (a characterization test). The guard
+anchors on the keys, so the words in a comment no longer pass; the oracle's *value* is still yours
+to get right.
+
+After generating, the CLI runs Mode A on the test and the exit code fails closed:
+
+| Exit | State | Meaning |
+|---|---|---|
+| `0` | PASSED | self-check ran, no HIGH false-green |
+| `1` | FAILED | a surviving false-green was confirmed (also: bad spec / API error via the offline guard) |
+| `3` | UNVERIFIED | the self-check could not run; the test prints to stdout but is **not** accepted |
+
+The honest limit: the self-check is a same-model static review, not an execution. It does not run
+the test, confirm it compiles or imports, or verify the oracle value.
 
 #### Exit codes { #cli-exit-codes }
 
