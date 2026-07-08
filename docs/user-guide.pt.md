@@ -30,7 +30,7 @@ Há dois jeitos de rodar o falsegreen, e qual encaixa depende de como você já 
 
 ### A) Dentro do seu agente, no seu login (sem API key)
 
-Se você já usa Claude Code, Codex CLI, Gemini CLI ou Cursor, muitas vezes num plano Pro/Plus/
+Se você já usa Claude Code, Codex CLI, Antigravity CLI ou Cursor, muitas vezes num plano Pro/Plus/
 Advanced, instale o falsegreen ali e ele roda no próprio modelo do host, usando a sua sessão logada.
 Sem API key, nada para exportar, sem custo por token além do seu plano atual. É o que a maioria das
 pessoas nessas ferramentas quer.
@@ -42,7 +42,7 @@ Habilite uma vez, por host:
 - **Codex CLI:** não tem instalação de um comando. Clone o repo e rode `codex` para o protocolo
   completo (limitado ao clone), ou copie o `AGENTS.md` para o `AGENTS.md` do seu projeto ou
   `~/.codex/AGENTS.md` para revisão compacta
-- **Gemini CLI:** `gemini extensions install https://github.com/vinicq/falsegreen-skill`
+- **Antigravity CLI (`agy`):** `agy plugin install https://github.com/vinicq/falsegreen-skill`, ou abra o repo e o `agy` descobre a skill de workspace em `.agents/skills/falsegreen-skill/SKILL.md` (da antiga Gemini CLI: `agy plugin import gemini`)
 - **Cursor:** copie `contexts/cursor.md` para `.cursor/rules/falsegreen-skill.mdc`
 
 Depois anexe um teste e peça a análise, ou peça para ele escrever um teste para a sua feature. Os

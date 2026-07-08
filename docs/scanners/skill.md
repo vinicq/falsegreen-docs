@@ -340,15 +340,17 @@ the structural pass.
 full protocol (the root `AGENTS.md` auto-loads, scoped to the clone), or copy `AGENTS.md` into
 your own project or `~/.codex/AGENTS.md` for the compact routine protocol.
 
-**Gemini CLI.** Install the extension:
+**Antigravity CLI (`agy`).** Google's successor to the discontinued Gemini CLI. Install it as a
+plugin:
 
 ```bash
-gemini extensions install https://github.com/vinicq/falsegreen-skill
+agy plugin install https://github.com/vinicq/falsegreen-skill
 ```
 
-The manifest loads `GEMINI.md` as persistent context, so every session carries the J1-J6 protocol;
-ask in natural language. A workspace skill at `.gemini/skills/falsegreen-skill/SKILL.md` is the
-alternative when you want Gemini's skill discovery rather than extension-wide context.
+Or run `agy` inside the repo with no install: it discovers the workspace skill at
+`.agents/skills/falsegreen-skill/SKILL.md` and parses `AGENTS.md` / `GEMINI.md` at the root as rule
+files on startup. The skill is the `/falsegreen-skill` command; ask in natural language. If you
+still have the old Gemini CLI extension, migrate it with `agy plugin import gemini`.
 
 **Cursor.** Copy the rule template into `.cursor/rules/falsegreen-skill.mdc` (full template in the
 project's `contexts/cursor.md`). Cursor loads it on a matching test file; ask Cursor to analyze the
