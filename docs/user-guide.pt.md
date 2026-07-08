@@ -39,8 +39,9 @@ Habilite uma vez, por host:
 
 - **Claude Code:** `/plugin marketplace add vinicq/falsegreen-skill` e depois
   `/plugin install falsegreen-skill@falsegreen`
-- **Codex CLI:** `codex plugin marketplace add vinicq/falsegreen-skill` (ou clone o repo: o
-  `AGENTS.md` da raiz carrega sozinho)
+- **Codex CLI:** não tem instalação de um comando. Clone o repo e rode `codex` para o protocolo
+  completo (limitado ao clone), ou copie o `AGENTS.md` para o `AGENTS.md` do seu projeto ou
+  `~/.codex/AGENTS.md` para revisão compacta
 - **Gemini CLI:** `gemini extensions install https://github.com/vinicq/falsegreen-skill`
 - **Cursor:** copie `contexts/cursor.md` para `.cursor/rules/falsegreen-skill.mdc`
 

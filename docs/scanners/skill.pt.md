@@ -337,9 +337,9 @@ falso-positivo, a skill dispara por intenção. Para Python ela aplica o catálo
 direto; opcionalmente rode antes o [scanner Python](python.md) estático e passe a saída dele à skill
 como a passagem estrutural.
 
-**OpenAI Codex CLI.** Dois caminhos: o marketplace de plugins
-(`codex plugin marketplace add vinicq/falsegreen-skill`), ou clonar o repo, onde o `AGENTS.md` da
-raiz carrega automaticamente quando o Codex abre uma sessão dentro do clone.
+**OpenAI Codex CLI.** Não tem instalação de um comando para este repo. Clone e rode `codex` para
+o protocolo completo (o `AGENTS.md` da raiz carrega sozinho, limitado ao clone), ou copie o
+`AGENTS.md` para o seu projeto ou `~/.codex/AGENTS.md` para o protocolo compacto de rotina.
 
 **Gemini CLI.** Instale a extensão:
 

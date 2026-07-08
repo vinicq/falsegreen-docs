@@ -39,8 +39,9 @@ Enable it once, per host:
 
 - **Claude Code:** `/plugin marketplace add vinicq/falsegreen-skill` then
   `/plugin install falsegreen-skill@falsegreen`
-- **Codex CLI:** `codex plugin marketplace add vinicq/falsegreen-skill` (or clone the repo - the
-  root `AGENTS.md` auto-loads)
+- **Codex CLI:** no single-command install. Clone the repo and run `codex` for the full protocol
+  (scoped to the clone), or copy `AGENTS.md` into your own project / `~/.codex/AGENTS.md` for
+  compact review
 - **Gemini CLI:** `gemini extensions install https://github.com/vinicq/falsegreen-skill`
 - **Cursor:** copy `contexts/cursor.md` into `.cursor/rules/falsegreen-skill.mdc`
 

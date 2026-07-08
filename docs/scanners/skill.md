@@ -336,9 +336,9 @@ analysis, the skill triggers on intent. For Python it applies the full pattern c
 optionally run the static [Python scanner](python.md) first and hand its output to the skill as
 the structural pass.
 
-**OpenAI Codex CLI.** Two paths: the plugin marketplace
-(`codex plugin marketplace add vinicq/falsegreen-skill`), or clone the repo, where the root
-`AGENTS.md` loads automatically when Codex starts a session inside the clone.
+**OpenAI Codex CLI.** No single-command install for this repo. Clone it and run `codex` for the
+full protocol (the root `AGENTS.md` auto-loads, scoped to the clone), or copy `AGENTS.md` into
+your own project or `~/.codex/AGENTS.md` for the compact routine protocol.
 
 **Gemini CLI.** Install the extension:
 
