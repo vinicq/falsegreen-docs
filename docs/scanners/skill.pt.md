@@ -252,8 +252,8 @@ A skill não está presa ao Claude. O protocolo é agnóstico de provedor; escol
 | `GEMINI_API_KEY` | `--provider gemini` |
 | `FALSEGREEN_API_KEY` | `--provider openai-compatible` (tem precedência sobre `OPENAI_API_KEY`) |
 
-Modelos padrão: `anthropic` usa `claude-sonnet-4-6`, `openai` usa `gpt-4o`, `gemini` usa
-`gemini-2.5-pro`. Para análise profunda do caso 18, passe `--model claude-opus-4-8` (Anthropic) ou
+Modelos padrão: `anthropic` usa `claude-sonnet-5`, `openai` usa `gpt-5`, `gemini` usa
+`gemini-2.5-flash`. Para análise profunda do caso 18, passe `--model claude-opus-4-8` (Anthropic) ou
 `--model o3` (OpenAI); ao usar `o3`, `--temperature` é ignorado automaticamente.
 
 ```bash
