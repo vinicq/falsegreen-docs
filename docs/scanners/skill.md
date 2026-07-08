@@ -252,8 +252,8 @@ The skill is not tied to Claude. The protocol is provider-agnostic; pick a backe
 | `GEMINI_API_KEY` | `--provider gemini` |
 | `FALSEGREEN_API_KEY` | `--provider openai-compatible` (takes precedence over `OPENAI_API_KEY`) |
 
-Default models: `anthropic` uses `claude-sonnet-4-6`, `openai` uses `gpt-4o`, `gemini` uses
-`gemini-2.5-pro`. For deep case 18 analysis, pass `--model claude-opus-4-8` (Anthropic) or
+Default models: `anthropic` uses `claude-sonnet-5`, `openai` uses `gpt-5`, `gemini` uses
+`gemini-2.5-flash`. For deep case 18 analysis, pass `--model claude-opus-4-8` (Anthropic) or
 `--model o3` (OpenAI); when using `o3`, `--temperature` is ignored automatically.
 
 ```bash
