@@ -262,6 +262,57 @@ Full per-code detail in the [JS/TS catalog](../catalog/javascript-typescript.md)
 | **Diagnostic / coupling** (F8) | `D1`, `D3`, `D4`, `D6`, `D7`, `D8`, `M2` | opt-in |
 | **Project / CI** (`--config-audit`) | `PL10` (`--passWithNoTests`), `PL7` (coverage threshold), `PL8` (bail) | reads jest/vitest config |
 
+## Playwright (E2E and API) { #playwright }
+
+A project that mixes `node:test`/Jest/Vitest with Playwright specs scans cleanly. Playwright
+has its own assertion grammar, and reading it through the `node:test`/`assert` lens produced
+false positives; the scanner now recognizes the framework and judges it on its own terms.
+
+**How Playwright is recognized.** Three signals, any one of which marks the file:
+
+1. the package import (`@playwright/test`, `playwright`, `playwright-core`);
+2. a namespaced `test.*` API call (`test.describe`, `test.step`, `test.beforeAll`,
+   `test.afterAll`) — this catches suites that import `test`/`expect` from a **fixture
+   re-export** (`test.extend`/`mergeTests`, e.g. `import { test, expect } from "@company/e2e/fixtures"`),
+   the pattern Playwright's own docs recommend;
+3. a Playwright fixture parameter: `browserName` alone (unambiguous), or `page`/`context`/
+   `request` corroborated by a Playwright-exclusive matcher such as `toBeOK`/`toHaveCount`.
+   A bare `request` never flips the signal by itself, so a supertest/Express test that
+   destructures `{ request }` is not mistaken for Playwright.
+
+**What that fixes.**
+
+- **Lifecycle hooks are not tests.** `test.beforeEach`/`afterEach`/`beforeAll`/`afterAll`,
+  `test.describe`, and `test.step` are no longer analyzed as test bodies, so a setup or
+  teardown hook that calls code without an assertion no longer reports `C2b` (and the
+  sibling body-level codes stop misfiring on a hook). A hook is not a test; the assertion
+  belongs in the `test(...)`. `test.only`/`test.serial`/`test.fail`/`test.failing` are real
+  running tests and keep full body analysis.
+- **Conditional skip is a runtime guard, not a disabled test.** `test.skip(condition[, reason])`,
+  `test.skip()`, and the predicate form `test.skip(({ browserName }) => ...)` no longer fire
+  `JS4`. Unconditional declared skips still do: `test.skip("title", fn)`, `test.skip(true, "...")`
+  (a group disabled by a constant), `test.describe.skip`, `xit`/`xdescribe`/`it.todo`. The
+  suppression is gated on a Playwright signal **and** a non-string first argument, so a
+  `node:test`/Mocha titleless `test.skip(fn)` in a non-Playwright file still fires `JS4` — no
+  false negative.
+- **API-response and UI matchers count as assertions.** `expect(locator).toBeVisible()`/
+  `toHaveText()`/`toHaveCount()` and `expect(apiResponse).toBeOK()` already registered as real
+  oracles; this work adds the hook, skip, and file-recognition handling around them so the
+  whole spec — UI or API — reads correctly.
+
+The file-recognition signal is scoped to the skip decision only; it does not widen the pyramid
+level, so a Jest/Vitest file with a bare `describe` never turns into a browser-layer file and
+never starts forgiving a weak check. See [`C6`](#c6-weak-check) below.
+
+## Playwright-safe weak-check (C6) { #c6-weak-check }
+
+`C6` (weak check) uses a **sole-oracle** model across every runner: it fires only when a
+presence/non-empty check (`toBeTruthy`/`toBeDefined`/`.length > 0`) is the enclosing test's
+ONLY oracle. A weak check next to a stronger assertion in the same test (a `toBeGreaterThan(0)`
+guard before a `toBe(...)`) is not flagged — the strong assertion carries the test. A test whose
+assertions are all weak still reports `C6`. This matters for E2E, where a guard like
+`expect(items.length).toBeGreaterThan(0)` commonly precedes the real check.
+
 ## What it does not cover, and why
 
 ### Out of scope (the wrong axis)

@@ -261,6 +261,33 @@ per-code detail is in the [Python catalog](../catalog/python.md).
 | **Diagnostic / coupling** (F8) | `D1`, `D3`, `D4`, `D5`, `D6`, `M2` | opt-in, never blocks |
 | **Project / CI** (F5, `--config-audit`) | `PL2` (filterwarnings not error), `PL7` (no `--cov-fail-under`), `PL8` (`-x`/`--maxfail` masks the count) | reads config, reports |
 
+## Playwright and API tests (C6) { #playwright-api }
+
+Playwright for Python covers two kinds of test: E2E of the UI (`page`, locators,
+`expect(locator).to_be_visible()`) and API tests (`APIRequestContext`, `assert response.ok`,
+`expect(api_response).to_be_ok()`). The scanner already recognizes both — `expect(...)` counts
+as an assertion, `playwright`/`pytest_playwright` raise the file to the e2e/browser level, and
+a fixture with `autouse=True` that only sets up is not analyzed as a test.
+
+The one refinement worth calling out is `C6` (weak check) over the API idiom. `assert <resp>.ok`
+is the canonical way a Playwright API test asserts a 2xx (the same `.ok` property exists on
+`requests.Response` and Selenium's `APIResponse`). The web/UI softening used to key the presence
+check on the response variable's **root name**, so `assert response.ok` was quiet but
+`assert new_issue.ok` — the exact form in the official Playwright API-testing docs — fired a
+false positive. The softening now anchors on the `.ok` **attribute form**, not the variable name:
+
+- `assert new_issue.ok` / `assert issues.ok` in a Playwright/`requests` test no longer fires `C6`;
+- the gate stays scoped to web/browser context — an `assert x.ok` at unit level still fires `C6`;
+- it is anchored on the `ast.Attribute` node, so a bare `assert ok` (a plain name, a legitimate
+  weak guard) and the `.ok()` call form (`.ok` is a property, not callable) keep firing `C6`.
+
+Known, bounded give-back: `assert m.ok` on a spec-less `Mock()` in a web test is softened too
+(the auto-created attribute is truthy). This already applied to `assert response.ok`; the fix
+only widens it to any response name. Accepted under precision-over-recall — a false positive that
+blocks a real API test is worse than this miss. Unlike [falsegreen-js](javascript.md#c6-weak-check),
+which suppresses `C6` only when the weak check is the sole oracle, the Python scanner softens
+`.ok` per occurrence; the py/js behaviour gap is intentional.
+
 ## What it does not cover, and why
 
 ### Out of scope (the wrong axis)
