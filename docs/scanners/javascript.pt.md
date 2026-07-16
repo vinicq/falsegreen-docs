@@ -263,6 +263,58 @@ Detalhe completo por código no [catálogo JS/TS](../catalog/javascript-typescri
 | **Diagnóstico / acoplamento** (F8) | `D1`, `D3`, `D4`, `D6`, `D7`, `D8`, `M2` | opcional |
 | **Projeto / CI** (`--config-audit`) | `PL10` (`--passWithNoTests`), `PL7` (limiar de cobertura), `PL8` (bail) | lê a config do jest/vitest |
 
+## Playwright (E2E e API) { #playwright }
+
+Um projeto que mistura `node:test`/Jest/Vitest com specs de Playwright é escaneado sem ruído.
+O Playwright tem uma gramática de asserção própria, e lê-la pela lente do `node:test`/`assert`
+gerava falsos positivos; o scanner agora reconhece o framework e o julga pelos critérios dele.
+
+**Como o Playwright é reconhecido.** Três sinais, e basta um para marcar o arquivo:
+
+1. o import do pacote (`@playwright/test`, `playwright`, `playwright-core`);
+2. uma chamada da API `test.*` com namespace (`test.describe`, `test.step`, `test.beforeAll`,
+   `test.afterAll`) — isso pega as suítes que importam `test`/`expect` de um **re-export de
+   fixture** (`test.extend`/`mergeTests`, ex.: `import { test, expect } from "@company/e2e/fixtures"`),
+   o padrão que a própria doc do Playwright recomenda;
+3. um parâmetro de fixture do Playwright: `browserName` sozinho (inequívoco), ou
+   `page`/`context`/`request` corroborado por um matcher exclusivo do Playwright como
+   `toBeOK`/`toHaveCount`. Um `request` isolado nunca liga o sinal por conta própria, então um
+   teste de supertest/Express que desestrutura `{ request }` não é confundido com Playwright.
+
+**O que isso corrige.**
+
+- **Hooks de ciclo de vida não são testes.** `test.beforeEach`/`afterEach`/`beforeAll`/`afterAll`,
+  `test.describe` e `test.step` não são mais analisados como corpo de teste, então um hook de
+  setup ou teardown que chama código sem asserção não reporta mais `C2b` (e os códigos irmãos
+  de corpo param de disparar no hook). Hook não é teste; a asserção fica no `test(...)`.
+  `test.only`/`test.serial`/`test.fail`/`test.failing` são testes que rodam de verdade e
+  mantêm a análise completa.
+- **Skip condicional é guarda de runtime, não teste desligado.** `test.skip(condição[, motivo])`,
+  `test.skip()` e a forma de predicado `test.skip(({ browserName }) => ...)` não disparam mais
+  `JS4`. Skips declarados incondicionais ainda disparam: `test.skip("título", fn)`,
+  `test.skip(true, "...")` (grupo desligado por constante), `test.describe.skip`,
+  `xit`/`xdescribe`/`it.todo`. A supressão exige um sinal de Playwright **e** um primeiro
+  argumento não-string, então um `test.skip(fn)` sem título de `node:test`/Mocha num arquivo
+  que não é Playwright continua disparando `JS4` — sem falso negativo.
+- **Matchers de resposta de API e de UI contam como asserção.** `expect(locator).toBeVisible()`/
+  `toHaveText()`/`toHaveCount()` e `expect(apiResponse).toBeOK()` já eram oráculos reais; este
+  trabalho adiciona o tratamento de hook, skip e reconhecimento de arquivo ao redor deles, para
+  a spec inteira — de UI ou de API — ser lida corretamente.
+
+O sinal de reconhecimento de arquivo vale só para a decisão de skip; não amplia o nível da
+pirâmide, então um arquivo Jest/Vitest com um `describe` simples nunca vira arquivo de camada
+browser nem passa a perdoar uma checagem fraca. Veja [`C6`](#c6-weak-check) abaixo.
+
+## C6 (checagem fraca) seguro para Playwright { #c6-weak-check }
+
+O `C6` (checagem fraca) usa um modelo de **oráculo único** em todos os runners: só dispara
+quando uma checagem de presença/não-vazio (`toBeTruthy`/`toBeDefined`/`.length > 0`) é o ÚNICO
+oráculo do teste. Uma checagem fraca ao lado de uma asserção mais forte no mesmo teste (uma
+guarda `toBeGreaterThan(0)` antes de um `toBe(...)`) não é sinalizada — a asserção forte carrega
+o teste. Um teste cujas asserções são todas fracas continua reportando `C6`. Isso importa em
+E2E, onde uma guarda como `expect(items.length).toBeGreaterThan(0)` costuma vir antes da
+checagem real.
+
 ## What it does not cover, and why
 
 ### Fora de escopo (o eixo errado)

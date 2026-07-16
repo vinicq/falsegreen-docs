@@ -264,6 +264,35 @@ código está no [catálogo Python](../catalog/python.md).
 | **Diagnóstico / acoplamento** (F8) | `D1`, `D3`, `D4`, `D5`, `D6`, `M2` | opcional, nunca bloqueia |
 | **Projeto / CI** (F5, `--config-audit`) | `PL2` (filterwarnings não está em error), `PL7` (sem `--cov-fail-under`), `PL8` (`-x`/`--maxfail` mascara a contagem) | lê a config, reporta |
 
+## Playwright e testes de API (C6) { #playwright-api }
+
+O Playwright para Python cobre dois tipos de teste: E2E de UI (`page`, locators,
+`expect(locator).to_be_visible()`) e testes de API (`APIRequestContext`, `assert response.ok`,
+`expect(api_response).to_be_ok()`). O scanner já reconhece os dois — `expect(...)` conta como
+asserção, `playwright`/`pytest_playwright` elevam o arquivo ao nível e2e/browser, e uma fixture
+com `autouse=True` que só faz setup não é analisada como teste.
+
+O refinamento que vale destacar é o `C6` (checagem fraca) sobre o idioma de API.
+`assert <resp>.ok` é a forma canônica de um teste de API do Playwright asserir um 2xx (a mesma
+property `.ok` existe em `requests.Response` e no `APIResponse` do Selenium). O softening de
+web/UI ancorava a checagem de presença no **nome-raiz** da variável do response, então
+`assert response.ok` ficava quieto mas `assert new_issue.ok` — a forma exata da doc oficial de
+teste de API do Playwright — dava um falso positivo. Agora o softening ancora na **forma do
+atributo** `.ok`, não no nome da variável:
+
+- `assert new_issue.ok` / `assert issues.ok` num teste de Playwright/`requests` não dispara mais `C6`;
+- o gate continua restrito ao contexto web/browser — um `assert x.ok` em nível unit ainda dispara `C6`;
+- é ancorado no nó `ast.Attribute`, então um `assert ok` puro (um nome comum, guarda fraca
+  legítima) e a forma de chamada `.ok()` (`.ok` é property, não é chamável) continuam disparando `C6`.
+
+Give-back conhecido e limitado: `assert m.ok` sobre um `Mock()` sem spec num teste web também é
+amaciado (o atributo auto-criado é truthy). Isso já valia para `assert response.ok`; o fix só
+alarga para qualquer nome de response. Aceito sob precisão sobre recall — um falso positivo que
+trava um teste de API real é pior que essa perda. Diferente do
+[falsegreen-js](javascript.md#c6-weak-check), que suprime `C6` só quando a checagem fraca é o
+oráculo único, o scanner Python amacia `.ok` por ocorrência; a diferença de comportamento py/js
+é intencional.
+
 ## What it does not cover, and why
 
 ### Fora de escopo (o eixo errado)
