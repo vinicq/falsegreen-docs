@@ -1,0 +1,3374 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Find tests that pass green without protecting anything. The catalog and guide for the falsegreen family of false-green test scanners.">
+      
+      
+      
+        <link rel="canonical" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/javascript-typescript/">
+      
+      
+        <link rel="prev" href="../python/">
+      
+      
+        <link rel="next" href="../robot/">
+      
+      
+        
+          <link rel="alternate" href="../../../catalog/javascript-typescript/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>JavaScript / TypeScript - falsegreen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#catalogo-javascript-typescript" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../" title="falsegreen" class="md-header__button md-logo" aria-label="falsegreen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            falsegreen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              JavaScript / TypeScript
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Selecione o idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../catalog/javascript-typescript/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="pt" class="md-select__link">
+              Português (Brasil)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vinicq/falsegreen-docs" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vinicq/falsegreen-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user-guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Guia do usuário
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Catálogo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/taxonomy/" class="md-tabs__link">
+          
+  
+  
+  Conceitos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../scanners/python/" class="md-tabs__link">
+          
+  
+  
+  Scanners
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pesquisa
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../credits/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Créditos
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="falsegreen" class="md-nav__button md-logo" aria-label="falsegreen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    falsegreen
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vinicq/falsegreen-docs" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vinicq/falsegreen-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia do usuário
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Catálogo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Catálogo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript / TypeScript
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript / TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Índice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-compartilhados-mesmo-conceito-do-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos compartilhados (mesmo conceito do Python)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Códigos compartilhados (mesmo conceito do Python)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C2 - corpo de teste vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c2b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C2b - chama a unidade mas nunca afirma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C5 - asserção sempre verdadeira
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C6 - verificação fraca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C7 - autocomparação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C8 - igualdade exata em um float
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c8b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C8b - toBeCloseTo sem argumento de precisão
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C9 - toThrow() sem tipo de erro ou mensagem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c11a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C11a - literal autoconfirmante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C16 - depende de tempo, aleatoriedade ou um timer fixo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C18 - igualdade de string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C20 - asserção morta depois de um terminador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C21 - nenhuma asserção roda incondicionalmente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C23 - lê um arquivo real num caminho literal ou URL fixa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C37 - caso duplicado de it.each / test.each
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C44 - tautologia numérica sobre um comprimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C48 - dark patch: vira um flag de modo de teste e afirma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CC - asserção comentada
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-especificos-de-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos específicos de JavaScript
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Códigos específicos de JavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#js1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS1 - teste focado pula o resto da suíte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS2 - expect sem matcher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS3 - o snapshot é a única asserção
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS4 - teste pulado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS5 - query ou evento async não aguardado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS6 - describe / suite vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS7 - asserção em um setTimeout / callback then não aguardado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS8 - faz mock da unidade sob teste e a afirma diretamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS9 - asserção em um ramo literal morto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS11 - try/catch engole a asserção
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS13 - query usada como instrução solta, nunca afirmada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS15 - comparação envolvida em um booleano
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS17 - bloco de teste comentado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS18 - callback done em vez de async/await
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS21 - matcher referenciado mas nunca chamado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS22 - tabela it.each / test.each vazia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS23 - expect.assertions(N) que o corpo não consegue satisfazer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS24 - query do Cypress sem asserção
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS25 - a única asserção fica dentro de um callback de iterador de array
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS26 - fake timers instalados mas nunca avançados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS27 - toHaveBeenCalled* é o único oráculo sobre um dublê criado localmente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS29 - cadeia resolves / rejects como instrução solta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS30 - asserção literal contra literal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS31 - try/catch engole um possível throw sem asserção sobre a exceção
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#armadilhas-de-alto-valor-com-evidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Armadilhas de alto valor com evidência
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camada-de-projeto-auditoria-de-config-pl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camada de projeto - auditoria de config (PL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Camada de projeto - auditoria de config (PL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pl7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PL7 - sem gate de cobertura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pl8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PL8 - bail interrompe a execução cedo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pl10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PL10 - passWithNoTests deixa uma suíte vazia passar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos de diagnóstico (opcionais, OFF por padrão)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parecidos-nao-sinalizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parecidos: NÃO sinalizar
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semântico (LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gherkin-tavern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gherkin e Tavern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conceitos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Conceitos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taxonomia de falhas (F1-F8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/judgments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Julgamentos (J1-J6)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/oracle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A hierarquia de oráculos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/pyramid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pirâmide de testes e níveis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/by-test-level/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Padrões por linguagem e nível de teste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/what-we-do-not-flag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O que não sinalizamos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Escopo e honestidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/denominator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cobertura vs a literatura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cobertura por família
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanners
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scanners
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scanners/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen (Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scanners/javascript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen-js (JS/TS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scanners/robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    robotframework-falsegreen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scanners/skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen-skill (LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pesquisa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Créditos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Índice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-compartilhados-mesmo-conceito-do-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos compartilhados (mesmo conceito do Python)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Códigos compartilhados (mesmo conceito do Python)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C2 - corpo de teste vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c2b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C2b - chama a unidade mas nunca afirma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C5 - asserção sempre verdadeira
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C6 - verificação fraca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C7 - autocomparação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C8 - igualdade exata em um float
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c8b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C8b - toBeCloseTo sem argumento de precisão
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C9 - toThrow() sem tipo de erro ou mensagem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c11a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C11a - literal autoconfirmante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C16 - depende de tempo, aleatoriedade ou um timer fixo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C18 - igualdade de string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C20 - asserção morta depois de um terminador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C21 - nenhuma asserção roda incondicionalmente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C23 - lê um arquivo real num caminho literal ou URL fixa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C37 - caso duplicado de it.each / test.each
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C44 - tautologia numérica sobre um comprimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C48 - dark patch: vira um flag de modo de teste e afirma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CC - asserção comentada
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-especificos-de-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos específicos de JavaScript
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Códigos específicos de JavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#js1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS1 - teste focado pula o resto da suíte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS2 - expect sem matcher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS3 - o snapshot é a única asserção
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS4 - teste pulado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS5 - query ou evento async não aguardado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS6 - describe / suite vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS7 - asserção em um setTimeout / callback then não aguardado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS8 - faz mock da unidade sob teste e a afirma diretamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS9 - asserção em um ramo literal morto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS11 - try/catch engole a asserção
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS13 - query usada como instrução solta, nunca afirmada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS15 - comparação envolvida em um booleano
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS17 - bloco de teste comentado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS18 - callback done em vez de async/await
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS21 - matcher referenciado mas nunca chamado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS22 - tabela it.each / test.each vazia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS23 - expect.assertions(N) que o corpo não consegue satisfazer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS24 - query do Cypress sem asserção
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS25 - a única asserção fica dentro de um callback de iterador de array
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS26 - fake timers instalados mas nunca avançados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS27 - toHaveBeenCalled* é o único oráculo sobre um dublê criado localmente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS29 - cadeia resolves / rejects como instrução solta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS30 - asserção literal contra literal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS31 - try/catch engole um possível throw sem asserção sobre a exceção
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#armadilhas-de-alto-valor-com-evidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Armadilhas de alto valor com evidência
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camada-de-projeto-auditoria-de-config-pl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camada de projeto - auditoria de config (PL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Camada de projeto - auditoria de config (PL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pl7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PL7 - sem gate de cobertura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pl8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PL8 - bail interrompe a execução cedo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pl10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PL10 - passWithNoTests deixa uma suíte vazia passar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos de diagnóstico (opcionais, OFF por padrão)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parecidos-nao-sinalizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parecidos: NÃO sinalizar
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="catalogo-javascript-typescript">Catálogo JavaScript / TypeScript<a class="headerlink" href="#catalogo-javascript-typescript" title="Permanent link">&para;</a></h1>
+<p>Os códigos implementados por <a href="../../scanners/javascript/">falsegreen-js</a>: uma varredura estática via a
+API do compilador TypeScript, agnóstica de runner entre Jest, Vitest, Mocha+Chai, Jasmine, AVA,
+node:test, Cypress, Playwright e Testing Library. Cobre <code>.js</code>, <code>.jsx</code>, <code>.ts</code>, <code>.tsx</code>,
+<code>.mjs</code>, <code>.cjs</code>, <code>.mts</code>, <code>.cts</code>.</p>
+<p>Os códigos compartilham um id com <a href="../python/">Python</a> onde o conceito coincide; códigos <code>JS*</code> são
+específicos do ecossistema. Confiança: <strong>ALTO</strong> bloqueia, <strong>BAIXO</strong> avisa. Julgamentos são
+<a href="../../concepts/judgments/">J1-J6</a>.</p>
+<p>Cada código emitido tem sua própria entrada abaixo. O índice leva direto a cada uma.</p>
+<h2 id="indice">Índice<a class="headerlink" href="#indice" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Conf</th>
+<th>J</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#c2">C2</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>corpo de teste vazio</td>
+</tr>
+<tr>
+<td><a href="#c2b">C2b</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>chama a unidade mas nunca afirma</td>
+</tr>
+<tr>
+<td><a href="#c5">C5</a></td>
+<td>ALTO</td>
+<td>J2</td>
+<td>sempre verdadeira (<code>expect(true).toBe(true)</code>)</td>
+</tr>
+<tr>
+<td><a href="#c6">C6</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td>verificação fraca (<code>toBeTruthy</code>, <code>.length &gt; 0</code>)</td>
+</tr>
+<tr>
+<td><a href="#c7">C7</a></td>
+<td>ALTO</td>
+<td>J2</td>
+<td>autocomparação (<code>expect(x).toBe(x)</code>)</td>
+</tr>
+<tr>
+<td><a href="#c8">C8</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td>igualdade exata em um float</td>
+</tr>
+<tr>
+<td><a href="#c8b">C8b</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td><code>toBeCloseTo</code> sem argumento de precisão</td>
+</tr>
+<tr>
+<td><a href="#c9">C9</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td><code>toThrow()</code> sem tipo de erro ou mensagem</td>
+</tr>
+<tr>
+<td><a href="#c11a">C11a</a></td>
+<td>BAIXO</td>
+<td>J2</td>
+<td>literal autoconfirmante ligado da chamada sob teste</td>
+</tr>
+<tr>
+<td><a href="#c16">C16</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>depende de tempo, aleatoriedade ou um timer fixo</td>
+</tr>
+<tr>
+<td><a href="#c18">C18</a></td>
+<td>BAIXO</td>
+<td>J2</td>
+<td>igualdade de string (<code>String(x)</code>/<code>JSON.stringify</code>)</td>
+</tr>
+<tr>
+<td><a href="#c20">C20</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>asserção morta depois de <code>return</code>/<code>throw</code></td>
+</tr>
+<tr>
+<td><a href="#c21">C21</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>nenhuma asserção roda incondicionalmente</td>
+</tr>
+<tr>
+<td><a href="#c23">C23</a></td>
+<td>BAIXO</td>
+<td>J6</td>
+<td>lê um arquivo real num caminho literal / URL fixa</td>
+</tr>
+<tr>
+<td><a href="#c37">C37</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td>caso duplicado de <code>it.each</code>/<code>test.each</code></td>
+</tr>
+<tr>
+<td><a href="#c44">C44</a></td>
+<td>ALTO</td>
+<td>J2</td>
+<td>tautologia numérica sobre um comprimento (<code>.length &gt;= 0</code>)</td>
+</tr>
+<tr>
+<td><a href="#c48">C48</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>dark patch: vira um flag de modo de teste e afirma</td>
+</tr>
+<tr>
+<td><a href="#cc">CC</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>asserção comentada</td>
+</tr>
+<tr>
+<td><a href="#js1">JS1</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>teste focado pula o resto da suíte</td>
+</tr>
+<tr>
+<td><a href="#js2">JS2</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td><code>expect</code> sem matcher</td>
+</tr>
+<tr>
+<td><a href="#js3">JS3</a></td>
+<td>BAIXO</td>
+<td>J2</td>
+<td>o snapshot é a única asserção</td>
+</tr>
+<tr>
+<td><a href="#js4">JS4</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>teste pulado (<code>it.skip</code>/<code>xit</code>/<code>it.todo</code>)</td>
+</tr>
+<tr>
+<td><a href="#js5">JS5</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>query/evento async sem await</td>
+</tr>
+<tr>
+<td><a href="#js6">JS6</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td><code>describe</code>/suíte vazia</td>
+</tr>
+<tr>
+<td><a href="#js7">JS7</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>asserção em <code>setTimeout</code>/<code>then</code> sem await</td>
+</tr>
+<tr>
+<td><a href="#js8">JS8</a></td>
+<td>BAIXO</td>
+<td>J3</td>
+<td>mocka a unidade sob teste e a afirma direto</td>
+</tr>
+<tr>
+<td><a href="#js9">JS9</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>asserção em um ramo literal morto</td>
+</tr>
+<tr>
+<td><a href="#js11">JS11</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>try/catch engole a asserção</td>
+</tr>
+<tr>
+<td><a href="#js13">JS13</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td>query usada como instrução solta, nunca afirmada</td>
+</tr>
+<tr>
+<td><a href="#js15">JS15</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td>comparação embrulhada em um booleano</td>
+</tr>
+<tr>
+<td><a href="#js17">JS17</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>bloco de teste comentado</td>
+</tr>
+<tr>
+<td><a href="#js18">JS18</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>callback <code>done</code> em vez de async/await</td>
+</tr>
+<tr>
+<td><a href="#js21">JS21</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>matcher referenciado mas nunca chamado</td>
+</tr>
+<tr>
+<td><a href="#js22">JS22</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>tabela <code>it.each</code>/<code>test.each</code> vazia</td>
+</tr>
+<tr>
+<td><a href="#js23">JS23</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td><code>expect.assertions(N)</code> que o corpo não satisfaz</td>
+</tr>
+<tr>
+<td><a href="#js24">JS24</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td>query do Cypress sem asserção</td>
+</tr>
+<tr>
+<td><a href="#js25">JS25</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>a única asserção está dentro de um callback de iterador</td>
+</tr>
+<tr>
+<td><a href="#js26">JS26</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>fake timers instalados mas nunca avançados</td>
+</tr>
+<tr>
+<td><a href="#js27">JS27</a></td>
+<td>BAIXO</td>
+<td>J3</td>
+<td><code>toHaveBeenCalled*</code> é o único oráculo num dublê local</td>
+</tr>
+<tr>
+<td><a href="#js29">JS29</a></td>
+<td>BAIXO</td>
+<td>J6</td>
+<td>cadeia <code>resolves</code>/<code>rejects</code> é uma instrução solta</td>
+</tr>
+<tr>
+<td><a href="#js30">JS30</a></td>
+<td>ALTO</td>
+<td>J2</td>
+<td>asserção literal contra literal</td>
+</tr>
+<tr>
+<td><a href="#js31">JS31</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>try/catch engole um throw do SUT, sem asserção no erro</td>
+</tr>
+<tr>
+<td><a href="#diagnostics">D1</a></td>
+<td>OFF</td>
+<td>J4</td>
+<td>roleta de asserções</td>
+</tr>
+<tr>
+<td><a href="#diagnostics">D3</a></td>
+<td>OFF</td>
+<td>J4</td>
+<td>assert duplicado</td>
+</tr>
+<tr>
+<td><a href="#diagnostics">D4</a></td>
+<td>OFF</td>
+<td>J4</td>
+<td>casos de <code>it.each</code> sem título</td>
+</tr>
+<tr>
+<td><a href="#diagnostics">D6</a></td>
+<td>OFF</td>
+<td>J4</td>
+<td><code>console.*</code> no corpo do teste</td>
+</tr>
+<tr>
+<td><a href="#diagnostics">D7</a></td>
+<td>OFF</td>
+<td>J4</td>
+<td>teste anônimo</td>
+</tr>
+<tr>
+<td><a href="#diagnostics">D8</a></td>
+<td>OFF</td>
+<td>J4</td>
+<td>número mágico em uma asserção</td>
+</tr>
+<tr>
+<td><a href="#diagnostics">M2</a></td>
+<td>OFF</td>
+<td>J5</td>
+<td>corpo de teste longo demais</td>
+</tr>
+<tr>
+<td><a href="#pl7">PL7</a></td>
+<td>BAIXO</td>
+<td>J5</td>
+<td>sem gate de cobertura</td>
+</tr>
+<tr>
+<td><a href="#pl8">PL8</a></td>
+<td>BAIXO</td>
+<td>J5</td>
+<td><code>bail</code> interrompe a execução cedo</td>
+</tr>
+<tr>
+<td><a href="#pl10">PL10</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td><code>passWithNoTests</code> deixa uma suíte vazia passar</td>
+</tr>
+</tbody>
+</table>
+<p>Um código mantém seu id entre linguagens onde o smell é o mesmo; o sinal abaixo é a forma
+JavaScript. Dois ids compartilhados diferem em sentido por linguagem, veja a <a href="../python/">página
+Python</a>: <strong>C31</strong> não existe aqui; <strong>C44</strong> é a tautologia numérica de comprimento aqui e
+no Python, ampliada no <a href="../robot/#c44">Robot</a> para qualquer asserção de biblioteca vazia.</p>
+<h2 id="codigos-compartilhados-mesmo-conceito-do-python">Códigos compartilhados (mesmo conceito do Python)<a class="headerlink" href="#codigos-compartilhados-mesmo-conceito-do-python" title="Permanent link">&para;</a></h2>
+<p>Estes espelham as entradas do <a href="../python/">catálogo Python</a>; o sinal é a forma JavaScript.</p>
+<h3 id="c2">C2 - corpo de teste vazio<a class="headerlink" href="#c2" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F1</p>
+<p>Um teste sem matcher, sem <code>expect</code>, sem nenhuma asserção. Sempre verde.</p>
+<h3 id="c2b">C2b - chama a unidade mas nunca afirma<a class="headerlink" href="#c2b" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F1</p>
+<p>O teste chama código de produção mas nenhum matcher segue. A verificação simplesmente falta.</p>
+<h3 id="c5">C5 - asserção sempre verdadeira<a class="headerlink" href="#c5" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · ALTO · F3</p>
+<p><code>expect(true).toBe(true)</code>, <code>assert(1)</code>: estruturalmente garantida a passar, não protege nada.</p>
+<h3 id="c6">C6 - verificação fraca<a class="headerlink" href="#c6" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F4</p>
+<p><code>toBeTruthy()</code> / <code>toBeDefined()</code> ou um <code>.length &gt; 0</code>: só que algo voltou, não o valor.</p>
+<h3 id="c7">C7 - autocomparação<a class="headerlink" href="#c7" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · ALTO · F3</p>
+<p><code>expect(x).toBe(x)</code>: os dois lados são a mesma expressão, sempre iguais.</p>
+<h3 id="c8">C8 - igualdade exata em um float<a class="headerlink" href="#c8" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F4</p>
+<p><code>expect(compute()).toBe(3.14159)</code>: a aritmética de ponto flutuante torna a igualdade exata pouco
+confiável. Use <code>toBeCloseTo</code>.</p>
+<h3 id="c8b">C8b - <code>toBeCloseTo</code> sem argumento de precisão<a class="headerlink" href="#c8b" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F4</p>
+<p><code>toBeCloseTo(x)</code> usa por padrão tolerância de 2 dígitos, que pode ser frouxa demais para o valor sob
+teste. Passe uma precisão explícita.</p>
+<h3 id="c9">C9 - <code>toThrow()</code> sem tipo de erro ou mensagem<a class="headerlink" href="#c9" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F4</p>
+<p><code>expect(fn).toThrow()</code> sem argumento aceita qualquer erro, inclusive um de um typo dentro do teste.</p>
+<h3 id="c11a">C11a - literal autoconfirmante<a class="headerlink" href="#c11a" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · BAIXO · F3</p>
+<p>O valor esperado é ligado da mesma chamada sob teste: <code>const e = foo(); expect(foo()).toBe(e)</code>. O
+oráculo confirma a si mesmo. Ligue o valor esperado de forma independente.</p>
+<h3 id="c16">C16 - depende de tempo, aleatoriedade ou um timer fixo<a class="headerlink" href="#c16" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F6</p>
+<p><code>Date.now</code> / <code>new Date()</code> / <code>Math.random</code> / <code>crypto.randomUUID</code> / <code>getRandomValues</code>, ou um timer
+fixo. Congele o tempo e semeie a aleatoriedade.</p>
+<h3 id="c18">C18 - igualdade de string<a class="headerlink" href="#c18" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · BAIXO · F4</p>
+<p>Compara <code>String(x)</code> / <code>JSON.stringify(x)</code> / um template literal com um literal de string. O formato
+é detalhe de implementação; afirme o valor.</p>
+<h3 id="c20">C20 - asserção morta depois de um terminador<a class="headerlink" href="#c20" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F2</p>
+<p>Uma asserção depois de <code>return</code> / <code>throw</code> / <code>process.exit</code> / um <code>switch</code> exaustivo. A alcançabilidade
+estruturada no nível de bloco (cfg.ts) prova que nunca roda.</p>
+<h3 id="c21">C21 - nenhuma asserção roda incondicionalmente<a class="headerlink" href="#c21" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>Toda asserção está dentro de um ramo; nenhuma fica na espinha garantida do teste. A mesma
+alcançabilidade do cfg.ts decide isso, e uma asserção morta não mascara o caso.</p>
+<h3 id="c23">C23 - lê um arquivo real num caminho literal ou URL fixa<a class="headerlink" href="#c23" title="Permanent link">&para;</a></h3>
+<p><code>J6</code> · BAIXO · F6</p>
+<p><code>readFileSync("/etc/...")</code> ou uma URL fixa no código: mystery guest. Use uma fixture ou arquivo
+temporário.</p>
+<h3 id="c37">C37 - caso duplicado de <code>it.each</code> / <code>test.each</code><a class="headerlink" href="#c37" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F8</p>
+<p>A mesma linha de argumentos aparece duas vezes na tabela; a duplicata roda o mesmo cenário e não
+adiciona cobertura.</p>
+<h3 id="c44">C44 - tautologia numérica sobre um comprimento<a class="headerlink" href="#c44" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · ALTO · F3</p>
+<p><code>expect(x.length).toBeGreaterThanOrEqual(0)</code>: um comprimento nunca é negativo, então a comparação é
+sempre verdadeira.</p>
+<h3 id="c48">C48 - dark patch: vira um flag de modo de teste e afirma<a class="headerlink" href="#c48" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>O teste vira um flag de modo de teste (<code>process.env.NODE_ENV = "test"</code>, <code>process.env.TESTING = "1"</code>,
+<code>settings.TESTING = true</code>) e depois afirma, então exercita o ramo só-de-teste do produto em vez do
+comportamento real. Paridade com o <code>C48</code> do Python.</p>
+<h3 id="cc">CC - asserção comentada<a class="headerlink" href="#cc" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>Uma linha no corpo é um <code>expect(...)</code> comentado: a verificação foi desligada e deixada.</p>
+<h2 id="codigos-especificos-de-javascript">Códigos específicos de JavaScript<a class="headerlink" href="#codigos-especificos-de-javascript" title="Permanent link">&para;</a></h2>
+<h3 id="js1">JS1 - teste focado pula o resto da suíte<a class="headerlink" href="#js1" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F5</p>
+<p><code>it.only</code> / <code>fit</code> / <code>describe.only</code> exclui em silêncio todos os outros testes do arquivo da execução.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">RUIM</label><label for="__tabbed_1_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nx">it</span><span class="p">.</span><span class="nx">only</span><span class="p">(</span><span class="s1">&#39;adds&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;subtracts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* never runs while .only is present */</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;adds&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;subtracts&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">sub</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="js2">JS2 - expect sem matcher<a class="headerlink" href="#js2" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F1</p>
+<p><code>expect(value)</code> sem uma chamada de matcher. Nada é afirmado; a linha é um no-op.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">RUIM</label><label for="__tabbed_2_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">getResult</span><span class="p">());</span><span class="w"> </span><span class="p">});</span><span class="w">   </span><span class="c1">// JS2 - sem matcher</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">getResult</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="js3">JS3 - o snapshot é a única asserção<a class="headerlink" href="#js3" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F3</p>
+<p>Um teste cuja única verificação é <code>toMatchSnapshot()</code> / <code>toMatchInlineSnapshot()</code>. A baseline é
+gerada a partir da saída, então detecta mudança, não correção.</p>
+<h3 id="js4">JS4 - teste pulado<a class="headerlink" href="#js4" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F5</p>
+<p><code>it.skip</code> / <code>xit</code> / <code>it.todo</code> deixado no lugar. Excluído em silêncio da execução.</p>
+<h3 id="js5">JS5 - query ou evento async não aguardado<a class="headerlink" href="#js5" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>Uma chamada do tipo <code>promise</code> ou <code>value-only</code> (<code>findBy*</code>, <code>waitFor</code>, <code>userEvent</code>, um <code>expect().resolves</code>
+solto) é descartada como instrução nua, então a asserção seguinte lê um momento defasado.
+A detecção passa pelo registro de oráculos.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">RUIM</label><label for="__tabbed_3_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;shows the row&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nx">screen</span><span class="p">.</span><span class="nx">findByText</span><span class="p">(</span><span class="s1">&#39;Ada&#39;</span><span class="p">);</span><span class="w">                 </span><span class="c1">// promise dropped</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">&#39;row&#39;</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;shows the row&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">findByText</span><span class="p">(</span><span class="s1">&#39;Ada&#39;</span><span class="p">);</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">&#39;row&#39;</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="js6">JS6 - describe / suite vazio<a class="headerlink" href="#js6" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F1</p>
+<p>Um bloco <code>describe</code>/<code>suite</code> sem teste dentro. Não contribui com nada e pode ser lido como cobertura.</p>
+<h3 id="js7">JS7 - asserção em um setTimeout / callback then não aguardado<a class="headerlink" href="#js7" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>A asserção vive em um callback de <code>setTimeout</code>/<code>setInterval</code> (braço de timer) ou em um
+<code>.then</code>/<code>.catch</code>/<code>.finally</code> solto (braço de promise), então pode rodar depois de o teste reportar verde.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">RUIM</label><label for="__tabbed_4_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;fires later&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">handler</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span><span class="w">  </span><span class="c1">// runs after the test ends</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;fires later&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nx">jest</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">();</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nx">schedule</span><span class="p">();</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nx">jest</span><span class="p">.</span><span class="nx">runAllTimers</span><span class="p">();</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">handler</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="js8">JS8 - faz mock da unidade sob teste e a afirma diretamente<a class="headerlink" href="#js8" title="Permanent link">&para;</a></h3>
+<p><code>J3</code> · BAIXO · F4</p>
+<p>O teste faz mock da própria função que afirma testar, depois afirma o valor do mock. Ele testa a
+configuração do mock, não o código. (A forma semântica, mais profunda, é o caso 10 / <code>S12</code>.)</p>
+<h3 id="js9">JS9 - asserção em um ramo literal morto<a class="headerlink" href="#js9" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F2</p>
+<p><code>if (false) { expect(...) }</code> ou o <code>else</code> de <code>if (true)</code>. A asserção é inalcançável.</p>
+<h3 id="js11">JS11 - try/catch engole a asserção<a class="headerlink" href="#js11" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>A asserção fica em um <code>try</code> cujo <code>catch</code> absorve o erro lançado (loga ou ignora), então uma
+falha nunca se propaga.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">RUIM</label><label for="__tabbed_5_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;throws&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callUnit</span><span class="p">();</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;throws&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">callUnit</span><span class="p">()).</span><span class="nx">toThrow</span><span class="p">(</span><span class="ne">RangeError</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="js13">JS13 - query usada como instrução solta, nunca afirmada<a class="headerlink" href="#js13" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F1</p>
+<p><code>getBy*</code> / <code>queryBy*</code> chamado como instrução nua. A query roda mas nada é verificado nela.</p>
+<h3 id="js15">JS15 - comparação envolvida em um booleano<a class="headerlink" href="#js15" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F4</p>
+<p><code>expect(a === b).toBe(true)</code>. O booleano colapsa o diff: na falha a mensagem é
+<code>false !== true</code>, sem valores. Afirme os valores diretamente.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">RUIM</label><label for="__tabbed_6_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">   </span><span class="c1">// JS15</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="js17">JS17 - bloco de teste comentado<a class="headerlink" href="#js17" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p><code>// it('...', ...)</code> deixado no arquivo. O teste não roda.</p>
+<h3 id="js18">JS18 - callback done em vez de async/await<a class="headerlink" href="#js18" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>Um teste com callback <code>done</code> onde <code>done()</code> precede ou fica no mesmo nível da asserção, então o
+runner conclui antes de a asserção lançar.</p>
+<h3 id="js21">JS21 - matcher referenciado mas nunca chamado<a class="headerlink" href="#js21" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F2</p>
+<p><code>expect(x).toBe</code> sem <code>()</code>. O matcher é um acesso a propriedade; a verificação nunca roda. Irmão de
+JS2.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">RUIM</label><label for="__tabbed_7_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toBe</span><span class="p">;</span><span class="w">          </span><span class="c1">// JS21 - faltando (), não faz nada</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="js22">JS22 - tabela it.each / test.each vazia<a class="headerlink" href="#js22" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F5</p>
+<p><code>it.each([])(...)</code>. Zero casos são gerados, então o teste nunca roda. Paralelo de <code>C45</code>.</p>
+<h3 id="js23">JS23 - expect.assertions(N) que o corpo não consegue satisfazer<a class="headerlink" href="#js23" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F5</p>
+<p><code>expect.assertions(N)</code> com um <code>N</code> numérico maior que as chamadas <code>expect()</code> incondicionais,
+alcançáveis e não-aninhadas que podem rodar. A garantia que o autor escreveu para se proteger de
+uma asserção async perdida em silêncio já nasce morta. Dispara só num déficit provável de <code>N</code>
+literal: um <code>expect</code> em loop, em ramo, num <code>.then</code>/callback, ou num helper torna a contagem
+indeterminada e suprime o achado. <code>expect.hasAssertions()</code> não tem contagem e é ignorado.</p>
+<h3 id="js24">JS24 - query do Cypress sem asserção<a class="headerlink" href="#js24" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F4</p>
+<p>Uma cadeia de query do Cypress (<code>cy.get</code>/<code>cy.find</code>/<code>cy.contains</code>) usada como statement sem
+<code>.should</code>/<code>.and</code> no fim e sem <code>expect</code> dentro de um callback <code>.then</code>. A query produz um subject que
+nunca é asserido, o análogo cy.* da JS13. Comandos de ação (<code>click</code>/<code>type</code>/<code>visit</code>/...) fazem
+trabalho em vez de consultar, então uma cadeia terminada num deles fica limpa, assim como uma
+terminada em <code>.should</code>/<code>.and</code>.</p>
+<h3 id="js25">JS25 - a única asserção fica dentro de um callback de iterador de array<a class="headerlink" href="#js25" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F2</p>
+<p>A única <code>expect</code> fica dentro de um callback de <code>forEach</code> / <code>map</code> / <code>filter</code> / <code>some</code> / <code>every</code> /
+<code>flatMap</code>. Numa coleção vazia o callback nunca roda, então o teste passa sem ter afirmado nada.
+Afirme o comprimento antes, ou tire ao menos uma verificação para fora do iterador.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">RUIM</label><label for="__tabbed_8_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;all valid&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="nx">rows</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">valid</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span><span class="w">   </span><span class="c1">// JS25 - nada roda se rows for []</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;all valid&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">rows</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nx">rows</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">valid</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="js26">JS26 - fake timers instalados mas nunca avançados<a class="headerlink" href="#js26" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p><code>jest.useFakeTimers()</code> / <code>vi.useFakeTimers()</code> (ou fake timers do <code>sinon</code>) é configurado, mas o
+relógio nunca é avançado (<code>runAllTimers</code>, <code>advanceTimersByTime</code>, <code>tick</code>). O callback agendado nunca
+dispara, então a asserção lê estado não-modificado e passa pelo motivo errado.</p>
+<h3 id="js27">JS27 - toHaveBeenCalled* é o único oráculo sobre um dublê criado localmente<a class="headerlink" href="#js27" title="Permanent link">&para;</a></h3>
+<p><code>J3</code> · BAIXO · F4</p>
+<p>A única asserção é <code>toHaveBeenCalled</code> / <code>toHaveBeenCalledWith</code> / <code>toHaveBeenCalledTimes</code> sobre um
+mock criado no teste (<code>jest.fn()</code> / <code>vi.fn()</code>). Ela verifica a fiação do próprio teste, que o
+dublê foi chamado, não que a unidade produziu o resultado certo.</p>
+<h3 id="js29">JS29 - cadeia resolves / rejects como instrução solta<a class="headerlink" href="#js29" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p><code>expect(p).resolves.toBe(...)</code> / <code>.rejects...</code> escrito como uma instrução que não é nem <code>await</code>ada
+nem <code>return</code>ada. O matcher devolve uma promise; o teste termina verde antes de ela resolver, então
+uma rejeição posterior se perde.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">RUIM</label><label for="__tabbed_9_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;resolves&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">load</span><span class="p">()).</span><span class="nx">resolves</span><span class="p">.</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span><span class="w">    </span><span class="c1">// JS29 - não aguardado nem retornado</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;resolves&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">load</span><span class="p">()).</span><span class="nx">resolves</span><span class="p">.</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="js30">JS30 - asserção literal contra literal<a class="headerlink" href="#js30" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · ALTO · F3</p>
+<p>Ambos os operandos são fixos em tempo de parse: <code>expect(2).toBe(3)</code>, chai <code>expect(1).to.equal(1)</code>.
+A asserção não toca a unidade sob teste, então é sempre-verdadeira ou sempre-falsa por construção,
+nunca uma verificação do comportamento real.</p>
+<h3 id="js31">JS31 - try/catch engole um possível throw sem asserção sobre a exceção<a class="headerlink" href="#js31" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>Um <code>try</code> chama a unidade e o <code>catch</code> não relança nem afirma nada sobre o erro. Uma unidade que
+para de lançar ainda passa verde. Irmã da JS11, onde o que é engolido é um <code>expect</code>; aqui não há
+asserção nenhuma no caminho capturado.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">RUIM</label><label for="__tabbed_10_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;throws on bad input&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;bad&#39;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* JS31 - engolido, nada afirmado */</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;throws on bad input&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="nx">expect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;bad&#39;</span><span class="p">)).</span><span class="nx">toThrow</span><span class="p">(</span><span class="ne">SyntaxError</span><span class="p">);</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">});</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="armadilhas-de-alto-valor-com-evidencia">Armadilhas de alto valor com evidência<a class="headerlink" href="#armadilhas-de-alto-valor-com-evidencia" title="Permanent link">&para;</a></h2>
+<p>O scanner também pega um conjunto de false-greens específicos de idioma documentados nos estudos
+empíricos de JS/TS:</p>
+<ul>
+<li><strong>Armadilha de caixa em header HTTP</strong> (<code>J4</code>): o supertest deixa em minúsculas os headers de resposta, então
+  <code>res.headers['Content-Type']</code> é sempre <code>undefined</code>. Use a chave em minúsculas.</li>
+<li><strong>Coerção por NOT bit a bit</strong> (<code>J4</code>): <code>~~res.header['content-length']</code> transforma um header ausente em
+  <code>0</code>, passando em silêncio quando o valor esperado é <code>0</code>.</li>
+<li><strong>Oráculo de campo autorreferente</strong> (<code>J2</code>): <code>expect(result).toEqual([{ createdAt: result[0].createdAt }])</code>
+  compara um campo consigo mesmo. Use um valor conhecido fixo.</li>
+<li><strong>Tautologia assina-depois-verifica</strong> (<code>J2</code>): assinar um JWT e verificá-lo com a mesma chave passa
+  mesmo que <code>verify()</code> pule a checagem, a menos que pareado com um teste negativo de chave errada.</li>
+</ul>
+<h2 id="camada-de-projeto-auditoria-de-config-pl">Camada de projeto - auditoria de config (PL)<a class="headerlink" href="#camada-de-projeto-auditoria-de-config-pl" title="Permanent link">&para;</a></h2>
+<p>Emitidos por <code>--config-audit</code>, não pela varredura por arquivo. A suíte fica verde por configuração
+do runner, não por um smell dentro de algum arquivo de teste.</p>
+<h3 id="pl7">PL7 - sem gate de cobertura<a class="headerlink" href="#pl7" title="Permanent link">&para;</a></h3>
+<p><code>J5</code> · BAIXO · F8</p>
+<p>Nenhum <code>coverageThreshold</code> / <code>coverage.thresholds</code> está configurado, então a cobertura pode cair a
+zero e a suíte ainda passa. Adicione um limiar de cobertura.</p>
+<h3 id="pl8">PL8 - <code>bail</code> interrompe a execução cedo<a class="headerlink" href="#pl8" title="Permanent link">&para;</a></h3>
+<p><code>J5</code> · BAIXO · F5</p>
+<p><code>bail</code> está ligado, então a execução para nas primeiras falhas e a contagem de testes reportada fica
+incompleta.</p>
+<h3 id="pl10">PL10 - <code>passWithNoTests</code> deixa uma suíte vazia passar<a class="headerlink" href="#pl10" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F5</p>
+<p><code>passWithNoTests</code> deixa uma suíte vazia ou totalmente filtrada reportar verde, então um glob mal
+configurado ou um arquivo apagado passa despercebido.</p>
+<h2 id="diagnostics">Códigos de diagnóstico (opcionais, OFF por padrão)<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
+<p>Família F8: não é false-green (o teste ainda protege), mostrado só numa passagem de diagnóstico.</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>O que sinaliza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D1</strong></td>
+<td>roleta de asserções: muitas asserções num teste, nenhuma identificando qual falhou</td>
+</tr>
+<tr>
+<td><strong>D3</strong></td>
+<td>assert duplicado: a mesma asserção aparece mais de uma vez</td>
+</tr>
+<tr>
+<td><strong>D4</strong></td>
+<td>casos de <code>it.each</code> / <code>test.each</code> sem título: um caso que falha é nomeado só pelo índice</td>
+</tr>
+<tr>
+<td><strong>D6</strong></td>
+<td><code>console.*</code> no corpo do teste: artefato de debug que contorna o oráculo</td>
+</tr>
+<tr>
+<td><strong>D7</strong></td>
+<td>teste anônimo: descrição vazia ou ausente</td>
+</tr>
+<tr>
+<td><strong>D8</strong></td>
+<td>número mágico em uma asserção: um literal numérico nu em vez de uma constante nomeada</td>
+</tr>
+<tr>
+<td><strong>M2</strong></td>
+<td>corpo de teste longo demais: passa do limiar de linhas</td>
+</tr>
+</tbody>
+</table>
+<h2 id="parecidos-nao-sinalizar">Parecidos: NÃO sinalizar<a class="headerlink" href="#parecidos-nao-sinalizar" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>expect(fn).not.toThrow()</code> depois de uma chamada de setup: a ausência de exceção é a asserção
+  significativa.</li>
+<li><code>expect(emitter).toHaveProperty('on')</code>: checagem de duck-typing; a presença da interface é o contrato.</li>
+<li><code>expectTypeOf(v).toEqualTypeOf&lt;T&gt;()</code>: uma asserção de tipo em tempo de compilação; falha no <code>tsc</code>, não C5.</li>
+<li><code>expect(result).toMatchObject({ kind: 'error' })</code> sobre uma união discriminada: o discriminante
+  determina o ramo; não C6.</li>
+<li><code>vi.mocked(fn)</code> / <code>jest.mocked(fn)</code>: wrappers de mock tipados, o equivalente TS de <code>autospec</code>; não
+  C13b.</li>
+<li><code>done()</code> depois de uma série de asserções reais: o smell é <code>done()</code> <em>antes</em> da asserção, não
+  depois.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../python/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Python">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Python
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../robot/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Robot Framework">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Robot Framework
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      MIT licensed. The falsegreen family.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

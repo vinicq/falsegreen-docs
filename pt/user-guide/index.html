@@ -1,0 +1,2244 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Find tests that pass green without protecting anything. The catalog and guide for the falsegreen family of false-green test scanners.">
+      
+      
+      
+        <link rel="canonical" href="https://vinicq.github.io/falsegreen-docs/pt/user-guide/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../catalog/">
+      
+      
+        
+          <link rel="alternate" href="../../user-guide/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Guia do usuário - falsegreen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-do-usuario" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../" title="falsegreen" class="md-header__button md-logo" aria-label="falsegreen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            falsegreen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guia do usuário
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Selecione o idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../user-guide/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="pt" class="md-select__link">
+              Português (Brasil)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vinicq/falsegreen-docs" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vinicq/falsegreen-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Guia do usuário
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../catalog/" class="md-tabs__link">
+          
+  
+  
+  Catálogo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../concepts/taxonomy/" class="md-tabs__link">
+          
+  
+  
+  Conceitos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../scanners/python/" class="md-tabs__link">
+          
+  
+  
+  Scanners
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pesquisa
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../credits/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Créditos
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="falsegreen" class="md-nav__button md-logo" aria-label="falsegreen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    falsegreen
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vinicq/falsegreen-docs" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vinicq/falsegreen-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia do usuário
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia do usuário
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#os-tres-modos-num-relance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Os três modos num relance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-comecar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antes de começar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antes de começar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-dentro-do-seu-agente-no-seu-login-sem-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A) Dentro do seu agente, no seu login (sem API key)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-cli-avulsa-com-a-sua-propria-api-key-paga-por-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B) CLI avulsa, com a sua própria API key (paga por token)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modo-a-revisar-um-teste-que-voce-ja-tem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modo A: revisar um teste que você já tem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modo A: revisar um teste que você já tem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-aponte-para-um-arquivo-de-teste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 - aponte para um arquivo de teste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-leia-a-confianca-nao-so-a-contagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 - leia a confiança, não só a contagem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-3-integre-no-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3 - integre no CI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modo-b-escrever-um-teste-que-nao-pode-mentir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modo B: escrever um teste que não pode mentir
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modo B: escrever um teste que não pode mentir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-escreva-a-spec-com-o-oraculo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 - escreva a spec, com o oráculo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-renderize-numa-linguagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 - renderize numa linguagem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-3-leia-a-linha-da-autoverificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3 - leia a linha da autoverificação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerar-testes-para-a-feature-que-voce-esta-desenvolvendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerar testes para a feature que você está desenvolvendo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modo-c-consertar-um-teste-fraco-e-provar-o-conserto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modo C: consertar um teste fraco e provar o conserto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modo C: consertar um teste fraco e provar o conserto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-nomeie-o-achado-e-o-codigo-que-ele-protege" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 - nomeie o achado e o código que ele protege
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-confie-no-portao-nao-no-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 - confie no portão, não no modelo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escolhendo-um-provedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escolhendo um provedor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quando-algo-da-errado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quando algo dá errado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#para-onde-ir-depois" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para onde ir depois
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Catálogo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Catálogo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalog/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalog/javascript-typescript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript / TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalog/robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalog/semantic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semântico (LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalog/gherkin-tavern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gherkin e Tavern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conceitos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Conceitos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taxonomia de falhas (F1-F8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/judgments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Julgamentos (J1-J6)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/oracle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A hierarquia de oráculos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/pyramid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pirâmide de testes e níveis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/by-test-level/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Padrões por linguagem e nível de teste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/what-we-do-not-flag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O que não sinalizamos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Escopo e honestidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/denominator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cobertura vs a literatura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cobertura por família
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanners
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scanners
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scanners/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen (Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scanners/javascript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen-js (JS/TS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scanners/robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    robotframework-falsegreen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scanners/skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen-skill (LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pesquisa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../credits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Créditos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#os-tres-modos-num-relance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Os três modos num relance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-comecar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antes de começar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Antes de começar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-dentro-do-seu-agente-no-seu-login-sem-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A) Dentro do seu agente, no seu login (sem API key)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-cli-avulsa-com-a-sua-propria-api-key-paga-por-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B) CLI avulsa, com a sua própria API key (paga por token)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modo-a-revisar-um-teste-que-voce-ja-tem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modo A: revisar um teste que você já tem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modo A: revisar um teste que você já tem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-aponte-para-um-arquivo-de-teste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 - aponte para um arquivo de teste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-leia-a-confianca-nao-so-a-contagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 - leia a confiança, não só a contagem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-3-integre-no-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3 - integre no CI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modo-b-escrever-um-teste-que-nao-pode-mentir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modo B: escrever um teste que não pode mentir
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modo B: escrever um teste que não pode mentir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-escreva-a-spec-com-o-oraculo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 - escreva a spec, com o oráculo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-renderize-numa-linguagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 - renderize numa linguagem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-3-leia-a-linha-da-autoverificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3 - leia a linha da autoverificação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerar-testes-para-a-feature-que-voce-esta-desenvolvendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerar testes para a feature que você está desenvolvendo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modo-c-consertar-um-teste-fraco-e-provar-o-conserto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modo C: consertar um teste fraco e provar o conserto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modo C: consertar um teste fraco e provar o conserto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-nomeie-o-achado-e-o-codigo-que-ele-protege" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1 - nomeie o achado e o código que ele protege
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-confie-no-portao-nao-no-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2 - confie no portão, não no modelo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escolhendo-um-provedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escolhendo um provedor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quando-algo-da-errado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quando algo dá errado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#para-onde-ir-depois" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para onde ir depois
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="guia-do-usuario">Guia do usuário<a class="headerlink" href="#guia-do-usuario" title="Permanent link">&para;</a></h1>
+<p>Este guia passa pelas três coisas que a CLI <code>falsegreen-skill</code> faz, na ordem em que a maioria das
+pessoas as encontra: revisar um teste que você já tem, escrever um teste novo que não vai te
+enganar, e consertar um teste fraco. Cada seção é um passo a passo executável, não uma lista de
+recursos. Copie os comandos, troque os caminhos, e você já está trabalhando.</p>
+<p>Se você guardar só uma coisa: um teste é false-green quando fica verde enquanto o código que ele
+protege está quebrado. Tudo aqui é sobre pegar isso, ou evitar que aconteça.</p>
+<h2 id="os-tres-modos-num-relance">Os três modos num relance<a class="headerlink" href="#os-tres-modos-num-relance" title="Permanent link">&para;</a></h2>
+<p>Um binário, três verbos. <code>analyze</code> julga um teste, <code>generate</code> escreve um, <code>fix</code> conserta um. Eles
+compartilham o mesmo <a href="../concepts/judgments/">protocolo</a> J1-J6, então um teste que o <code>generate</code>
+escreve é um teste que o <code>analyze</code> aprovaria, e um patch que o <code>fix</code> propõe é um teste que precisa
+sobreviver à revisão antes de você confiar.</p>
+<table>
+<thead>
+<tr>
+<th>Verbo</th>
+<th>Você começa com</th>
+<th>O que faz</th>
+<th>Contrato de saída</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>analyze</code></td>
+<td>um arquivo de teste</td>
+<td>acha smells de false-green e reporta</td>
+<td>0 limpo, 2 num achado ALTO (com <code>--fail-on-high</code>)</td>
+</tr>
+<tr>
+<td><code>generate</code></td>
+<td>uma spec com oráculo, sem teste ainda</td>
+<td>escreve um teste e faz a autoverificação</td>
+<td>0 PASSED, 1 FAILED, 3 UNVERIFIED</td>
+</tr>
+<tr>
+<td><code>fix</code></td>
+<td>um teste fraco que o <code>analyze</code> marcou</td>
+<td>propõe um teste mais forte e o prova com um portão de mutação</td>
+<td>0 aceita, 1 rejeita/não validado</td>
+</tr>
+</tbody>
+</table>
+<p>O <code>generate</code> roda o <code>analyze</code> sobre a própria saída antes de te entregar, e o <code>fix</code> prova o patch
+contra um mutante antes de aceitar. Nada sai da ferramenta sem revisão.</p>
+<h2 id="antes-de-comecar">Antes de começar<a class="headerlink" href="#antes-de-comecar" title="Permanent link">&para;</a></h2>
+<p>Há dois jeitos de rodar o falsegreen, e qual encaixa depende de como você já trabalha.</p>
+<h3 id="a-dentro-do-seu-agente-no-seu-login-sem-api-key">A) Dentro do seu agente, no seu login (sem API key)<a class="headerlink" href="#a-dentro-do-seu-agente-no-seu-login-sem-api-key" title="Permanent link">&para;</a></h3>
+<p>Se você já usa Claude Code, Codex CLI, Antigravity CLI ou Cursor, muitas vezes num plano Pro/Plus/
+Advanced, instale o falsegreen ali e ele roda no próprio modelo do host, usando a sua sessão logada.
+Sem API key, nada para exportar, sem custo por token além do seu plano atual. É o que a maioria das
+pessoas nessas ferramentas quer.</p>
+<p>Habilite uma vez, por host:</p>
+<ul>
+<li><strong>Claude Code:</strong> <code>/plugin marketplace add vinicq/falsegreen-skill</code> e depois
+  <code>/plugin install falsegreen-skill@falsegreen</code></li>
+<li><strong>Codex CLI:</strong> não tem instalação de um comando. Clone o repo e rode <code>codex</code> para o protocolo
+  completo (limitado ao clone), ou copie o <code>AGENTS.md</code> para o <code>AGENTS.md</code> do seu projeto ou
+  <code>~/.codex/AGENTS.md</code> para revisão compacta</li>
+<li><strong>Antigravity CLI (<code>agy</code>):</strong> <code>agy plugin install https://github.com/vinicq/falsegreen-skill</code>, ou abra o repo e o <code>agy</code> descobre a skill de workspace em <code>.agents/skills/falsegreen-skill/SKILL.md</code> (da antiga Gemini CLI: <code>agy plugin import gemini</code>)</li>
+<li><strong>Cursor:</strong> copie <code>contexts/cursor.md</code> para <code>.cursor/rules/falsegreen-skill.mdc</code></li>
+</ul>
+<p>Depois anexe um teste e peça a análise, ou peça para ele escrever um teste para a sua feature. Os
+mesmos fluxos analyze / generate / fix deste guia funcionam; você conversa com o seu agente em vez
+de rodar um comando.</p>
+<h3 id="b-cli-avulsa-com-a-sua-propria-api-key-paga-por-token">B) CLI avulsa, com a sua própria API key (paga por token)<a class="headerlink" href="#b-cli-avulsa-com-a-sua-propria-api-key-paga-por-token" title="Permanent link">&para;</a></h3>
+<p>Para CI, scripts, ou quando você não está dentro de um host. Precisa do Node 18 ou mais novo e de
+uma API key de um provedor. A CLI vem com zero dependências npm, então não há nada para buildar.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># roda uma vez sem instalar</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>npx<span class="w"> </span>falsegreen-skill<span class="w"> </span>--help
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># ou instala globalmente</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>falsegreen-skill
+</code></pre></div>
+<p>Escolha um provedor e exporte a chave dele. O Anthropic é o padrão, então o caminho mais curto é
+uma variável só:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>sk-ant-...
+</code></pre></div>
+<p>Qualquer host compatível com OpenAI também funciona (Groq, OpenRouter, Ollama e outros). Veja
+<a href="#escolhendo-um-provedor">escolhendo um provedor</a> abaixo: aquela seção é sobre o caminho B. Um
+detalhe que pega muita gente: o prompt do protocolo tem cerca de 33k tokens, então um provedor cujo
+tier gratuito limita tokens por minuto vai rejeitar a requisição. Se você levar um HTTP 413 ou 429,
+é por isso. Rode o Ollama local ou use um host com tier maior. O caminho A usa o modelo em que o seu
+agente já está logado, então as chaves de provedor abaixo não valem para ele.</p>
+<h2 id="modo-a-revisar-um-teste-que-voce-ja-tem">Modo A: revisar um teste que você já tem<a class="headerlink" href="#modo-a-revisar-um-teste-que-voce-ja-tem" title="Permanent link">&para;</a></h2>
+<p>Esse é o primeiro que você pega. Você tem uma suíte de testes, ela está verde, e quer saber quais
+daqueles checks verdes sobreviveriam ao código dar errado.</p>
+<h3 id="passo-1-aponte-para-um-arquivo-de-teste">Passo 1 - aponte para um arquivo de teste<a class="headerlink" href="#passo-1-aponte-para-um-arquivo-de-teste" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>falsegreen-skill<span class="w"> </span>analyze<span class="w"> </span>tests/test_payment.py
+</code></pre></div>
+<p>A CLI lê o arquivo, envia com o protocolo, e imprime um relatório: cada achado carrega um código de
+catálogo (como C5 ou C20), o julgamento que falhou (J1-J6), um nível de confiança e uma dica de
+correção de uma linha. Testes limpos não geram achado.</p>
+<h3 id="passo-2-leia-a-confianca-nao-so-a-contagem">Passo 2 - leia a confiança, não só a contagem<a class="headerlink" href="#passo-2-leia-a-confianca-nao-so-a-contagem" title="Permanent link">&para;</a></h3>
+<p>ALTO significa que o revisor está confiante de que o teste é false-green. BAIXO significa que parece
+suspeito mas pode ser intencional. Comece pelos achados ALTO: são os que vão te morder.</p>
+<h3 id="passo-3-integre-no-ci">Passo 3 - integre no CI<a class="headerlink" href="#passo-3-integre-no-ci" title="Permanent link">&para;</a></h3>
+<p>Para um pipeline, peça JSON e deixe o exit code fazer o gate:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>falsegreen-skill<span class="w"> </span>analyze<span class="w"> </span>tests/test_payment.py<span class="w"> </span>tests/test_orders.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--json<span class="w"> </span>--fail-on-high<span class="w"> </span>&gt;<span class="w"> </span>report.json
+</code></pre></div>
+<p>Exit code 2 quer dizer ao menos um achado ALTO. Exit 1 quer dizer que o modelo devolveu algo que
+não bateu com o schema. Exit 0 quer dizer que você está livre. Em resumo: um arquivo de teste entra,
+o protocolo roda, e um achado ALTO deixa o CI vermelho para você corrigir o teste e rodar de novo;
+sem achado ALTO, o CI segue verde.</p>
+<h2 id="modo-b-escrever-um-teste-que-nao-pode-mentir">Modo B: escrever um teste que não pode mentir<a class="headerlink" href="#modo-b-escrever-um-teste-que-nao-pode-mentir" title="Permanent link">&para;</a></h2>
+<p>Peça a qualquer modelo para "escrever um teste para esta função" e ele lê o que o código retorna
+hoje e asserta isso. O teste passa, e vai continuar passando mesmo depois que um bug mudar o que o
+código deveria retornar. Isso é um teste de caracterização: verde por construção, inútil como
+guarda.</p>
+<p>O Modo B se recusa a fazer isso. Ele tira o valor esperado de um oráculo que você fornece, não do
+código, e depois revisa a própria saída antes de te entregar.</p>
+<h3 id="passo-1-escreva-a-spec-com-o-oraculo">Passo 1 - escreva a spec, com o oráculo<a class="headerlink" href="#passo-1-escreva-a-spec-com-o-oraculo" title="Permanent link">&para;</a></h3>
+<p>A spec é um pequeno arquivo YAML (ou JSON). Este é o exemplo que vem no projeto:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apply_discount(price, rate)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">scenario</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a 15% discount on 200 returns 170</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">arrange</span><span class="p">:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">price = 200</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rate = 0.15</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nt">act</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">result = apply_discount(200, 0.15)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nt">oracle</span><span class="p">:</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="nt">expected</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;170</span><span class="nv"> </span><span class="s">(200</span><span class="nv"> </span><span class="s">minus</span><span class="nv"> </span><span class="s">15%</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">200</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">30)&quot;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nt">doubles</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</code></pre></div>
+<p>O bloco <code>oracle</code> é o ponto todo. O <code>expected: 170</code> vem da spec ("15% de desconto em 200"), não de
+rodar o <code>apply_discount</code> e copiar a resposta. Tire o oráculo e o comando para antes de chamar o
+modelo, porque um teste sem oráculo independente é exatamente o false-green que ele existe para
+prevenir.</p>
+<h3 id="passo-2-renderize-numa-linguagem">Passo 2 - renderize numa linguagem<a class="headerlink" href="#passo-2-renderize-numa-linguagem" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>falsegreen-skill<span class="w"> </span>generate<span class="w"> </span>examples/authoring/apply-discount.spec.yaml<span class="w"> </span>--lang<span class="w"> </span>python
+</code></pre></div>
+<p>Você recebe um teste Python de verdade, com o valor esperado rastreado de volta à spec. Quer o mesmo
+comportamento em TypeScript? Mesma spec, outra flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>falsegreen-skill<span class="w"> </span>generate<span class="w"> </span>examples/authoring/apply-discount.spec.yaml<span class="w"> </span>--lang<span class="w"> </span>typescript
+</code></pre></div>
+<p>O <code>--lang</code> aceita <code>python</code>, <code>typescript</code>, <code>javascript</code>, <code>tsx</code>, <code>jsx</code> ou <code>robot</code>. <code>tsx</code> e <code>jsx</code>
+cobrem o lado React da família JS/TS (o mesmo catálogo compartilhado que o <code>falsegreen-js</code> aplica
+sobre <code>.js</code>/<code>.ts</code>/<code>.tsx</code>/<code>.jsx</code>). Quando você omite o <code>--lang</code>, ele assume o primeiro item de
+<code>languages</code> da spec, senão <code>python</code>. Uma linguagem por execução: a spec é a fonte única, então rodar
+de novo mantém as stacks equivalentes em vez de deixá-las divergir.</p>
+<h3 id="passo-3-leia-a-linha-da-autoverificacao">Passo 3 - leia a linha da autoverificação<a class="headerlink" href="#passo-3-leia-a-linha-da-autoverificacao" title="Permanent link">&para;</a></h3>
+<p>Depois de escrever o teste, a CLI roda o Modo A sobre ele. Três desfechos:</p>
+<ul>
+<li><strong>PASSED (exit 0)</strong> - o teste gerado não disparou nenhum achado ALTO de false-green. Use.</li>
+<li><strong>FAILED (exit 1)</strong> - o teste ainda parece false-green; a CLI já revisou uma vez e não limpou.
+  Normalmente o oráculo da spec está fraco demais. Aperte e rode de novo. Esse exit também cobre
+  spec ruim ou erro de API pego pelo guard offline.</li>
+<li><strong>UNVERIFIED (exit 3)</strong> - o modelo não conseguiu produzir um relatório de revisão válido (comum em
+  modelos pequenos). O teste ainda é impresso no stdout, mas não é aceito, então um pipeline nunca
+  trata um teste não checado como limpo. Tente um modelo mais forte para a autoverificação.</li>
+</ul>
+<p>O fluxo, em prosa: o guard offline confere se o oráculo está presente (sem oráculo, recusa com exit
+1); o teste renderiza para o <code>--lang</code>; a autoverificação roda o Modo A; um achado ALTO dispara uma
+revisão limitada e uma recheca; se limpar, PASSED, senão FAILED. Gate o CI no exit code, ou no
+<code>self_check_passed</code> da saída <code>--json</code>.</p>
+<p>O limite honesto: a autoverificação é uma revisão estática do mesmo modelo, não uma execução. Ela
+prova que o teste não é obviamente false-green. Ela não roda o teste, não confirma que ele compila
+ou importa, nem verifica o valor do oráculo. Se você disser à spec que 15% de 200 é 150, você recebe
+um teste confiante, bem formado e errado. O oráculo é sua responsabilidade acertar.</p>
+<h3 id="gerar-testes-para-a-feature-que-voce-esta-desenvolvendo">Gerar testes para a feature que você está desenvolvendo<a class="headerlink" href="#gerar-testes-para-a-feature-que-voce-esta-desenvolvendo" title="Permanent link">&para;</a></h3>
+<p>O passo a passo do <code>apply_discount</code> é só a forma. O mesmo fluxo funciona para o que você está de
+fato construindo: um serviço TypeScript, um componente React, um endpoint de API. Você descreve a
+unidade e, o que mais importa, o oráculo (o resultado esperado e de onde ele vem), e a skill escreve
+o teste. Há dois caminhos.</p>
+<p><strong>Num host de editor (Claude Code, Cursor, Gemini).</strong> Peça em linguagem natural. Sem arquivo de
+spec:</p>
+<blockquote>
+<p>escreva um teste unitário para <code>applyPromo(cart, code)</code> em TypeScript; um código válido tira 10%
+do subtotal, conforme a spec de preços</p>
+</blockquote>
+<p>O host puxa o nível e o oráculo se você deixou de fora, renderiza o teste, e roda a mesma
+autoverificação. Se você nunca disser de onde vem o valor esperado, ele pergunta, porque um teste
+sem oráculo independente é o false-green que ele se recusa a escrever.</p>
+<p><strong>Na CLI.</strong> Coloque as mesmas respostas numa spec e escolha a stack. Uma spec de feature realista:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">applyPromo(cart, code)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">scenario</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SAVE10 takes 10% off a 200 subtotal, per the pricing spec</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nt">languages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">TypeScript</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nt">arrange</span><span class="p">:</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cart = { subtotal</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200 }</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">code = &quot;SAVE10&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nt">act</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">result = applyPromo(cart, &quot;SAVE10&quot;)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nt">oracle</span><span class="p">:</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="nt">expected</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;180</span><span class="nv"> </span><span class="s">(200</span><span class="nv"> </span><span class="s">minus</span><span class="nv"> </span><span class="s">10%</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">200</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">20),</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">pricing</span><span class="nv"> </span><span class="s">spec&quot;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nt">doubles</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>falsegreen-skill<span class="w"> </span>generate<span class="w"> </span>promo.spec.yaml<span class="w"> </span>--lang<span class="w"> </span>typescript
+</code></pre></div>
+<p>Você recebe um teste TypeScript de verdade, cujo <code>180</code> esperado se rastreia de volta à spec de
+preços, não ao que o <code>applyPromo</code> por acaso retorna hoje.</p>
+<p>O lado React da família funciona do mesmo jeito. Uma spec de componente renderiza via Testing
+Library:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>falsegreen-skill<span class="w"> </span>generate<span class="w"> </span>profile-card.spec.yaml<span class="w"> </span>--lang<span class="w"> </span>tsx
+</code></pre></div>
+<p>O teste renderizado importa seu framework de forma explícita e asserta contra o estado visível
+(<code>screen.getByRole(...)</code>), não contra o valor de retorno da chamada de render, e passa na
+autoverificação como qualquer outro. <code>--lang jsx</code> faz o mesmo para React em JS puro.</p>
+<p>Esse último ponto é a regra para qualquer coisa acima de uma função pura: o oráculo de um componente
+ou de um teste ponta a ponta é o estado visível que um usuário veria, não a saída interna do render.
+É a <a href="../concepts/pyramid/">pirâmide</a> de novo: quanto mais alto o nível, mais o oráculo é "o que o
+usuário observa".</p>
+<h2 id="modo-c-consertar-um-teste-fraco-e-provar-o-conserto">Modo C: consertar um teste fraco e provar o conserto<a class="headerlink" href="#modo-c-consertar-um-teste-fraco-e-provar-o-conserto" title="Permanent link">&para;</a></h2>
+<p>O <code>analyze</code> achou um false-green. O <code>fix</code> propõe uma versão mais forte e então a prova antes de você
+confiar. É opcional, só Python e pytest por enquanto, e nunca toca no seu código de produção nem
+aplica o patch sozinho.</p>
+<h3 id="passo-1-nomeie-o-achado-e-o-codigo-que-ele-protege">Passo 1 - nomeie o achado e o código que ele protege<a class="headerlink" href="#passo-1-nomeie-o-achado-e-o-codigo-que-ele-protege" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>falsegreen-skill<span class="w"> </span>fix<span class="w"> </span>tests/test_discount.py<span class="w"> </span>--case<span class="w"> </span>C2b<span class="w"> </span>--line<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span>--sut<span class="w"> </span>src/discount.py<span class="w"> </span>--sut-line<span class="w"> </span><span class="m">12</span>
+</code></pre></div>
+<p><code>--case</code> e <code>--line</code> vêm direto do relatório do <code>analyze</code>. <code>--sut</code> é o arquivo de produção que o
+teste deveria proteger, e <code>--sut-line</code> é a linha de comportamento que o achado aponta (o padrão é o
+<code>--line</code>). O conjunto corrigível da V1 é <code>C2b</code>, <code>C20</code>, <code>C21</code>, <code>C5</code> e <code>C7</code>.</p>
+<h3 id="passo-2-confie-no-portao-nao-no-modelo">Passo 2 - confie no portão, não no modelo<a class="headerlink" href="#passo-2-confie-no-portao-nao-no-modelo" title="Permanent link">&para;</a></h3>
+<p>A CLI monta uma cópia limpa do seu código e roda três checagens no patch proposto: ele faz parse,
+passa no pytest contra o código real, e falha quando um único operador na linha do SUT é invertido.
+Um patch só é aceito quando passa no código correto e fica vermelho no mutante. Essa última checagem
+é o que separa uma asserção de verdade de uma nova tautologia.</p>
+<p>Sem <code>--sut</code> (ou com <code>--cheap</code>) o portão não tem o que mutar, então cai para só-propor e diz que o
+patch não foi validado. O exit code é 0 quando aceita, 1 quando rejeita ou não valida, então o CI
+pode ramificar nele.</p>
+<p>O limite honesto: o portão prova que o patch pega aquele mutante, não todo bug que possa existir. É
+um piso, não uma garantia. JS/TS/Robot e os casos semânticos profundos (10/11/12/18) são v2.</p>
+<h2 id="escolhendo-um-provedor">Escolhendo um provedor<a class="headerlink" href="#escolhendo-um-provedor" title="Permanent link">&para;</a></h2>
+<p>Esta seção é sobre o caminho B, a CLI avulsa. O caminho A usa o modelo em que o seu agente está
+logado, então nenhuma dessas chaves vale ali.</p>
+<p>Os três provedores embutidos leem cada um a própria chave e não precisam de <code>--base-url</code>; trocar de
+provedor é uma flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Claude (Anthropic) - o provedor padrão, nada extra a passar</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>sk-ant-...
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>falsegreen-skill<span class="w"> </span>analyze<span class="w"> </span>tests/test_payment.py
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>falsegreen-skill<span class="w"> </span>generate<span class="w"> </span>promo.spec.yaml<span class="w"> </span>--lang<span class="w"> </span>typescript
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># Codex (OpenAI) - modelos GPT / série o</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>sk-...
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>falsegreen-skill<span class="w"> </span>analyze<span class="w"> </span>tests/test_payment.py<span class="w"> </span>--provider<span class="w"> </span>openai<span class="w"> </span>--model<span class="w"> </span>gpt-5
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1"># Gemini (Google)</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GEMINI_API_KEY</span><span class="o">=</span>...
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>falsegreen-skill<span class="w"> </span>analyze<span class="w"> </span>tests/test_payment.py<span class="w"> </span>--provider<span class="w"> </span>gemini
+</code></pre></div>
+<p>Qualquer outro host compatível com OpenAI funciona via <code>--provider openai-compatible</code>: aponte
+<code>--base-url</code> para a raiz <code>/v1</code> e passe o id do modelo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FALSEGREEN_API_KEY</span><span class="o">=</span>sk-or-...
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>falsegreen-skill<span class="w"> </span>analyze<span class="w"> </span>tests/test_payment.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>--provider<span class="w"> </span>openai-compatible<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>--base-url<span class="w"> </span>https://openrouter.ai/api/v1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span>--model<span class="w"> </span>meta-llama/llama-3.3-70b-instruct<span class="w"> </span>--max-tokens<span class="w"> </span><span class="m">8192</span>
+</code></pre></div>
+<p>A tabela completa de provedores (URLs base, modelos de exemplo e quais tiers gratuitos cabem no
+prompt de 33k) está na <a href="../scanners/skill/#openai-compatible">página da skill</a> e, com mais
+profundidade, no <a href="https://github.com/vinicq/falsegreen-skill/blob/master/docs/cli.md">cli.md</a> do
+projeto. Um guia rápido:</p>
+<table>
+<thead>
+<tr>
+<th>Quer</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Setup mais simples, melhor profundidade</td>
+<td><code>anthropic</code> (padrão), <code>--model claude-opus-4-8</code> para o caso 18 mais difícil</td>
+</tr>
+<tr>
+<td>Sem chave, sem custo</td>
+<td>Ollama local (<code>--base-url http://localhost:11434/v1</code>), qualquer chave placeholder</td>
+</tr>
+<tr>
+<td>Um tier hospedado compatível com OpenAI</td>
+<td>OpenRouter ou NVIDIA NIM cabem no prompt de 33k na maioria dos modelos</td>
+</tr>
+<tr>
+<td>Rodar sem chave própria nenhuma</td>
+<td>instale a skill como plugin de editor e deixe o modelo do host trabalhar</td>
+</tr>
+</tbody>
+</table>
+<p>O <code>generate</code> e a autoverificação com <code>--json</code> precisam de um modelo que caiba no prompt de ~33k
+tokens e consiga emitir o relatório JSON. Um modelo local minúsculo costuma cair em UNVERIFIED por
+isso.</p>
+<h2 id="quando-algo-da-errado">Quando algo dá errado<a class="headerlink" href="#quando-algo-da-errado" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Sintoma</th>
+<th>Causa</th>
+<th>O que fazer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP 413 ou 429 logo de cara</td>
+<td>O prompt de 33k passa do limite gratuito de tokens por minuto do provedor</td>
+<td>Use um tier maior, um modelo de contexto grande, ou o Ollama local</td>
+</tr>
+<tr>
+<td><code>generate</code> diz UNVERIFIED</td>
+<td>O modelo não conseguiu emitir um relatório de revisão válido</td>
+<td>Use um modelo mais forte para a autoverificação</td>
+</tr>
+<tr>
+<td>Saída JSON "could not parse"</td>
+<td>Um modelo de raciocínio gastou o orçamento pensando e foi cortado</td>
+<td>Suba o <code>--max-tokens</code> para 8192 ou mais</td>
+</tr>
+<tr>
+<td><code>generate</code> recusa antes de qualquer chamada</td>
+<td>A spec não tem <code>oracle.expected</code>, ou o <code>--lang</code> é desconhecido</td>
+<td>Adicione o bloco de oráculo, ou corrija a flag de linguagem</td>
+</tr>
+<tr>
+<td><code>fix</code> diz "unvalidated"</td>
+<td>Você não passou <code>--sut</code> / <code>--sut-line</code></td>
+<td>Passe os dois para o portão de mutação poder rodar</td>
+</tr>
+</tbody>
+</table>
+<h2 id="para-onde-ir-depois">Para onde ir depois<a class="headerlink" href="#para-onde-ir-depois" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../scanners/skill/">falsegreen-skill (LLM)</a> - a referência da CLI neste site: cada flag, a tabela
+  completa de provedores e os passos de habilitação por host</li>
+<li><a href="../concepts/judgments/">Julgamentos (J1-J6)</a> - o protocolo que todos os modos compartilham</li>
+<li><a href="../concepts/oracle/">A hierarquia de oráculos</a> - por que o valor esperado não pode vir do código</li>
+<li><a href="../catalog/semantic/">Catálogo semântico</a> - os códigos que a skill reporta</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Início">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Início
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../catalog/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Visão geral">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Visão geral
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      MIT licensed. The falsegreen family.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

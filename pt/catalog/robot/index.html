@@ -1,0 +1,2749 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Find tests that pass green without protecting anything. The catalog and guide for the falsegreen family of false-green test scanners.">
+      
+      
+      
+        <link rel="canonical" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/robot/">
+      
+      
+        <link rel="prev" href="../javascript-typescript/">
+      
+      
+        <link rel="next" href="../semantic/">
+      
+      
+        
+          <link rel="alternate" href="../../../catalog/robot/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Robot Framework - falsegreen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#catalogo-robot-framework" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../" title="falsegreen" class="md-header__button md-logo" aria-label="falsegreen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            falsegreen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Robot Framework
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Selecione o idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../catalog/robot/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="pt" class="md-select__link">
+              Português (Brasil)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vinicq/falsegreen-docs" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vinicq/falsegreen-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user-guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Guia do usuário
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Catálogo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/taxonomy/" class="md-tabs__link">
+          
+  
+  
+  Conceitos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../scanners/python/" class="md-tabs__link">
+          
+  
+  
+  Scanners
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pesquisa
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../credits/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Créditos
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="falsegreen" class="md-nav__button md-logo" aria-label="falsegreen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    falsegreen
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vinicq/falsegreen-docs" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vinicq/falsegreen-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia do usuário
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Catálogo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Catálogo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript-typescript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript / TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Framework
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Índice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-conta-como-verificacao-o-oraculo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que conta como verificação (o oráculo)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-compartilhados-mesmo-conceito-do-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos compartilhados (mesmo conceito do Python)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Códigos compartilhados (mesmo conceito do Python)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C2 - teste, task ou keyword vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c2b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C2b - roda keywords mas nenhuma keyword de verificação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C3 - falha engolida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C5 - verificação sempre verdadeira
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C6 - verificação fraca numa variável nua
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C7 - autocomparação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C9 - erro esperado pega-tudo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c9b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C9b - expected_status=any desativa o oráculo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c11a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C11a - literal autoconfirmante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C16 - fonte não determinística
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C20 - verificação depois de um terminador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C21 - verificação só roda condicionalmente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C23 - URL com endereço IP fixo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C31 - valor capturado nunca usado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C32 - teste pulado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C37 - linha de dados de [Template] duplicada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C44 - asserção de biblioteca vazia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CC - keyword de verificação comentada
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-especificos-do-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos específicos do Robot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Códigos específicos do Robot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R1 - verde forçado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R2 - keyword verificadora oca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R3 - casos de teste em um arquivo .resource
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R4 - só No Operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R5 - [Template] vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R6 - Should Be True sobre um literal de string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R7 - keyword de template oca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R8 - a única verificação vive no [Setup]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r8b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R8b - a única verificação vive no [Teardown]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camada-de-projeto-config-de-execucao-pl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camada de projeto - config de execução (PL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Camada de projeto - config de execução (PL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pl9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PL9 - skip-on-failure vira uma falha em pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos de diagnóstico (opcionais, OFF por padrão)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parecidos-nao-sinalizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parecidos: NÃO sinalizar
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semântico (LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gherkin-tavern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gherkin e Tavern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conceitos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Conceitos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taxonomia de falhas (F1-F8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/judgments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Julgamentos (J1-J6)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/oracle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A hierarquia de oráculos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/pyramid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pirâmide de testes e níveis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/by-test-level/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Padrões por linguagem e nível de teste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/what-we-do-not-flag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O que não sinalizamos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Escopo e honestidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/denominator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cobertura vs a literatura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cobertura por família
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanners
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scanners
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scanners/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen (Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scanners/javascript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen-js (JS/TS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scanners/robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    robotframework-falsegreen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scanners/skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen-skill (LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pesquisa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Créditos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Índice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-conta-como-verificacao-o-oraculo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que conta como verificação (o oráculo)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-compartilhados-mesmo-conceito-do-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos compartilhados (mesmo conceito do Python)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Códigos compartilhados (mesmo conceito do Python)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C2 - teste, task ou keyword vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c2b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C2b - roda keywords mas nenhuma keyword de verificação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C3 - falha engolida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C5 - verificação sempre verdadeira
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C6 - verificação fraca numa variável nua
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C7 - autocomparação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C9 - erro esperado pega-tudo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c9b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C9b - expected_status=any desativa o oráculo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c11a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C11a - literal autoconfirmante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C16 - fonte não determinística
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C20 - verificação depois de um terminador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C21 - verificação só roda condicionalmente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C23 - URL com endereço IP fixo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C31 - valor capturado nunca usado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C32 - teste pulado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C37 - linha de dados de [Template] duplicada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C44 - asserção de biblioteca vazia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CC - keyword de verificação comentada
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-especificos-do-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos específicos do Robot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Códigos específicos do Robot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R1 - verde forçado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R2 - keyword verificadora oca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R3 - casos de teste em um arquivo .resource
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R4 - só No Operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R5 - [Template] vazio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R6 - Should Be True sobre um literal de string
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R7 - keyword de template oca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R8 - a única verificação vive no [Setup]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r8b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R8b - a única verificação vive no [Teardown]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camada-de-projeto-config-de-execucao-pl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camada de projeto - config de execução (PL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Camada de projeto - config de execução (PL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pl9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PL9 - skip-on-failure vira uma falha em pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos de diagnóstico (opcionais, OFF por padrão)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parecidos-nao-sinalizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parecidos: NÃO sinalizar
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="catalogo-robot-framework">Catálogo Robot Framework<a class="headerlink" href="#catalogo-robot-framework" title="Permanent link">&para;</a></h1>
+<p>Os códigos implementados por <a href="../../scanners/robot/">robotframework-falsegreen</a>: uma varredura estática sobre o
+parser oficial do Robot Framework (<code>robot.api.get_model</code>), sem execução. Um arquivo <code>.robot</code> é uma DSL,
+então esta é uma passagem baseada em modelo que mapeia cada achado para <a href="../../concepts/judgments/">J1-J6</a>.</p>
+<p>Os códigos compartilham um id com <a href="../python/">Python</a> onde o conceito coincide; códigos <code>R*</code> são
+específicos do Robot. Confiança: <strong>ALTO</strong> bloqueia, <strong>BAIXO</strong> avisa, <strong>OFF</strong> é só diagnóstico.</p>
+<p>Cada código emitido tem sua própria entrada abaixo. O índice leva direto a cada uma.</p>
+<h2 id="indice">Índice<a class="headerlink" href="#indice" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Conf</th>
+<th>J</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#c2">C2</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>teste/task/keyword vazio (nenhuma keyword roda)</td>
+</tr>
+<tr>
+<td><a href="#c2b">C2b</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>roda keywords mas nenhuma keyword de verificação</td>
+</tr>
+<tr>
+<td><a href="#c3">C3</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>falha engolida (<code>Run Keyword And Ignore Error</code>, <code>TRY/EXCEPT</code>)</td>
+</tr>
+<tr>
+<td><a href="#c5">C5</a></td>
+<td>ALTO</td>
+<td>J2</td>
+<td>sempre verdadeira (<code>Should Be True ${TRUE}</code>)</td>
+</tr>
+<tr>
+<td><a href="#c6">C6</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td><code>Should Be True</code> numa variável nua (só truthiness)</td>
+</tr>
+<tr>
+<td><a href="#c7">C7</a></td>
+<td>ALTO</td>
+<td>J2</td>
+<td>autocomparação (<code>Should Be Equal ${x} ${x}</code>)</td>
+</tr>
+<tr>
+<td><a href="#c9">C9</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td>erro esperado pega-tudo (<code>Run Keyword And Expect Error *</code>)</td>
+</tr>
+<tr>
+<td><a href="#c9b">C9b</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td><code>expected_status=any</code> da RequestsLibrary desativa o oráculo</td>
+</tr>
+<tr>
+<td><a href="#c11a">C11a</a></td>
+<td>ALTO</td>
+<td>J2</td>
+<td>literal autoconfirmante (uma cópia do real alimenta o esperado)</td>
+</tr>
+<tr>
+<td><a href="#c16">C16</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td><code>Sleep</code>, leitura de relógio ou aleatoriedade</td>
+</tr>
+<tr>
+<td><a href="#c20">C20</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>verificação após um terminador (<code>[Return]</code>/<code>Fail</code>/<code>Pass Execution</code>)</td>
+</tr>
+<tr>
+<td><a href="#c21">C21</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>verificação só dentro de <code>IF</code>/<code>Run Keyword If</code></td>
+</tr>
+<tr>
+<td><a href="#c23">C23</a></td>
+<td>BAIXO</td>
+<td>J6</td>
+<td>URL com endereço IP fixo nos dados de teste</td>
+</tr>
+<tr>
+<td><a href="#c31">C31</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td>valor capturado nunca usado (<code>${x}= Get Text</code>)</td>
+</tr>
+<tr>
+<td><a href="#c32">C32</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>teste pulado (<code>robot:skip</code> / <code>Skip</code>)</td>
+</tr>
+<tr>
+<td><a href="#c37">C37</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td>linha de dados de <code>[Template]</code> duplicada</td>
+</tr>
+<tr>
+<td><a href="#c44">C44</a></td>
+<td>ALTO</td>
+<td>J2</td>
+<td>asserção de biblioteca vazia (verdadeira para qualquer valor)</td>
+</tr>
+<tr>
+<td><a href="#cc">CC</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>keyword de verificação comentada</td>
+</tr>
+<tr>
+<td><a href="#r1">R1</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td><code>Pass Execution</code> força verde</td>
+</tr>
+<tr>
+<td><a href="#r2">R2</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>keyword verificadora oca (nome de oráculo, não afirma nada)</td>
+</tr>
+<tr>
+<td><a href="#r3">R3</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td><code>*** Test Cases ***</code> num arquivo <code>.resource</code> (nunca roda)</td>
+</tr>
+<tr>
+<td><a href="#r4">R4</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td><code>No Operation</code> é o único passo</td>
+</tr>
+<tr>
+<td><a href="#r5">R5</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td><code>[Template]</code> sem linhas de dados</td>
+</tr>
+<tr>
+<td><a href="#r6">R6</a></td>
+<td>BAIXO</td>
+<td>J4</td>
+<td><code>Should Be True</code> num literal de string (sempre truthy)</td>
+</tr>
+<tr>
+<td><a href="#r7">R7</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>keyword de template oca (todo caso gerado fica sem oráculo)</td>
+</tr>
+<tr>
+<td><a href="#r8">R8</a></td>
+<td>ALTO</td>
+<td>J1</td>
+<td>a única verificação vive no <code>[Setup]</code></td>
+</tr>
+<tr>
+<td><a href="#r8b">R8b</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>a única verificação vive no <code>[Teardown]</code></td>
+</tr>
+<tr>
+<td><a href="#diagnostics">D2</a></td>
+<td>OFF</td>
+<td>J4</td>
+<td>controle de fluxo no nível do teste</td>
+</tr>
+<tr>
+<td><a href="#diagnostics">M2</a></td>
+<td>OFF</td>
+<td>J5</td>
+<td>teste longo demais</td>
+</tr>
+<tr>
+<td><a href="#pl9">PL9</a></td>
+<td>BAIXO</td>
+<td>J1</td>
+<td>skip-on-failure / noncritical vira uma falha em pass</td>
+</tr>
+</tbody>
+</table>
+<p>Um código mantém seu id entre linguagens onde o smell é o mesmo; o sinal abaixo é a forma Robot.
+Dois ids compartilhados carregam um sentido específico do Robot, ambos documentados aqui:</p>
+<ul>
+<li><strong>C31</strong> aqui é um valor capturado que nunca é usado (<code>${x}= Get Text locator</code> sem asserção
+  posterior sobre <code>${x}</code>). No <a href="../python/#c31">Python</a> o C31 é a captura de <code>capsys</code>/<code>capfd</code>
+  descartada. Mesmo conceito (um valor capturado fica sem asserção), mecanismo diferente.</li>
+<li><strong>C44</strong> aqui é ampliado além da tautologia numérica que ele nomeia no <a href="../python/#c44">Python</a> e no
+  <a href="../javascript-typescript/#c44">JS</a> para qualquer asserção de biblioteca vazia
+  (<code>Should Contain ${EMPTY}</code>, <code>Should Not Be Empty ${TRUE}</code>, uma tautologia de <code>Length Should Be</code>).
+  Mesmo id, balde mais largo, documentado em vez de drift silencioso.</li>
+</ul>
+<h2 id="o-que-conta-como-verificacao-o-oraculo">O que conta como verificação (o oráculo)<a class="headerlink" href="#o-que-conta-como-verificacao-o-oraculo" title="Permanent link">&para;</a></h2>
+<p>Toda a checagem de false-green depende de reconhecer as keywords de asserção, para que uma verificação real não seja
+confundida com "nenhuma verificação". A convenção dominante é a palavra <strong><code>Should</code></strong>, mais
+formas específicas de biblioteca:</p>
+<ul>
+<li><strong>BuiltIn / Collections / String:</strong> <code>Should Be Equal</code>, <code>Should Be True</code>, <code>Should Contain</code>,
+  <code>Should Match</code>, <code>Length Should Be</code>, <code>List Should Contain Value</code>, <code>Dictionary Should Contain Key</code>.</li>
+<li><strong>SeleniumLibrary / AppiumLibrary:</strong> <code>Page Should Contain*</code>, <code>Element Should Be Visible</code>,
+  <code>Element Text Should Be</code>, <code>Title Should Be</code>. <code>Wait Until Page Contains</code> / <code>Wait Until Element Is
+  Visible</code> também verificam (falham no timeout).</li>
+<li><strong>Browser (Playwright):</strong> o motor de asserção <code>Get ...    &lt;selector&gt;    &lt;operator&gt;    &lt;expected&gt;</code>
+  onde o operador é <code>==</code>, <code>!=</code>, <code>contains</code>, etc. Um <code>Get Text    h1</code> nu sem operador não verifica
+  nada.</li>
+<li><strong>RequestsLibrary:</strong> <code>Status Should Be</code>, <code>Request Should Be Successful</code>, e uma keyword de requisição
+  (<code>GET</code>/<code>POST</code>/...) carregando <code>expected_status=&lt;code&gt;</code> (falha se o status diferir).
+  <code>expected_status=any</code> desativa a checagem, então não conta.</li>
+<li><strong>RESTinstance:</strong> keywords de schema (<code>Integer</code>, <code>Number</code>, <code>String</code>, <code>Object</code>, ...).</li>
+<li><strong>DatabaseLibrary:</strong> <code>Row Count Should Be Equal</code>, <code>Check If (Not) Exists In Database</code>.</li>
+<li>Uma <strong>keyword customizada</strong> do projeto cujo nome contém <code>Should</code>/<code>Verify</code>/<code>Assert</code>/<code>Check</code> e cujo
+  corpo de fato chama uma das acima.</li>
+</ul>
+<p>Um teste sem nenhuma destas (só <code>Click</code>, <code>Go To</code>, <code>Input Text</code>, <code>Log</code>, um <code>Get *</code> nu) não verifica
+nada.</p>
+<h2 id="codigos-compartilhados-mesmo-conceito-do-python">Códigos compartilhados (mesmo conceito do Python)<a class="headerlink" href="#codigos-compartilhados-mesmo-conceito-do-python" title="Permanent link">&para;</a></h2>
+<p>O sinal é a forma Robot; o modo de falha é o mesmo da entrada Python de id igual.</p>
+<h3 id="c2">C2 - teste, task ou keyword vazio<a class="headerlink" href="#c2" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F1</p>
+<p>Um caso de teste vazio (só settings, sem keywords de corpo), task ou user keyword. Nada roda.</p>
+<h3 id="c2b">C2b - roda keywords mas nenhuma keyword de verificação<a class="headerlink" href="#c2b" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F1</p>
+<p>O corpo roda keywords mas nenhuma verifica nada (sem <code>Should</code>, sem asserção de biblioteca). Sem
+oráculo.</p>
+<h3 id="c3">C3 - falha engolida<a class="headerlink" href="#c3" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F2</p>
+<p><code>Run Keyword And Ignore Error</code> / <code>Run Keyword And Return Status</code> cujo status nunca é afirmado, ou um
+<code>TRY/EXCEPT</code> que engole a falha. O status fica sem checagem.</p>
+<h3 id="c5">C5 - verificação sempre verdadeira<a class="headerlink" href="#c5" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · ALTO · F3</p>
+<p><code>Should Be True    ${TRUE}</code>, <code>Should Be Equal</code> com dois literais iguais, ou um <code>Set Variable If</code>
+constante-verdadeiro alimentando o lado esperado. Sempre passa.</p>
+<h3 id="c6">C6 - verificação fraca numa variável nua<a class="headerlink" href="#c6" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F4</p>
+<p><code>Should Be True    ${x}</code> numa variável nua checa só truthiness, não uma comparação. Compare o valor
+com <code>Should Be Equal</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">RUIM</label><label for="__tabbed_1_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c">Login Works</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">    </span><span class="c">${ok}=</span><span class="p">    </span><span class="c">Login</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">    </span><span class="c">Should Be True</span><span class="p">    </span><span class="c">${ok}</span><span class="p">       </span><span class="c"># C6 - só truthiness</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c">Login Works</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">    </span><span class="c">${ok}=</span><span class="p">    </span><span class="c">Login</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">    </span><span class="c">Should Be Equal</span><span class="p">    </span><span class="c">${ok}</span><span class="p">    </span><span class="c">${TRUE}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="c7">C7 - autocomparação<a class="headerlink" href="#c7" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · ALTO · F3</p>
+<p><code>Should Be Equal    ${x}    ${x}</code>: os dois lados são a mesma variável, sempre iguais.</p>
+<h3 id="c9">C9 - erro esperado pega-tudo<a class="headerlink" href="#c9" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F4</p>
+<p><code>Run Keyword And Expect Error    *</code> (ou <code>GLOB:*</code> / <code>REGEXP:.*</code>) aceita qualquer erro, inclusive um
+que o teste nunca quis disparar.</p>
+<h3 id="c9b">C9b - <code>expected_status=any</code> desativa o oráculo<a class="headerlink" href="#c9b" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F4</p>
+<p>Um método HTTP da RequestsLibrary com <code>expected_status=any</code> / <code>anything</code>: a requisição aceita todo
+status, então o oráculo fica desativado e um 500 nunca falha.</p>
+<h3 id="c11a">C11a - literal autoconfirmante<a class="headerlink" href="#c11a" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · ALTO · F3</p>
+<p>Uma cópia do real no corpo alimenta o lado esperado: <code>${y}=    Set Variable    ${x}</code>, depois
+<code>Should Be Equal    ${x}    ${y}</code>. O oráculo confirma a si mesmo.</p>
+<h3 id="c16">C16 - fonte não determinística<a class="headerlink" href="#c16" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F6</p>
+<p><code>Sleep</code> usado como sincronização em vez de <code>Wait Until *</code>, <code>Get Current Date</code> (leitura de relógio),
+<code>Generate Random String</code> (aleatoriedade), ou <code>Evaluate</code> com <code>datetime</code>/<code>random</code>/<code>uuid</code>.</p>
+<h3 id="c20">C20 - verificação depois de um terminador<a class="headerlink" href="#c20" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F2</p>
+<p>Uma keyword de verificação depois de <code>[Return]</code>, <code>Return From Keyword</code>, <code>Fail</code> ou <code>Pass Execution</code>
+no mesmo bloco: um passo morto que nunca roda.</p>
+<h3 id="c21">C21 - verificação só roda condicionalmente<a class="headerlink" href="#c21" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>A única verificação fica dentro de um <code>IF</code> / <code>Run Keyword If</code> que pode não rodar, então o teste pode
+passar sem checar nada.</p>
+<h3 id="c23">C23 - URL com endereço IP fixo<a class="headerlink" href="#c23" title="Permanent link">&para;</a></h3>
+<p><code>J6</code> · BAIXO · F6</p>
+<p>Uma URL com endereço IP fixo nos dados de teste: acoplamento de ambiente / mystery guest. Leia de
+uma variável ou resource.</p>
+<h3 id="c31">C31 - valor capturado nunca usado<a class="headerlink" href="#c31" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F1</p>
+<p><code>${x}=    Get Text    locator</code> (ou uma captura parecida) cujo resultado nunca é afirmado depois. A
+captura está morta; o teste verifica outra coisa. Análogo Robot do C31 do <code>capsys</code> no Python,
+mecanismo diferente, mesma ideia: um valor capturado fica sem asserção.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">RUIM</label><label for="__tabbed_2_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c">Title Is Set</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">    </span><span class="c">${title}=</span><span class="p">    </span><span class="c">Get Text</span><span class="p">    </span><span class="c">h1</span><span class="p">     </span><span class="c"># C31 - capturado, nunca afirmado</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">    </span><span class="c">Click</span><span class="p">    </span><span class="c">submit</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c">Title Is Set</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">    </span><span class="c">${title}=</span><span class="p">    </span><span class="c">Get Text</span><span class="p">    </span><span class="c">h1</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">    </span><span class="c">Should Be Equal</span><span class="p">    </span><span class="c">${title}</span><span class="p">    </span><span class="c">Welcome</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="c32">C32 - teste pulado<a class="headerlink" href="#c32" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F5</p>
+<p><code>[Tags]    robot:skip</code> ou a keyword <code>Skip</code> deixa o teste fora da execução.</p>
+<h3 id="c37">C37 - linha de dados de <code>[Template]</code> duplicada<a class="headerlink" href="#c37" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · BAIXO · F8</p>
+<p>A mesma linha de dados aparece duas vezes num <code>[Template]</code>: a duplicata roda o mesmo cenário e não
+adiciona cobertura.</p>
+<h3 id="c44">C44 - asserção de biblioteca vazia<a class="headerlink" href="#c44" title="Permanent link">&para;</a></h3>
+<p><code>J2</code> · ALTO · F3</p>
+<p>Uma asserção de biblioteca provavelmente verdadeira para qualquer valor: <code>Should Contain    ${x}    ${EMPTY}</code>,
+<code>Should Not Be Empty    ${TRUE}</code>, <code>Should Be Empty    ${EMPTY}</code>, uma tautologia de
+<code>Length Should Be</code>. Ampliada a partir da forma numérica que o mesmo id nomeia no Python/JS.</p>
+<h3 id="cc">CC - keyword de verificação comentada<a class="headerlink" href="#cc" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>Uma linha no corpo é uma keyword de verificação comentada (<code># Should Be Equal ...</code>): o oráculo está
+desligado.</p>
+<h2 id="codigos-especificos-do-robot">Códigos específicos do Robot<a class="headerlink" href="#codigos-especificos-do-robot" title="Permanent link">&para;</a></h2>
+<h3 id="r1">R1 - verde forçado<a class="headerlink" href="#r1" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F3</p>
+<p><code>Pass Execution</code> (ou <code>Pass Execution If</code> com uma condição sempre verdadeira) força o teste a passar
+independentemente de qualquer verificação.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">RUIM</label><label for="__tabbed_3_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c">Login Works</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">    </span><span class="c">Open App</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">    </span><span class="c">Pass Execution</span><span class="p">    </span><span class="c">skipping for now</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c">Login Works</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">    </span><span class="c">Open App</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">    </span><span class="c">Page Should Contain</span><span class="p">    </span><span class="c">Welcome</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="r2">R2 - keyword verificadora oca<a class="headerlink" href="#r2" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F1</p>
+<p>Uma user keyword nomeada como um oráculo (<code>Verify *</code>, <code>Assert *</code>, <code>Should *</code>, <code>Check *</code>) cujo corpo
+não contém nenhuma keyword de verificação. Um teste chamando <code>Verify Login</code> parece protegido mas não afirma
+nada - a causa raiz de um C2b perdido.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">RUIM</label><label for="__tabbed_4_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gh">*** Keywords ***</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="gu">Verify Login</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">    </span><span class="nf">Log</span><span class="p">    </span><span class="s">logged in</span><span class="p">       </span><span class="c"># no Should/assertion - hollow</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="gh">*** Keywords ***</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="gu">Verify Login</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">    </span><span class="nf">Page Should Contain</span><span class="p">    </span><span class="s">Welcome</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="r3">R3 - casos de teste em um arquivo .resource<a class="headerlink" href="#r3" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F5</p>
+<p>Uma seção <code>*** Test Cases ***</code> em um arquivo <code>.resource</code> é inválida; os casos nunca rodam.</p>
+<h3 id="r4">R4 - só No Operation<a class="headerlink" href="#r4" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F1</p>
+<p>O único passo é <code>No Operation</code> - o teste roda mas não faz nada.</p>
+<h3 id="r5">R5 - [Template] vazio<a class="headerlink" href="#r5" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F5</p>
+<p>Uma keyword <code>[Template]</code> sem linhas de dados gera zero casos. Paralelo de <code>C45</code> / <code>JS22</code>.</p>
+<h3 id="r6">R6 - Should Be True sobre um literal de string<a class="headerlink" href="#r6" title="Permanent link">&para;</a></h3>
+<p><code>J4</code> · ALTO · F3</p>
+<p><code>Should Be True    some text</code> passa uma string não-vazia, que é sempre truthy, então a verificação
+nunca falha. Passe uma expressão real (<code>${x} &gt; 0</code>).</p>
+<h3 id="r7">R7 - keyword de template oca<a class="headerlink" href="#r7" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F1</p>
+<p>Um teste com <code>[Template]</code> cuja keyword de template é definida no mesmo arquivo e não contém
+verificação: toda linha de dados passa de graça. Só sinalizado quando a keyword de template resolve
+no arquivo; uma keyword de template externa/importada é deixada em paz (ela pode verificar via uma keyword que o
+scanner não consegue ver).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">RUIM</label><label for="__tabbed_5_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gh">*** Test Cases ***</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="gu">Check Logins</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">    [</span><span class="kn">Template</span><span class="p">]    </span><span class="nf">Do Login</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">    </span><span class="s">alice</span><span class="p">    </span><span class="s">secret</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">    </span><span class="s">bob</span><span class="p">      </span><span class="s">hunter2</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="gh">*** Keywords ***</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="gu">Do Login</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">    [</span><span class="kn">Arguments</span><span class="p">]    ${</span><span class="nv">user</span><span class="p">}    ${</span><span class="nv">pass</span><span class="p">}</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">    </span><span class="nf">Input Text</span><span class="p">    </span><span class="s">user</span><span class="p">    ${</span><span class="nv">user</span><span class="p">}</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">    </span><span class="nf">Click</span><span class="p">    </span><span class="s">submit</span><span class="p">          </span><span class="c"># no verification - every row is green</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="gh">*** Keywords ***</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="gu">Do Login</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">    [</span><span class="kn">Arguments</span><span class="p">]    ${</span><span class="nv">user</span><span class="p">}    ${</span><span class="nv">pass</span><span class="p">}</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">    </span><span class="nf">Input Text</span><span class="p">    </span><span class="s">user</span><span class="p">    ${</span><span class="nv">user</span><span class="p">}</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">    </span><span class="nf">Click</span><span class="p">    </span><span class="s">submit</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">    </span><span class="nf">Page Should Contain</span><span class="p">    </span><span class="s">Welcome</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="r8">R8 - a única verificação vive no [Setup]<a class="headerlink" href="#r8" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · ALTO · F2</p>
+<p>Um teste cuja única keyword de verificação fica no <code>[Setup]</code> (ou num <code>Test Setup</code> de suíte). O
+setup roda antes de o corpo agir, então verifica pré-condições, não o resultado: o corpo pode
+quebrar e a suíte fica verde. Mova a asserção para o corpo.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">RUIM</label><label for="__tabbed_6_2">LIMPO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c">Order Is Shipped</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="p">    </span><span class="c">[Setup]</span><span class="p">    </span><span class="c">Should Be Equal</span><span class="p">    </span><span class="c">${status}</span><span class="p">    </span><span class="c">pending</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">    </span><span class="c">Ship Order</span><span class="p">                      </span><span class="c"># corpo age, nunca verificado</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c">Order Is Shipped</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p">    </span><span class="c">Ship Order</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">    </span><span class="c">Should Be Equal</span><span class="p">    </span><span class="c">${order.status}</span><span class="p">    </span><span class="c">shipped</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="r8b">R8b - a única verificação vive no [Teardown]<a class="headerlink" href="#r8b" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F2</p>
+<p>A única keyword de verificação fica no <code>[Teardown]</code> (ou <code>Test Teardown</code>). O teardown roda mesmo
+quando o corpo falha e reporta num eixo separado (pode trocar o motivo de um teste que falhou),
+então não verifica o resultado do corpo. Confiança menor que a R8 porque uma verificação de
+teardown às vezes é uma asserção de limpeza deliberada.</p>
+<h2 id="camada-de-projeto-config-de-execucao-pl">Camada de projeto - config de execução (PL)<a class="headerlink" href="#camada-de-projeto-config-de-execucao-pl" title="Permanent link">&para;</a></h2>
+<h3 id="pl9">PL9 - skip-on-failure vira uma falha em pass<a class="headerlink" href="#pl9" title="Permanent link">&para;</a></h3>
+<p><code>J1</code> · BAIXO · F5</p>
+<p>Um <code>skip-on-failure</code> / <code>noncritical</code> na config de execução transforma um teste que falha num pass
+não fatal. Legado (removido no Robot Framework 4+), ainda visto em suítes antigas.</p>
+<h2 id="diagnostics">Códigos de diagnóstico (opcionais, OFF por padrão)<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
+<p>Família F8: higiene, não false-green. O Robocop também cobre estes.</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>O que sinaliza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D2</strong></td>
+<td>controle de fluxo (<code>IF</code>/<code>FOR</code>/<code>WHILE</code>/<code>TRY</code>) no nível do teste/task</td>
+</tr>
+<tr>
+<td><strong>M2</strong></td>
+<td>teste/task longo demais (o guia sugere no máximo ~10 passos)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="parecidos-nao-sinalizar">Parecidos: NÃO sinalizar<a class="headerlink" href="#parecidos-nao-sinalizar" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>Run Keyword And Expect Error</code> com uma mensagem/padrão ESPECÍFICO: está afirmando.</li>
+<li><code>Wait Until Keyword Succeeds</code>: um retry legítimo para flakiness de E2E, não um smell de Sleep.</li>
+<li>Keywords de teardown (<code>[Teardown]</code>, <code>Close Browser</code>): limpeza, não o oráculo.</li>
+<li>Keywords de presença em E2E (<code>Page Should Contain Element</code>): a asserção na camada do browser.</li>
+<li><code>Run Keywords    Click    AND    Should Be Equal ...</code>: a cadeia AND contém uma verificação real; não
+  C2b.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../javascript-typescript/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: JavaScript / TypeScript">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                JavaScript / TypeScript
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../semantic/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Semântico (LLM)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Semântico (LLM)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      MIT licensed. The falsegreen family.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

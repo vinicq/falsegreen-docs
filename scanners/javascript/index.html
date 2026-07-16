@@ -1,0 +1,2231 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Find tests that pass green without protecting anything. The catalog and guide for the falsegreen family of false-green test scanners.">
+      
+      
+      
+        <link rel="canonical" href="https://vinicq.github.io/falsegreen-docs/scanners/javascript/">
+      
+      
+        <link rel="prev" href="../python/">
+      
+      
+        <link rel="next" href="../robot/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+          <link rel="alternate" href="../../pt/scanners/javascript/" hreflang="pt">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>falsegreen-js (JS/TS) - falsegreen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#falsegreen-js-javascript-typescript" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="falsegreen" class="md-header__button md-logo" aria-label="falsegreen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            falsegreen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              falsegreen-js (JS/TS)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../pt/scanners/javascript/" hreflang="pt" class="md-select__link">
+              Português (Brasil)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vinicq/falsegreen-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vinicq/falsegreen-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user-guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  User Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../catalog/" class="md-tabs__link">
+          
+  
+  
+  Catalog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/taxonomy/" class="md-tabs__link">
+          
+  
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../python/" class="md-tabs__link">
+          
+  
+  
+  Scanners
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Research
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../credits/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Credits
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="falsegreen" class="md-nav__button md-logo" aria-label="falsegreen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    falsegreen
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vinicq/falsegreen-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vinicq/falsegreen-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Catalog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Catalog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../catalog/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../catalog/javascript-typescript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript / TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../catalog/robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../catalog/semantic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic (LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../catalog/gherkin-tavern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gherkin & Tavern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Failure taxonomy (F1-F8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/judgments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Judgments (J1-J6)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/oracle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The oracle hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/pyramid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test pyramid and levels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/by-test-level/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Patterns by language and test level
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/what-we-do-not-flag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What we do not flag
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scope and honesty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/denominator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coverage vs the literature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coverage by family
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanners
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scanners
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen (Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen-js (JS/TS)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen-js (JS/TS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First finding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-a-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading a finding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-usage-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete usage and configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete usage and configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install channels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output formats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-covers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it covers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playwright" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Playwright (E2E and API)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c6-weak-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Playwright-safe weak-check (C6)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-cover-and-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not cover, and why
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What it does not cover, and why">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#out-of-scope-the-wrong-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Out of scope (the wrong axis)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js-codes-deliberately-not-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS codes deliberately not implemented
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-applicable-from-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not applicable from Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beyond-the-scanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond the scanner
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    robotframework-falsegreen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    falsegreen-skill (LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../credits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Credits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First finding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-a-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading a finding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-usage-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete usage and configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete usage and configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install channels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output formats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-covers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it covers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playwright" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Playwright (E2E and API)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c6-weak-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Playwright-safe weak-check (C6)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-cover-and-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not cover, and why
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What it does not cover, and why">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#out-of-scope-the-wrong-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Out of scope (the wrong axis)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js-codes-deliberately-not-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JS codes deliberately not implemented
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-applicable-from-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not applicable from Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beyond-the-scanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond the scanner
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="falsegreen-js-javascript-typescript">falsegreen-js (JavaScript / TypeScript)<a class="headerlink" href="#falsegreen-js-javascript-typescript" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/vinicq/falsegreen-js/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/vinicq/falsegreen-js/actions/workflows/ci.yml/badge.svg" /></a>
+<a href="https://www.npmjs.com/package/falsegreen-js"><img alt="npm" src="https://img.shields.io/npm/v/falsegreen-js.svg" /></a>
+<a href="https://www.npmjs.com/package/falsegreen-js"><img alt="Downloads" src="https://img.shields.io/npm/dm/falsegreen-js.svg" /></a>
+<a href="https://github.com/vinicq/falsegreen-js/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a></p>
+<p>The deterministic JS/TS scanner. A static scan via the TypeScript compiler API, no code
+execution, runner-agnostic across Jest, Vitest, Mocha+Chai, Jasmine, AVA, node:test, Cypress,
+Playwright, and Testing Library. Covers <code>.js</code>, <code>.jsx</code>, <code>.ts</code>, <code>.tsx</code>, <code>.mjs</code>, <code>.cjs</code>, <code>.mts</code>,
+<code>.cts</code>.</p>
+<ul>
+<li>Repository: <a href="https://github.com/vinicq/falsegreen-js">github.com/vinicq/falsegreen-js</a></li>
+<li>Catalog: <a href="../../catalog/javascript-typescript/">JavaScript / TypeScript codes</a></li>
+</ul>
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>falsegreen-js
+</code></pre></div>
+<h2 id="use">Use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>src<span class="w">                       </span><span class="c1"># scan</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>--format<span class="w"> </span>json<span class="p">|</span>sarif<span class="p">|</span>junit<span class="w"> </span><span class="c1"># output shape (matches the Python sibling)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>--baseline<span class="w"> </span>.falsegreen-baseline.json
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>--config-audit<span class="w">            </span><span class="c1"># jest/vitest config for project-level false-green</span>
+</code></pre></div>
+<p>The JSON report carries <code>riskGroup</code> and <code>oracleRegistryVersion</code>: codes are classified into closed
+risk groups, and the oracle registry (sync-fail / promise / runner-registered / value-only) is
+versioned so async detection is principled rather than string-matched.</p>
+<h2 id="first-finding">First finding<a class="headerlink" href="#first-finding" title="Permanent link">&para;</a></h2>
+<p>Save a test whose assertion never runs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// demo.test.ts</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./add&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;adds&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span><span class="w">   </span><span class="c1">// no matcher - this asserts nothing</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">});</span>
+</code></pre></div>
+<p>Run the scanner over it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>demo.test.ts
+</code></pre></div>
+<p>It reports:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>demo.test.ts:5  [JS2] expect() with no matcher - the assertion never runs
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    level: unit   fix: add a matcher, e.g. .toBe(4)
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Summary: 1 high, 0 low.
+</code></pre></div>
+<h2 id="reading-a-finding">Reading a finding<a class="headerlink" href="#reading-a-finding" title="Permanent link">&para;</a></h2>
+<p>Each line carries the same fields:</p>
+<ul>
+<li><code>demo.test.ts:5</code> - the file and the line that triggered it.</li>
+<li><code>[JS2]</code> - the catalog code. <code>JS2</code> is <code>expect()</code> with no matcher. Every code is
+  explained in the <a href="../../catalog/javascript-typescript/">JS/TS catalog</a>.</li>
+<li><code>level: unit</code> - which level of the <a href="../../concepts/pyramid/">test pyramid</a> the
+  file sits at, read from the file's imports.</li>
+<li><code>fix:</code> - a one-line hint. Here: add a matcher so the assertion actually runs.</li>
+</ul>
+<p><code>--format json|sarif|junit</code> gives a machine-readable report; SARIF uploads to
+GitHub code scanning so findings show inline on the pull request.</p>
+<h2 id="complete-usage-and-configuration">Complete usage and configuration<a class="headerlink" href="#complete-usage-and-configuration" title="Permanent link">&para;</a></h2>
+<p>The getting-started above is the five-minute path. This section is the full reference:
+every install channel, every output format, every configuration knob, the exit-code
+contract, and the CI wiring. It mirrors what the <a href="https://github.com/vinicq/falsegreen-js">project README</a>
+documents.</p>
+<h3 id="install-channels">Install channels<a class="headerlink" href="#install-channels" title="Permanent link">&para;</a></h3>
+<p>Node 18 or newer. The scanner reads <code>.js</code>, <code>.jsx</code>, <code>.ts</code>, <code>.tsx</code>, <code>.mjs</code>, <code>.cjs</code>, <code>.mts</code>,
+<code>.cts</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>falsegreen-js<span class="w">   </span><span class="c1"># project dev dependency</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>falsegreen-js<span class="w">   </span><span class="c1"># global install</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>.<span class="w">            </span><span class="c1"># run the latest from npm without installing</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>node<span class="w"> </span>dist/cli.js<span class="w"> </span>.<span class="w">             </span><span class="c1"># run from a cloned checkout</span>
+</code></pre></div>
+<p>Runner-agnostic: the assertion and test vocabulary spans Jest, Vitest, Mocha + Chai, Jasmine,
+AVA, <code>node:test</code>, tap, Cypress, Playwright, Testing Library, and Vue Test Utils, so a Mocha or
+AVA test is not mistaken for one that never checks anything.</p>
+<h3 id="invocation">Invocation<a class="headerlink" href="#invocation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>npx<span class="w"> </span>falsegreen-js<span class="w">                 </span><span class="c1"># scan cwd</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>src<span class="w"> </span><span class="nb">test</span><span class="w">        </span><span class="c1"># scan paths</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>--staged<span class="w">        </span><span class="c1"># only test files staged in git (pre-commit)</span>
+</code></pre></div>
+<p>Each finding is reported with its <a href="../../concepts/pyramid/">pyramid level</a> (unit / integration /
+e2e, read from the file's imports) and a one-line fix hint; the summary breaks findings down by
+level and lists the most common fixes.</p>
+<h3 id="output-formats">Output formats<a class="headerlink" href="#output-formats" title="Permanent link">&para;</a></h3>
+<p><code>--format text|json|sarif|junit</code> selects the report shape (default <code>text</code>). <code>--json</code> stays as an
+alias for <code>--format json</code>. These match the <a href="../python/">Python sibling</a> byte-for-concept, so a
+pipeline can swap one scanner for the other.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>.<span class="w"> </span>--json<span class="w">                </span><span class="c1"># machine-readable JSON</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>.<span class="w"> </span>--format<span class="w"> </span>sarif<span class="w">        </span><span class="c1"># SARIF 2.1.0</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>.<span class="w"> </span>--format<span class="w"> </span>junit<span class="w">        </span><span class="c1"># JUnit XML</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>.<span class="w"> </span>--output<span class="w"> </span>report.json<span class="w">  </span><span class="c1"># write to a file</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>.<span class="w"> </span>--output<span class="w"> </span>.falsegreen/<span class="w"> </span><span class="c1"># write report.&lt;ext&gt; into a directory</span>
+</code></pre></div>
+<ul>
+<li><strong><code>sarif</code></strong> emits SARIF 2.1.0: one rule per code present, one result per finding, <code>error</code> for
+  HIGH, <code>warning</code> for LOW, <code>note</code> for off. Result tags carry the judgment (J1-J6), the risk group
+  (<code>risk:effectiveness</code>...), and the level. Upload it to GitHub code scanning to see findings
+  inline on the PR.</li>
+<li><strong><code>junit</code></strong> emits JUnit XML: HIGH findings become <code>&lt;failure&gt;</code>, everything else <code>&lt;skipped&gt;</code>, so a
+  CI test reporter surfaces them as a failing suite.</li>
+</ul>
+<p>The JSON report also carries <code>riskGroup</code> and <code>oracleRegistryVersion</code>: codes are classified into
+closed risk groups, and the oracle registry (sync-fail / promise / runner-registered / value-only)
+is versioned so async detection is principled rather than string-matched. <code>--output</code> takes a file
+or a directory; keep the output directory gitignored.</p>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p><strong>Disable / enable codes (CLI).</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>--disable<span class="w"> </span>C7,JS3<span class="w">   </span><span class="c1"># turn specific codes off</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>--enable<span class="w"> </span>D8,M2<span class="w">     </span><span class="c1"># re-activate off/opt-in codes at catalog severity</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>--diagnostics<span class="w">      </span><span class="c1"># include the D*/M* maintainability group as warnings</span>
+</code></pre></div>
+<p><code>--enable</code> flips a default-off code on at its catalog severity; it cannot raise a code above
+catalog. A code passed to both <code>--enable</code> and <code>--disable</code> stays off, <code>--disable</code> wins.</p>
+<p><strong>Diagnostics group (default off).</strong> These are not false-green, so they warn only: <code>D1</code> assertion
+roulette, <code>D3</code> duplicate assert, <code>D4</code> index-only <code>each</code> cases, <code>D6</code> <code>console.*</code> in a test, <code>D7</code>
+anonymous test, <code>D8</code> magic number, <code>M2</code> long test body. Enable all with <code>--diagnostics</code>, or per
+code via config <code>severity</code>.</p>
+<p><strong>Inline suppression.</strong> A comment on the offending line silences a justified finding:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span><span class="w"> </span><span class="c1">// falsegreen: ignore[C7]</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nx">expect</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span><span class="w">                     </span><span class="c1">// falsegreen: ignore</span>
+</code></pre></div>
+<p><strong>Project config file.</strong> <code>falsegreen.json</code>, <code>.falsegreenrc.json</code>, or a <code>"falsegreen"</code> key in
+<code>package.json</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">&quot;disable&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;C8&quot;</span><span class="p">],</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nt">&quot;exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;**/legacy/**&quot;</span><span class="p">],</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nt">&quot;severity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;JS3&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;off&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;C16&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">}</span>
+</code></pre></div>
+<p>Precedence, highest first: CLI <code>--disable</code>, CLI <code>--enable</code>, config <code>disable</code> / <code>severity</code>, catalog
+default.</p>
+<p><strong>Config audit.</strong> <code>--config-audit</code> is a separate mode. Instead of scanning test files, it reads
+the Jest / Vitest config (<code>package.json</code> <code>jest</code> field, <code>jest.config.*</code>, <code>vitest.config.*</code>) and
+reports the project-layer ways a suite stays green by configuration:</p>
+<ul>
+<li><code>PL10</code> - <code>passWithNoTests</code> passes an empty or filtered-to-nothing run.</li>
+<li><code>PL7</code> - no <code>coverageThreshold</code> / <code>coverage.thresholds</code>.</li>
+<li><code>PL8</code> - <code>bail</code> stops the run early.</li>
+</ul>
+<p><strong>Baseline (ratchet).</strong> Adopt the scanner on a large codebase without fixing every legacy finding
+at once:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>--write-baseline<span class="w">   </span><span class="c1"># record current findings to .falsegreen-baseline.json, exit 0</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>npx<span class="w"> </span>falsegreen-js<span class="w"> </span>--baseline<span class="w">         </span><span class="c1"># report and fail only on findings not in the baseline</span>
+</code></pre></div>
+<p><code>--baseline [PATH]</code> and <code>--write-baseline [PATH]</code> default to <code>.falsegreen-baseline.json</code>. A
+finding's identity is a content fingerprint (sha1 of relative path + code + detail, no line
+number), so it survives unrelated line shifts. Commit the baseline, then let CI block only on
+net-new findings.</p>
+<h3 id="exit-codes">Exit codes<a class="headerlink" href="#exit-codes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>clean, no findings that affect the gate</td>
+</tr>
+<tr>
+<td><code>10</code></td>
+<td>low-confidence findings only</td>
+</tr>
+<tr>
+<td><code>20</code></td>
+<td>at least one high-confidence finding</td>
+</tr>
+</tbody>
+</table>
+<p>Block the commit on <code>20</code>.</p>
+<h3 id="ci-integration">CI integration<a class="headerlink" href="#ci-integration" title="Permanent link">&para;</a></h3>
+<p><strong>GitHub Actions.</strong> A failing job on exit <code>20</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">falsegreen-js</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nt">jobs</span><span class="p">:</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="nt">scan</span><span class="p">:</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> node-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx falsegreen-js .</span><span class="w">   </span><span class="c1"># exit 20 fails the job</span>
+</code></pre></div>
+<p><strong>SARIF upload to GitHub code scanning.</strong> Emit SARIF and hand it to the CodeQL action so findings
+show inline on the pull request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx falsegreen-js . --format sarif --output falsegreen.sarif</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">        </span><span class="nt">continue-on-error</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github/codeql-action/upload-sarif@v3</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">          </span><span class="nt">sarif_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">falsegreen.sarif</span>
+</code></pre></div>
+<p><strong>Pre-commit hook.</strong> Run the staged-files scan as a hook with <code>--staged</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">falsegreen-js</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">falsegreen-js</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx falsegreen-js --staged</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">        </span><span class="nt">pass_filenames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">        </span><span class="nt">types_or</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">javascript</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">ts</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">tsx</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">jsx</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>For the layer no static scan reaches (does a green test fail when the code is wrong?), run a
+mutation tester like <a href="https://stryker-mutator.io/">Stryker</a>. falsegreen-js is the cheap
+pre-filter on every commit; the semantic cases (intent, oracle correctness) are
+<a href="../skill/">falsegreen-skill</a>.</p>
+<h2 id="what-it-covers">What it covers<a class="headerlink" href="#what-it-covers" title="Permanent link">&para;</a></h2>
+<p>Full per-code detail in the <a href="../../catalog/javascript-typescript/">JS/TS catalog</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Codes</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shared with Python</strong> (F1-F6)</td>
+<td><code>C2</code>, <code>C2b</code>, <code>C5</code>, <code>C6</code>, <code>C7</code>, <code>C8</code>, <code>C9</code>, <code>C16</code>, <code>C18</code>, <code>C20</code>, <code>C21</code>, <code>C23</code>, <code>C37</code>, <code>C44</code>, <code>CC</code></td>
+<td>HIGH blocks, LOW warns</td>
+</tr>
+<tr>
+<td><strong>JavaScript-specific</strong></td>
+<td><code>JS1</code>-<code>JS9</code>, <code>JS11</code>, <code>JS13</code>, <code>JS15</code>, <code>JS17</code>, <code>JS18</code>, <code>JS21</code>, <code>JS22</code></td>
+<td>idem</td>
+</tr>
+<tr>
+<td><strong>Diagnostic / coupling</strong> (F8)</td>
+<td><code>D1</code>, <code>D3</code>, <code>D4</code>, <code>D6</code>, <code>D7</code>, <code>D8</code>, <code>M2</code></td>
+<td>opt-in</td>
+</tr>
+<tr>
+<td><strong>Project / CI</strong> (<code>--config-audit</code>)</td>
+<td><code>PL10</code> (<code>--passWithNoTests</code>), <code>PL7</code> (coverage threshold), <code>PL8</code> (bail)</td>
+<td>reads jest/vitest config</td>
+</tr>
+</tbody>
+</table>
+<h2 id="playwright">Playwright (E2E and API)<a class="headerlink" href="#playwright" title="Permanent link">&para;</a></h2>
+<p>A project that mixes <code>node:test</code>/Jest/Vitest with Playwright specs scans cleanly. Playwright
+has its own assertion grammar, and reading it through the <code>node:test</code>/<code>assert</code> lens produced
+false positives; the scanner now recognizes the framework and judges it on its own terms.</p>
+<p><strong>How Playwright is recognized.</strong> Three signals, any one of which marks the file:</p>
+<ol>
+<li>the package import (<code>@playwright/test</code>, <code>playwright</code>, <code>playwright-core</code>);</li>
+<li>a namespaced <code>test.*</code> API call (<code>test.describe</code>, <code>test.step</code>, <code>test.beforeAll</code>,
+   <code>test.afterAll</code>) — this catches suites that import <code>test</code>/<code>expect</code> from a <strong>fixture
+   re-export</strong> (<code>test.extend</code>/<code>mergeTests</code>, e.g. <code>import { test, expect } from "@company/e2e/fixtures"</code>),
+   the pattern Playwright's own docs recommend;</li>
+<li>a Playwright fixture parameter: <code>browserName</code> alone (unambiguous), or <code>page</code>/<code>context</code>/
+   <code>request</code> corroborated by a Playwright-exclusive matcher such as <code>toBeOK</code>/<code>toHaveCount</code>.
+   A bare <code>request</code> never flips the signal by itself, so a supertest/Express test that
+   destructures <code>{ request }</code> is not mistaken for Playwright.</li>
+</ol>
+<p><strong>What that fixes.</strong></p>
+<ul>
+<li><strong>Lifecycle hooks are not tests.</strong> <code>test.beforeEach</code>/<code>afterEach</code>/<code>beforeAll</code>/<code>afterAll</code>,
+  <code>test.describe</code>, and <code>test.step</code> are no longer analyzed as test bodies, so a setup or
+  teardown hook that calls code without an assertion no longer reports <code>C2b</code> (and the
+  sibling body-level codes stop misfiring on a hook). A hook is not a test; the assertion
+  belongs in the <code>test(...)</code>. <code>test.only</code>/<code>test.serial</code>/<code>test.fail</code>/<code>test.failing</code> are real
+  running tests and keep full body analysis.</li>
+<li><strong>Conditional skip is a runtime guard, not a disabled test.</strong> <code>test.skip(condition[, reason])</code>,
+  <code>test.skip()</code>, and the predicate form <code>test.skip(({ browserName }) =&gt; ...)</code> no longer fire
+  <code>JS4</code>. Unconditional declared skips still do: <code>test.skip("title", fn)</code>, <code>test.skip(true, "...")</code>
+  (a group disabled by a constant), <code>test.describe.skip</code>, <code>xit</code>/<code>xdescribe</code>/<code>it.todo</code>. The
+  suppression is gated on a Playwright signal <strong>and</strong> a non-string first argument, so a
+  <code>node:test</code>/Mocha titleless <code>test.skip(fn)</code> in a non-Playwright file still fires <code>JS4</code> — no
+  false negative.</li>
+<li><strong>API-response and UI matchers count as assertions.</strong> <code>expect(locator).toBeVisible()</code>/
+  <code>toHaveText()</code>/<code>toHaveCount()</code> and <code>expect(apiResponse).toBeOK()</code> already registered as real
+  oracles; this work adds the hook, skip, and file-recognition handling around them so the
+  whole spec — UI or API — reads correctly.</li>
+</ul>
+<p>The file-recognition signal is scoped to the skip decision only; it does not widen the pyramid
+level, so a Jest/Vitest file with a bare <code>describe</code> never turns into a browser-layer file and
+never starts forgiving a weak check. See <a href="#c6-weak-check"><code>C6</code></a> below.</p>
+<h2 id="c6-weak-check">Playwright-safe weak-check (C6)<a class="headerlink" href="#c6-weak-check" title="Permanent link">&para;</a></h2>
+<p><code>C6</code> (weak check) uses a <strong>sole-oracle</strong> model across every runner: it fires only when a
+presence/non-empty check (<code>toBeTruthy</code>/<code>toBeDefined</code>/<code>.length &gt; 0</code>) is the enclosing test's
+ONLY oracle. A weak check next to a stronger assertion in the same test (a <code>toBeGreaterThan(0)</code>
+guard before a <code>toBe(...)</code>) is not flagged — the strong assertion carries the test. A test whose
+assertions are all weak still reports <code>C6</code>. This matters for E2E, where a guard like
+<code>expect(items.length).toBeGreaterThan(0)</code> commonly precedes the real check.</p>
+<h2 id="what-it-does-not-cover-and-why">What it does not cover, and why<a class="headerlink" href="#what-it-does-not-cover-and-why" title="Permanent link">&para;</a></h2>
+<h3 id="out-of-scope-the-wrong-axis">Out of scope (the wrong axis)<a class="headerlink" href="#out-of-scope-the-wrong-axis" title="Permanent link">&para;</a></h3>
+<p>The same boundary as the rest of the family: brittleness/false-red, hygiene, slow, design,
+naming, duplication, runtime. See <a href="../../concepts/denominator/">coverage vs the literature</a>.</p>
+<h3 id="js-codes-deliberately-not-implemented">JS codes deliberately not implemented<a class="headerlink" href="#js-codes-deliberately-not-implemented" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>What it would flag</th>
+<th>Why not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JS10</strong></td>
+<td>any conditional in the test body</td>
+<td>too broad; <code>jest/no-conditional-in-test</code> (ESLint) covers it. Diagnostic-only at most</td>
+</tr>
+<tr>
+<td><strong>JS12</strong></td>
+<td>a promise with <code>expect</code> not returned/awaited</td>
+<td>subsumed by <code>JS7</code></td>
+</tr>
+<tr>
+<td><strong>JS14</strong></td>
+<td>a giant snapshot</td>
+<td>hygiene (F8), not false-green</td>
+</tr>
+<tr>
+<td><strong>JS16</strong></td>
+<td>async test with no <code>expect.assertions(n)</code> guard</td>
+<td>the absence of a guard is not a smell; flagging it has a very high false-positive rate</td>
+</tr>
+<tr>
+<td><strong>JS19</strong></td>
+<td><code>toBe</code> on an object/array literal (was <code>toEqual</code>)</td>
+<td>this is false-RED (an identity check that fails on correct code): the opposite axis</td>
+</tr>
+<tr>
+<td><strong>JS20</strong></td>
+<td>a Promise compared without <code>resolves</code>/<code>rejects</code></td>
+<td>knowing the subject is a Promise needs type information; high false positive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="not-applicable-from-python">Not applicable from Python<a class="headerlink" href="#not-applicable-from-python" title="Permanent link">&para;</a></h3>
+<p>pytest-specific codes have no JS analog: the collection rules (<code>C4</code> family), <code>pytest.raises</code>
+binding/scope codes, <code>capsys</code>/<code>os.environ</code> codes. They are intentionally absent, not missing.</p>
+<h3 id="beyond-the-scanner">Beyond the scanner<a class="headerlink" href="#beyond-the-scanner" title="Permanent link">&para;</a></h3>
+<p>The semantic slice (intent, oracle correctness) is <a href="../skill/">falsegreen-skill</a>; runtime
+(mutation with Stryker) is out of band. See <a href="../../concepts/scope/">scope and honesty</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../python/" class="md-footer__link md-footer__link--prev" aria-label="Previous: falsegreen (Python)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                falsegreen (Python)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../robot/" class="md-footer__link md-footer__link--next" aria-label="Next: robotframework-falsegreen">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                robotframework-falsegreen
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      MIT licensed. The falsegreen family.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

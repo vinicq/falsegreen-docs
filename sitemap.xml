@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/credits/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/credits/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/credits/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/research/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/research/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/research/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/user-guide/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/user-guide/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/user-guide/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/catalog/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/catalog/gherkin-tavern/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/gherkin-tavern/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/gherkin-tavern/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/catalog/javascript-typescript/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/javascript-typescript/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/javascript-typescript/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/catalog/python/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/python/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/python/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/catalog/robot/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/robot/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/robot/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/catalog/semantic/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/semantic/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/semantic/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/concepts/by-test-level/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/by-test-level/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/by-test-level/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/concepts/coverage/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/coverage/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/coverage/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/concepts/denominator/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/denominator/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/denominator/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/concepts/judgments/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/judgments/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/judgments/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/concepts/oracle/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/oracle/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/oracle/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/concepts/pyramid/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/pyramid/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/pyramid/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/concepts/scope/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/scope/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/scope/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/concepts/taxonomy/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/taxonomy/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/taxonomy/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/concepts/what-we-do-not-flag/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/what-we-do-not-flag/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/what-we-do-not-flag/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/scanners/javascript/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/scanners/javascript/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/scanners/javascript/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/scanners/python/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/scanners/python/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/scanners/python/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/scanners/robot/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/scanners/robot/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/scanners/robot/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/scanners/skill/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/scanners/skill/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/scanners/skill/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/credits/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/credits/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/credits/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/research/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/research/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/research/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/user-guide/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/user-guide/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/user-guide/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/catalog/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/catalog/gherkin-tavern/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/gherkin-tavern/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/gherkin-tavern/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/catalog/javascript-typescript/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/javascript-typescript/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/javascript-typescript/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/catalog/python/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/python/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/python/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/catalog/robot/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/robot/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/robot/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/catalog/semantic/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/catalog/semantic/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/catalog/semantic/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/concepts/by-test-level/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/by-test-level/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/by-test-level/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/concepts/coverage/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/coverage/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/coverage/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/concepts/denominator/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/denominator/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/denominator/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/concepts/judgments/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/judgments/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/judgments/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/concepts/oracle/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/oracle/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/oracle/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/concepts/pyramid/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/pyramid/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/pyramid/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/concepts/scope/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/scope/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/scope/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/concepts/taxonomy/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/taxonomy/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/taxonomy/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/concepts/what-we-do-not-flag/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/concepts/what-we-do-not-flag/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/concepts/what-we-do-not-flag/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/scanners/javascript/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/scanners/javascript/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/scanners/javascript/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/scanners/python/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/scanners/python/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/scanners/python/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/scanners/robot/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/scanners/robot/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/scanners/robot/"/>
+    </url>
+    <url>
+        <loc>https://vinicq.github.io/falsegreen-docs/pt/scanners/skill/</loc>
+        <lastmod>2026-07-16</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://vinicq.github.io/falsegreen-docs/pt/scanners/skill/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://vinicq.github.io/falsegreen-docs/scanners/skill/"/>
+    </url>
+</urlset>
